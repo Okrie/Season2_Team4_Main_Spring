@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springlec.base.dao.user.NUserDao">
+	<insert id="userRegisterDao">
+		INSERT INTO user 
+		(userid, userpw, name, gender, birthdate, telno, address, email, allergy, insertdate, invalidate) 
+		VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, now(), 1)
+	</insert>
+	<select id="adminLoginDao">
+		SELECT adminid, adminpw FROM admin WHERE adminid = #{adminid}
+	</select>
+	<select id="userLoginDao">
+		SELECT userid, userpw, invalidate FROM user WHERE userid = #{userid}
+	</select>
+	<select id="userCheckDao" resultType="boolean">
+		SELECT userid FROM user WHERE userid = #{userid}
+	</select>
+	<select id="userInfoDao" resultType="com.springlec.base.model.user.NUserDao">
+		SELECT * FROM user WHERE userid = #{userid}
+	</select>
+	<select id="userMypageCheckDao">
+		SELECT userpw FROM user WHERE userid = #{userid}
+	</select>
+	<update id="userMypageUpdateDao">
+		update user 
+		set name = #{name}, telno = #{telno}
+		, address = #{address}, email = #{email}
+		, allergy = #{allergy} where userid = #{userid}
+	</update>
+	<select id="userMypageOrderedDao" resultType="com.springlec.base.model.product.NOrderDao">
+		SELECT o.ordercode, pr.photo, pr.name, o.count, m.price, o.orderdate, o.deliverydate, o.refunddate, pr.pcode 
+		FROM user u 
+		JOIN orders o ON u.userid = o.userid 
+		JOIN product pr ON o.pcode = pr.pcode 
+		JOIN manage m ON pr.pcode = m.pcode 
+		WHERE u.userid = #{userid}
+	</select>
+	<insert id="userAddCartDao">
+		INSERT INTO cart (userid, pcode, count) VALUES(#{userid}, #{pcode}, 1)
+	</insert>
+</mapper>
