@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springlec.base.dao.admin.ProductDao">
+
+	<!-- 리뷰 데이터 테이블로 가져오기 -->
+	<select id="searchOrders"
+		resultType="com.springlec.base.model.admin.ProductDto">
+		SELECT p.name, SUM(o.count) AS totalorders
+		FROM product p
+		JOIN orders o ON p.pcode = o.pcode
+		WHERE o.refunddate IS NULL
+		GROUP BY
+		p.name
+	</select>
+
+	<select id="searchProduct"
+		resultType="com.springlec.base.model.admin.ProductDto">
+		SELECT *
+		FROM product
+		ORDER BY CAST(pcode AS UNSIGNED)
+	</select>
+
+	<select id="findProduct"
+		resultType="com.springlec.base.model.admin.ProductDto">
+		SELECT *
+		FROM product
+		WHERE pcode = #{pcode}
+	</select>
+
+	<insert id="insertProduct">
+		INSERT INTO product (pcode,
+		name, category, rice, cook1,
+		cook2, cook3, soup, photo,
+		insertdate, calories)"
+		SELECT IFNULL(MAX(CAST(pcode AS UNSIGNED)), 0) + 1,
+		#{name}, #{category}, #{rice}, #{cook1},
+		#{cook2}, #{cook3}, #{soup}, #{photo},
+		NOW(),#{calories}
+		FROM product
+	</insert>
+
+	<update id="updateProduct">
+		UPDATE product SET name = #{name}, category = #{category}, rice = #{rice},
+		cook1 = #{cook1}, cook2 = #{cook2}, cook3 = #{cook3}, 
+		soup = #{soup}, photo = #{photo}, calories = #{calories} 
+		WHERE pcode = #{pcode}
+	</update>
+	
+	<select id="getPname"
+		resultType="com.springlec.base.model.admin.ProductDto">
+		SELECT name 
+		FROM product 
+		WHERE pcode = #{pcode}
+	</select>
+
+
+
+</mapper>
