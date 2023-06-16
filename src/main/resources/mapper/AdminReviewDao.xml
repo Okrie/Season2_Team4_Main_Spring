@@ -5,7 +5,7 @@
 <mapper namespace="com.springlec.base.dao.admin.ReviewDao">
 
 	<!-- 리뷰 데이터 테이블로 가져오기 -->
-	<select id="searchBoard"
+	<select id="searchReview"
 		resultType="com.springlec.base.model.admin.ReviewDto">
 		SELECT
 		review.seq AS seq,
@@ -29,23 +29,23 @@
 		ORDER BY parent
 	</select>
 
-	<insert id="insertBoard_01">
+	<insert id="insertReview_01">
 		INSERT INTO review (seq, parent, layer, userid,
 		pcode, adminid, insertdate, invalidate)
-		VALUES (#{seq}, #{parent}, #{layer+1}, NULL, #{pcode}, #{adminid}, now(), 1)
+		VALUES (#{seq+1}, #{parent}, #{layer+1}, NULL, #{pcode}, #{adminid}, now(), 1)
 	</insert>
-	<insert id="insertBoard_02">
+	<insert id="insertReview_02">
 		INSERT INTO rreply (seq, adminid, context,
-		updatedate) VALUES (#{seq}, #{adminid}, #{context}, now())
+		updatedate) VALUES (#{seq+1}, #{adminid}, #{rrcontext}, now())
 	</insert>
-	<select id="searchBoardseq"
+	<select id="searchReviewseq"
 		resultType="com.springlec.base.model.admin.ReviewDto">
 		SELECT MAX(seq) AS seq FROM review
 	</select>
-	<update id="modifyBoard">
+	<update id="modifyReview">
 		UPDATE rreply SET context = ${context}, adminid =${adminid}, updatedate = now() WHERE seq = ${seq}
 	</update>
-	<update id="deleteBoard">
+	<update id="deleteReview">
 		UPDATE review SET invalidate = 0 WHERE seq = ${seq}
 	</update>
 	

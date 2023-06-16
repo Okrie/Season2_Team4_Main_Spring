@@ -1,5 +1,6 @@
 package com.springlec.base.dao.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -13,39 +14,41 @@ public class ReviewDaoImpl implements ReviewDao {
 	public static String namespace = "com.spring.base.dao.admin.ReviewDao";
 
 	@Override
-	public List<ReviewDto> searchBoard() throws Exception {
+	public ArrayList<ReviewDto> searchReview() throws Exception {
 		// TODO Auto-generated method stub
-		return sqlsession.selectList(namespace + ".searchBoard");
+		List<ReviewDto> resultList = sqlsession.selectList(namespace + ".searchReview");
+		ArrayList<ReviewDto> reviewList =new ArrayList<>(resultList);
+		return reviewList;
 	}
 
 	@Override
-	public int insertBoard_01(int seq, String parent, String layer, String pcode, String adminid) throws Exception {
+	public int insertReview_01(int seq, int parent, int layer, String pcode, String adminid) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlsession.insert(namespace + ".insertBoard_01");
+		return sqlsession.insert(namespace + ".insertReview_01");
 	}
 
 	@Override
-	public int insertBoard_02(int seq, String adminid, String context) throws Exception {
+	public int insertReview_02(int seq, String adminid, String rrcontext) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlsession.insert(namespace + ".insertBoard_02");
+		return sqlsession.insert(namespace + ".insertReview_02");
 	}
 
 	@Override
-	public ReviewDto searchBoardseq() throws Exception {
+	public ReviewDto searchReviewseq() throws Exception {
 		// TODO Auto-generated method stub
-		return sqlsession.selectOne(namespace + ".searchBoardseq");
+		return sqlsession.selectOne(namespace + ".searchReviewseq");
 	}
 
 	@Override
-	public int modifyBoard(int seq, String adminid, String context) throws Exception {
+	public int modifyReview(int seq, String adminid, String rrcontext) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlsession.update(namespace + ".modifyBoard");
+		return sqlsession.update(namespace + ".modifyReview");
 	}
 
 	@Override
-	public int deleteBoard(int seq) throws Exception {
+	public int deleteReview(int seq) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlsession.update(namespace + ".deleteBoard");
+		return sqlsession.update(namespace + ".deleteReview");
 	}
 
 }

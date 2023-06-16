@@ -98,7 +98,6 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 								const replyContent = document.getElementById('reply-content').value;
 
 								const sendData = {
-									replySelect: '1',
 									replySeq: rowData[0],
 									replyParent: rowData[1],
 									replyLayer: rowData[2],
@@ -109,7 +108,7 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 
 								$.ajax({
 									type: 'POST',
-									url: 'admin_insertboard.do',
+									url: 'adminInsertBoard',
 									contentType: 'application/json',
 									data: JSON.stringify(sendData),
 									dataType: 'json',
@@ -147,13 +146,12 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 						if (result.isConfirmed) {
 
 							const sendData = {
-								replySelect: '1',
 								replySeq: rowData[0],
 							};
 
 							$.ajax({
 								type: 'POST',
-								url: 'admin_deleteboard.do',
+								url: 'adminDeleteBoard',
 								contentType: 'application/json',
 								data: JSON.stringify(sendData),
 								dataType: 'json',
@@ -204,7 +202,6 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 								const replyContent = document.getElementById('reply-content').value;
 
 								const sendData = {
-									replySelect: '1',
 									replySeq: rowData[0],
 									replyTitle: replyTitle,
 									replyContent: replyContent
@@ -212,7 +209,7 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 
 								$.ajax({
 									type: 'POST',
-									url: 'admin_modifyboard.do',
+									url: 'adminModifyBoard',
 									contentType: 'application/json',
 									data: JSON.stringify(sendData),
 									dataType: 'json',
@@ -317,7 +314,6 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 									const replyContent = document.getElementById('reply-content').value;
 
 									const sendData = {
-										replySelect: '2',
 										replyParent: rowData[1],
 										replyLayer: rowData[2],
 										replyPcode: rowData[11],
@@ -327,7 +323,7 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 
 									$.ajax({
 										type: 'POST',
-										url: 'admin_insertboard.do',
+										url: 'adminInsertReview',
 										contentType: 'application/json',
 										data: JSON.stringify(sendData),
 										dataType: 'json',
@@ -364,13 +360,12 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 							if (result.isConfirmed) {
 
 								const sendData = {
-									replySelect: '2',
 									replySeq: rowData[0],
 								};
 
 								$.ajax({
 									type: 'POST',
-									url: 'admin_deleteboard.do',
+									url: 'adminDeleteReview',
 									contentType: 'application/json',
 									data: JSON.stringify(sendData),
 									dataType: 'json',
@@ -419,14 +414,13 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 									const replyContent = document.getElementById('reply-content').value;
 
 									const sendData = {
-										replySelect: '2',
 										replySeq: rowData[0],
 										replyContent: replyContent
 									};
 
 									$.ajax({
 										type: 'POST',
-										url: 'admin_modifyboard.do',
+										url: 'adminModifyReview',
 										contentType: 'application/json',
 										data: JSON.stringify(sendData),
 										dataType: 'json',
@@ -519,7 +513,6 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 								const replyContent = document.getElementById('reply-content').value;
 
 								const sendData = {
-									replySelect: '3',
 									replyParent: '0',
 									replyLayer: '0',
 									replyPcode: '',
@@ -529,7 +522,7 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 
 								$.ajax({
 									type: 'POST',
-									url: 'admin_insertboard.do',
+									url: 'adminInsertNotice',
 									contentType: 'application/json',
 									data: JSON.stringify(sendData),
 									dataType: 'json',
@@ -572,7 +565,7 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 
 								$.ajax({
 									type: 'POST',
-									url: 'admin_deleteboard.do',
+									url: 'adminDeleteNotice',
 									contentType: 'application/json',
 									data: JSON.stringify(sendData),
 									dataType: 'json',
@@ -624,7 +617,7 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 
 								$.ajax({
 									type: 'POST',
-									url: 'admin_modifyboard.do',
+									url: 'adminModifyNotice',
 									contentType: 'application/json',
 									data: JSON.stringify(sendData),
 									dataType: 'json',

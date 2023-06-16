@@ -11,19 +11,18 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReviewDto {
-	int seq;
-	int parent;
-	int layer;
-	String userid;
+public class ProductDto {
 	String pcode;
-	String adminid;
+	String name;
+	String category;
+	String rice;
+	String cook1;
+	String cook2;
+	String cook3;
+	String soup;
+	String photo;
 	Timestamp insertdate;
-	int invalidate;
-	String rwcontext;
-	String rwimage;
-	Timestamp rwupdatedate;
-	String rrcontext;
-	Timestamp rrupdatedate;
-	
+	int calories;
+
+	int totalorders;
 }

@@ -1,55 +1,54 @@
 package com.springlec.base.service.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.springlec.base.dao.admin.ReviewDao;
 import com.springlec.base.model.admin.ReviewDto;
 
-
 @Service
+@Transactional(rollbackFor = Exception.class) // rollback을 안하면 data가 꼬인다.
 public class ReviewDaoServiceImpl implements ReviewDaoService {
-	
+
 	@Autowired
 	ReviewDao reviewDao;
-	
-	
+
 	@Override
-	public List<ReviewDto> searchBoard() throws Exception {
+	public ArrayList<ArrayList<ReviewDto>> searchReview() throws Exception {
+		// TODO Auto-generated method stub
+		ArrayList<ReviewDto> dtoReview = reviewDao.searchReview();
 		
-		return null;
 	}
 
 	@Override
-	public int insertBoard_01(int seq, String parent, String layer, String pcode, String adminid) throws Exception {
+	public int insertReview(int seq, int parent, int layer, String pcode, String adminid, String rrcontext)
+			throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		int result_01 = reviewDao.insertReview_01(seq, parent, layer, pcode, adminid);
+		int result_02 = reviewDao.insertReview_02(seq, adminid, rrcontext);
+		return result_01 + result_02;
 	}
 
 	@Override
-	public int insertBoard_02(int seq, String adminid, String context) throws Exception {
+	public ReviewDto searchReviewseq() throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return reviewDao.searchReviewseq();
 	}
 
 	@Override
-	public ReviewDto searchBoardseq() throws Exception {
+	public int modifyReview(int seq, String adminid, String rrcontext) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return reviewDao.modifyReview(seq, adminid, rrcontext);
 	}
 
 	@Override
-	public int modifyBoard(int seq, String adminid, String context) throws Exception {
+	public int deleteReview(int seq) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int deleteBoard(int seq) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return reviewDao.deleteReview(seq);
 	}
 
 }

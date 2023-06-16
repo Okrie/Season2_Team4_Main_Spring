@@ -1,19 +1,19 @@
 package com.springlec.base.dao.admin;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import com.springlec.base.model.admin.ReviewDto;
 
 public interface ReviewDao {
-	public List<ReviewDto> searchBoard() throws Exception;
+	public ArrayList<ReviewDto> searchReview() throws Exception;
 
-	public int insertBoard_01(int seq, String parent, String layer, String pcode, String adminid) throws Exception;
+	public int insertReview_01(int seq, int parent, int layer, String pcode, String adminid) throws Exception;
 
-	public int insertBoard_02(int seq, String adminid, String context) throws Exception;
+	public int insertReview_02(int seq, String adminid, String rrcontext) throws Exception;
 
-	public ReviewDto searchBoardseq() throws Exception;
+	public ReviewDto searchReviewseq() throws Exception;
 
-	public int modifyBoard(int seq, String adminid, String context) throws Exception;
+	public int modifyReview(int seq, String adminid, String rrcontext) throws Exception;
 
-	public int deleteBoard(int seq) throws Exception;
+	public int deleteReview(int seq) throws Exception;
 }
