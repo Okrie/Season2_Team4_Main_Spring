@@ -15,7 +15,7 @@ import com.springlec.base.model.admin.ReviewDto;
 
 @Service
 @Transactional(rollbackFor = Exception.class) // rollback을 안하면 data가 꼬인다.
-public class ReviewDaoServiceImpl implements ReviewDaoService {
+public class ReviewServiceImpl implements ReviewService {
 
 	@Autowired
 	ProductDao productDao;

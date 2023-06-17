@@ -43,10 +43,10 @@
 		SELECT MAX(seq) AS seq FROM review
 	</select>
 	<update id="modifyReview">
-		UPDATE rreply SET context = ${context}, adminid =${adminid}, updatedate = now() WHERE seq = ${seq}
+		UPDATE rreply SET context = #{context}, adminid =#{adminid}, updatedate = now() WHERE seq = #{seq}
 	</update>
 	<update id="deleteReview">
-		UPDATE review SET invalidate = 0 WHERE seq = ${seq}
+		UPDATE review SET invalidate = 0 WHERE seq = #{seq}
 	</update>
 	
 

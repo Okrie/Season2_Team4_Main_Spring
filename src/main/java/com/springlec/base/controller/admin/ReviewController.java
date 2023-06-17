@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gson.Gson;
 import com.springlec.base.model.admin.ReviewDto;
-import com.springlec.base.service.admin.ReviewDaoService;
+import com.springlec.base.service.admin.ReviewService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpSession;
 public class ReviewController {
 	
 	@Autowired
-	ReviewDaoService reviewDaoService;
+	ReviewService reviewService;
 	
 	
 	
@@ -29,7 +29,7 @@ public class ReviewController {
 	@RequestMapping("/adminSearchBoard")
 	public String list(Model model,HttpSession session) throws Exception {
 		session.setAttribute("ID","root1");
-		ArrayList<ArrayList<String>> dataSetReview = reviewDaoService.searchReview();
+		ArrayList<ArrayList<String>> dataSetReview = reviewService.searchReview();
 		model.addAttribute("dataSetReview", dataSetReview);
 
 		return "admin_board";
@@ -42,7 +42,7 @@ public class ReviewController {
 		session.setAttribute("ID","root1");
 		Gson gson = new Gson();
 	    ReviewDto reviewDto = gson.fromJson(json, ReviewDto.class);
-	    ReviewDto newseqDto= reviewDaoService.searchReviewseq();
+	    ReviewDto newseqDto= reviewService.searchReviewseq();
 	    int seq = newseqDto.getSeq();
 	    int parent = reviewDto.getParent();
 	    int layer = reviewDto.getLayer();
@@ -50,7 +50,7 @@ public class ReviewController {
 	    String adminid = (String) session.getAttribute("ID");
 	    String rrcontext = reviewDto.getRrcontext();
 	    
-	    reviewDaoService.insertReview(seq, parent, layer, pcode, adminid, rrcontext);
+	    reviewService.insertReview(seq, parent, layer, pcode, adminid, rrcontext);
 	    return "redirect:list";
 	}
 	//	리뷰 수정하기
@@ -60,7 +60,7 @@ public class ReviewController {
 		Gson gson = new Gson();
 	    ReviewDto reviewDto = gson.fromJson(json, ReviewDto.class);
 	    int seq = reviewDto.getSeq();
-	    reviewDaoService.deleteReview(seq);
+	    reviewService.deleteReview(seq);
 	    return "redirect:list";
 	}
 	
@@ -73,7 +73,7 @@ public class ReviewController {
 	    int seq = reviewDto.getSeq();
 	    String rrcontext = reviewDto.getRrcontext();
 	    String adminid = (String) session.getAttribute("ID");
-	    reviewDaoService.modifyReview(seq, adminid, rrcontext);
+	    reviewService.modifyReview(seq, adminid, rrcontext);
 	    return "redirect:list";
 	}
 	
