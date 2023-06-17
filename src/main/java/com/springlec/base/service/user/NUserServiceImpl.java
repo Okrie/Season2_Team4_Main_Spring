@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springlec.base.dao.user.NUserDao;
-import com.springlec.base.model.user.NUserLoginDto;
 
 @Service
 public class NUserServiceImpl implements NUserService{
@@ -21,16 +20,41 @@ public class NUserServiceImpl implements NUserService{
 //	}
 
 	@Override
-	public String loginCheck(String uid, String upassword, String isWho) throws Exception {
+	public String loginCheck(String userid, String userpw, boolean isadmin) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.loginCheck(uid, upassword, isWho);
+		String result = "";
+		try {
+			if(isadmin) {
+				result = dao.adminLoginDao(userid, userpw);
+				if(result != null && !result.equals("0")) {
+					result = "admin";
+				}
+			} else {
+				result = dao.userisAliveDao(userid);
+				if(result.equals("1")) {
+					if(!dao.userLoginDao(userid, userpw).equals("0")) {
+						result = "user";
+					} else {
+						result = "fail";
+					}
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "fail";
+		}
+		return result;
 	}
 
-//	@Override
-//	public boolean isAdmin(String uid) throws Exception {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
+	@Override
+	public boolean isAdmin(String adminid) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println(dao.adminCheckDao(adminid));
+		if(dao.adminCheckDao(adminid) == 1) {
+			return true;
+		}
+		return false;
+	}
 //
 //	@Override
 //	public boolean userCheck(String userid) throws Exception {

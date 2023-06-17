@@ -31,16 +31,16 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-6">
 					<div class="header__top__left">
-						<a href="./index.jsp"><img src="http://okrie.kro.kr:25567/images/logo_long.png" alt="" height="50"></a>
+						<a href="/"><img src="http://okrie.kro.kr:25567/images/logo_long.png" alt="" height="50"></a>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6">
 					<div class="header__top__right">
 						<div class="header__top__right__auth">
 							<c:if test="${empty sessionScope.ID}">
-								<a href="login.do"><i class="fa fa-user"></i> Login</a>
+								<a href="login"><i class="fa fa-user"></i> Login</a>
 							</c:if>
-                         		<h2><a href="./main.do">Home</a></h2>
+                         		<h2><a href="/main">Home</a></h2>
 							</div>
 						</div>
 					</div>

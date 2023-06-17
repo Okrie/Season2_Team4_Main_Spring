@@ -6,17 +6,23 @@
 		INSERT INTO user 
 		(userid, userpw, name, gender, birthdate, telno, address, email, allergy, insertdate, invalidate) 
 		VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, now(), 1)
-	</insert>
-	<select id="adminLoginDao">
-		SELECT adminid, adminpw FROM admin WHERE adminid = #{adminid}
-	</select> -->
-	<select id="userLoginDao">
-		SELECT userid, userpw, invalidate FROM user WHERE userid = #{userid}
-	</select>
-	<!-- <select id="userCheckDao" resultType="boolean">
+	</insert> -->
+	<select id="userCheckDao">
 		SELECT COUNT(*) FROM user WHERE userid = #{userid}
 	</select>
-	<select id="userInfoDao" resultType="com.springlec.base.model.user.NUserDto">
+	<select id="adminCheckDao" resultType="int">
+		SELECT COUNT(*) FROM admin WHERE adminid = #{adminid}
+	</select>
+	<select id="userLoginDao">
+		SELECT COUNT(*) FROM user WHERE userid = #{userid} AND userpw = #{userpw}
+	</select>
+	<select id="adminLoginDao">
+		SELECT COUNT(*) FROM admin WHERE adminid = #{adminid} AND adminpw = #{adminpw}
+	</select>
+	<select id="userisAliveDao" resultType="String">
+		SELECT invalidate FROM user WHERE userid = #{userid}
+	</select>
+	<!-- <select id="userInfoDao" resultType="com.springlec.base.model.user.NUserDto">
 		SELECT * FROM user WHERE userid = #{userid}
 	</select>
 	<select id="userMypageCheckDao">

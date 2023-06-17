@@ -135,18 +135,18 @@ function setIdpw(){
 	var upw = document.getElementById("exampleInputPassword");
 	
 	objs.setAttribute('name', 'exampleInputEmail');
-	objs.setAttribute('value', $('#uid').val());
+	objs.setAttribute('value', $('#userid').val());
 	form.appendChild(objs);
 	objs.setAttribute('type', 'text');
 	objs.setAttribute('name', 'exampleInputPassword');
-	objs.setAttribute('value', $('#upw').val());
+	objs.setAttribute('value', $('#userpw').val());
 	form.appendChild(objs);
 	form.setAttribute('method', 'post');
-	form.setAttribute('action', 'loginCheck.do')
+	form.setAttribute('action', 'loginCheck')
 	document.body.appendChild(form)
 	form.submit();
 	
-	window.location.href = "loginCheck.do?userid="+ uid.value + "&userpw=" + upw.value;
+	window.location.href = "loginCheck?userid="+ uid.value + "&userpw=" + upw.value;
 }
 
 function checkUser(getResult, getId){
@@ -156,10 +156,10 @@ function checkUser(getResult, getId){
 
 	if(getResult === user){
 		alert('환영합니다. ' + getId)
-		window.location.href = "main.do"
+		window.location.href = "main"
 	} else if(getResult === admin){
 		alert('안녕하세요, 관리자님')
-		window.location.href = "admin_main.do"
+		window.location.href = "admin_main"
 	} else{
 		alert('아이디 혹은 비밀번호가 틀렸습니다. 다시 시도해 주세요.')
 		return;

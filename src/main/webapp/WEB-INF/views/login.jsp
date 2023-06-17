@@ -52,25 +52,26 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">로그인</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" action="loginCheck" method="post">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
-                                                name="uid" id="exampleInputEmail" aria-describedby="emailHelp"
+                                                name="userid" id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter ID">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                name="upw" id="exampleInputPassword" placeholder="Password">
+                                                name="userpw" id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
+                                                <!-- <label class="custom-control-label" for="customCheck">Remember Me</label> -->
                                             </div>
                                         </div>
-                                        <a href="#" class="btn btn-primary btn-user btn-block" onclick="setIdpw()">
-                                            Login
-                                        </a>
+                                        <!-- <a href="#" class="btn btn-primary btn-user btn-block" onclick="setIdpw()"> -->
+                                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
+                                        <!-- Login
+                                        </a> -->
                                     </form>
                                     <hr>
                                     <a href="#" class="btn btn-kakao btn-user btn-block" onclick="kakao_loginbtn()">
@@ -84,7 +85,7 @@
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="registerPage.do">Create an Account!</a>
+                                        <a class="small" href="registerPage">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>
