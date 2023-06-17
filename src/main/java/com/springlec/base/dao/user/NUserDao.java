@@ -6,7 +6,7 @@ import com.springlec.base.model.user.NUserLoginDto;
 
 public interface NUserDao {
 	// 회원가입
-	// public int userInsert(NUserLoginDto dto) throws Exception;
+	public int userInsert(NUserLoginDto dto) throws Exception;
 	// 로그인 시도시 정보 확인, 어드민 로그인 성공 = 1, 유저 로그인 성공 = 2, 로그인 실패 = 0
 	// 유저 로그인
 	public String userLoginDao(String userid, String userpw) throws Exception;

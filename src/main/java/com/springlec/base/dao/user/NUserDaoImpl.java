@@ -5,16 +5,18 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.springlec.base.model.user.NUserLoginDto;
+
 public class NUserDaoImpl implements NUserDao {
 
 	SqlSession sqlSession;
 	public static String nameSpace = "com.springlec.base.dao.user";
-	
-//	@Override
-//	public int userInsert(NUserLoginDto dto) throws Exception {
-//		// TODO Auto-generated method stub
-//		return sqlSession.insert(nameSpace + ".userRegisterDao");
-//	}
+
+	@Override
+	public int userInsert(NUserLoginDto dto) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(nameSpace + ".userRegisterDao");
+	}
 
 	@Override
 	public String userLoginDao(String userid, String userpw) throws Exception {

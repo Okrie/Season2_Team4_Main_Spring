@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.springlec.base.model.user.NUserLoginDto;
 import com.springlec.base.service.user.NUserService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -49,4 +51,23 @@ public class NUserController {
 		return "login";
 	}
 	
+	// Register Page
+	@RequestMapping("/registerPage")
+	public String registerView() throws Exception{
+		return "register";
+	}
+	
+	// Register
+	@RequestMapping("/register")
+	public String userRegister(NUserLoginDto dto, Model model) throws Exception{
+		service.userInsert(dto);
+		return "redirect:login";
+	}
+	
+	// Duplicate
+	@ResponseBody
+	@RequestMapping("/register/duplicate")
+	public boolean duplicateCheck(@RequestParam("userid") String userid) throws Exception{
+		return service.userCheck(userid);
+	}
 }
