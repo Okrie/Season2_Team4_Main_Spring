@@ -1,12 +1,15 @@
 package com.springlec.base.service.admin;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.springlec.base.dao.admin.ProductDao;
 import com.springlec.base.dao.admin.ReviewDao;
 import com.springlec.base.model.admin.ReviewDto;
 
@@ -15,13 +18,69 @@ import com.springlec.base.model.admin.ReviewDto;
 public class ReviewDaoServiceImpl implements ReviewDaoService {
 
 	@Autowired
+	ProductDao productDao;
+
+	@Autowired
 	ReviewDao reviewDao;
 
+
 	@Override
-	public ArrayList<ArrayList<ReviewDto>> searchReview() throws Exception {
+	public ArrayList<ArrayList<String>> searchReview() throws Exception {
 		// TODO Auto-generated method stub
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		
 		ArrayList<ReviewDto> dtoReview = reviewDao.searchReview();
 		
+		ArrayList<ArrayList<String>> dataSetReview = new ArrayList<ArrayList<String>>();
+		for (int i = 0; i < dtoReview.size(); i++) {
+			ReviewDto reviewDto = dtoReview.get(i);
+			ArrayList<String> row = new ArrayList<String>();
+			row.add("'" + Integer.toString(reviewDto.getSeq()) + "'"); //0
+			row.add("'" + Integer.toString(reviewDto.getParent()) + "'"); //1
+			row.add("'" + Integer.toString(reviewDto.getLayer()) + "'");  //2
+
+			if (reviewDto.getAdminid() == null) { // 글쓴이가 유저일때.
+				row.add("'user'"); //3
+				row.add("'" + reviewDto.getUserid() + "'"); //4
+				row.add("'" + productDao.getPname(reviewDto.getPcode()).getName() + "'"); //5
+				row.add("'" + (reviewDto.getInsertdate() != null ? dateFormat.format(reviewDto.getInsertdate()) : "")
+						+ "'"); //6
+				if (reviewDto.getInvalidate() == 1) {
+					row.add("'유효한 글'");
+				} else {
+					row.add("'삭제된 글'");
+				} //7
+				row.add("'" + reviewDto.getRwcontext() + "'"); //8
+				if (reviewDto.getRwimage() == null) {
+					row.add("'" + reviewDto.getRwimage() + "'");
+				} else {
+					row.add("' '");
+				} //9
+				row.add("'"
+						+ (reviewDto.getRwupdatedate() != null ? dateFormat.format(reviewDto.getRwupdatedate()) : "")
+						+ "'"); //10
+			} else { // 글쓴이가 관리자 일때.
+				row.add("'admin'"); //3
+				row.add("'" + reviewDto.getAdminid() + "'"); //4
+				row.add("'" + productDao.getPname(reviewDto.getPcode()).getName() + "'"); //5
+				row.add("'" + (reviewDto.getInsertdate() != null ? dateFormat.format(reviewDto.getInsertdate()) : "")
+						+ "'"); //6
+				if (reviewDto.getInvalidate() == 1) {
+					row.add("'유효한 글'");
+				} else {
+					row.add("'삭제된 글'");
+				} //7
+				row.add("'" + reviewDto.getRrcontext() + "'"); //8
+				row.add("'이미지가 없습니다.'"); //9
+				row.add("'"
+						+ (reviewDto.getRrupdatedate() != null ? dateFormat.format(reviewDto.getRrupdatedate()) : "")
+						+ "'"); //10
+			}
+			row.add("'" + reviewDto.getPcode() + "'"); //11
+			dataSetReview.add(row);
+		}
+		
+		return dataSetReview;
 	}
 
 	@Override

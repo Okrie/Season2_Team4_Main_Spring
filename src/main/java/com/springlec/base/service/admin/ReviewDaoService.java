@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.springlec.base.model.admin.ReviewDto;
 
 public interface ReviewDaoService {
-	public ArrayList<ArrayList<ReviewDto>> searchReview() throws Exception;
+	public ArrayList<ArrayList<String>> searchReview() throws Exception;
 
 	public int insertReview(int seq, int parent, int layer, String pcode, String adminid, String rrcontext) throws Exception;
 

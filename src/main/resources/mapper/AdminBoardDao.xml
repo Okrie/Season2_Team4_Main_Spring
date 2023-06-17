@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springlec.base.dao.admin.BoardDao">
+
+	<!-- 게시판 데이터 테이블로 가져오기 -->
+	<select id="searchBoard"
+		resultType="com.springlec.base.dao.admin.BoardDto">
+		SELECT 
+		board.seq AS seq, 
+		board.parent AS parent, 
+		board.layer AS layer, 
+		board.userid AS userid, 
+		board.pcode AS pcode, 
+		board.adminid AS adminid, 
+		board.insertdate AS insertdate, 
+		board.invalidate AS invalidate, 
+		bwrite.title AS bwtitle, 
+		bwrite.context AS bwcontext, 
+		bwrite.image AS bwimage, 
+		bwrite.updatedate AS bwupdatedate, 
+		breply.title AS brtitle, 
+		breply.context AS brcontext, 
+		breply.updatedate AS brupdatedate 
+		FROM board 
+		LEFT JOIN bwrite ON board.seq = bwrite.seq 
+		LEFT JOIN breply ON board.seq = breply.seq
+		ORDER BY parent
+	</select>
+
+	<!-- 게시판 데이터 삽입 -->
+	<insert id="insertBoard_01">
+		INSERT INTO review (seq, parent, layer, userid,
+		pcode, adminid, insertdate, invalidate)
+		VALUES (#{seq+1}, #{parent}, #{layer+1}, NULL, #{pcode}, #{adminid}, now(), 1)
+	</insert>
+	<insert id="insertBoard_02">
+		INSERT INTO breply (seq, adminid, title, context, updatedate) 
+		VALUES (#{seq+1}, #{adminid}, #{title} ,#{brcontext}, now())
+	</insert>
+	
+	<!-- 게시판 최신 pcode알기 -->
+	<select id="searchBoardseq"
+		resultType="com.springlec.base.dao.admin.BoardDto">
+		SELECT MAX(seq) AS seq FROM board
+	</select>
+	
+	<!-- 게시판 수정 -->
+	<update id="modifyBoard">
+		UPDATE breply SET title = #{title} ,context = #{brcontext}, adminid =#{adminid}, updatedate = now() WHERE seq = #{seq}
+	</update>
+	
+	<!-- 게시판 삭제 -->
+	<update id="deleteBoard">
+		UPDATE board SET invalidate = 0 WHERE seq = #{seq}
+	</update>
+
+
+
+</mapper>

@@ -4,7 +4,7 @@
 
 <mapper namespace="com.springlec.base.dao.admin.ProductDao">
 
-	<!-- 리뷰 데이터 테이블로 가져오기 -->
+	<!--그래프 주문관련 정보 불러오기 : adminGraphOrders  -->
 	<select id="searchOrders"
 		resultType="com.springlec.base.model.admin.ProductDto">
 		SELECT p.name, SUM(o.count) AS totalorders
@@ -14,7 +14,8 @@
 		GROUP BY
 		p.name
 	</select>
-
+	
+	<!--테이블 상품 관련 정보 불러오기 : adminSearchProduct -->
 	<select id="searchProduct"
 		resultType="com.springlec.base.model.admin.ProductDto">
 		SELECT *
@@ -22,6 +23,7 @@
 		ORDER BY CAST(pcode AS UNSIGNED)
 	</select>
 
+	<!--업데이트관련 상품 관련 정보 불러오기 : adminFindProduct -->
 	<select id="findProduct"
 		resultType="com.springlec.base.model.admin.ProductDto">
 		SELECT *
@@ -29,6 +31,7 @@
 		WHERE pcode = #{pcode}
 	</select>
 
+	<!--데이터 입력 하기 : adminInsertProduct  -->
 	<insert id="insertProduct">
 		INSERT INTO product (pcode,
 		name, category, rice, cook1,
@@ -41,6 +44,7 @@
 		FROM product
 	</insert>
 
+	<!--데이터 입력 하기 : adminUpdateProduct  -->
 	<update id="updateProduct">
 		UPDATE product SET name = #{name}, category = #{category}, rice = #{rice},
 		cook1 = #{cook1}, cook2 = #{cook2}, cook3 = #{cook3}, 
@@ -48,6 +52,7 @@
 		WHERE pcode = #{pcode}
 	</update>
 	
+	<!--  pcode로 name 알아내기 -->
 	<select id="getPname"
 		resultType="com.springlec.base.model.admin.ProductDto">
 		SELECT name 
