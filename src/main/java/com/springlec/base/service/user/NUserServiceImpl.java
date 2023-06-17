@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springlec.base.dao.user.NUserDao;
+import com.springlec.base.model.user.NUserLoginDto;
 
 @Service
 public class NUserServiceImpl implements NUserService{
@@ -13,11 +14,18 @@ public class NUserServiceImpl implements NUserService{
 	@Autowired
 	NUserDao dao;
 	
-//	@Override
-//	public int userInsert(NUserLoginDto dto) throws Exception {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
+	@Override
+	public boolean userInsert(NUserLoginDto dto) throws Exception {
+		// TODO Auto-generated method stub
+		try {
+			dao.userInsert(dto);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 	@Override
 	public String loginCheck(String userid, String userpw, boolean isadmin) throws Exception {
@@ -55,13 +63,17 @@ public class NUserServiceImpl implements NUserService{
 		}
 		return false;
 	}
-//
-//	@Override
-//	public boolean userCheck(String userid) throws Exception {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
-//
+
+	@Override
+	public boolean userCheck(String userid) throws Exception {
+		// TODO Auto-generated method stub
+		if(dao.userCheckDao(userid) > 0) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+
 //	@Override
 //	public ArrayList<NUserLoginDto> userInfo(String userid) throws Exception {
 //		// TODO Auto-generated method stub

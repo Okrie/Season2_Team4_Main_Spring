@@ -6,13 +6,13 @@ import com.springlec.base.model.user.NUserLoginDto;
 
 public interface NUserService {
 	// 회원가입
-	// public int userInsert(NUserLoginDto dto) throws Exception;
+	public boolean userInsert(NUserLoginDto dto) throws Exception;
 	// 로그인 시도시 정보 확인, 어드민 로그인 성공 = 1, 유저 로그인 성공 = 2, 로그인 실패 = 0
 	public String loginCheck(String userid, String userpw, boolean isadmin) throws Exception;
 	//어드민 인지 판별
 	public boolean isAdmin(String adminid) throws Exception;
 	// 유저 이미 있는지 확인
-	// public boolean userCheck(String userid) throws Exception;
+	public boolean userCheck(String userid) throws Exception;
 	// 유저 정보 받아 오기
 	// public ArrayList<NUserLoginDto> userInfo(String userid) throws Exception;
 	// mypage user 정보

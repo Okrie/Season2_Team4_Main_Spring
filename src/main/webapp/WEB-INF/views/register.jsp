@@ -1,4 +1,4 @@
-<%@page import="com.javalec.bbs.function.AllergyList"%>
+<%@page import="com.springlec.base.function.AllergyList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -39,7 +39,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user" action="register.do" method="post" name="user">
+                            <form class="user" action="register" method="post" name="user">
                             	<c:choose>
                                		<c:when test="${not empty param.userid}">
 	                                <div class="form-group row">
@@ -102,7 +102,7 @@
                                     <input type="text" class="form-control form-control-user" id="address_detail" placeholder="Detail Address" name="address_detail">
                                 </div>
                                 <div class="form-group sm">
-                                    <input type="text" class="form-control form-control-user" id="age" placeholder="Birthdate ex)2000.01.01" name="age">
+                                    <input type="text" class="form-control form-control-user" id="age" placeholder="Birthdate ex)2000.01.01" name="birthdate">
                                 </div>
                                 <div class="input-group-text col-sm-12">
                                     <input type="radio" style="margin-left: 20%" id="male" name="gender" value="남자" checked="checked"> 남자

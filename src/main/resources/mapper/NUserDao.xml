@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.springlec.base.dao.user.NUserDao">
-	<!-- <insert id="userRegisterDao">
+	<insert id="userRegisterDao">
 		INSERT INTO user 
 		(userid, userpw, name, gender, birthdate, telno, address, email, allergy, insertdate, invalidate) 
 		VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, now(), 1)
-	</insert> -->
+	</insert>
 	<select id="userCheckDao">
 		SELECT COUNT(*) FROM user WHERE userid = #{userid}
 	</select>

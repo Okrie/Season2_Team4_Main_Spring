@@ -194,8 +194,8 @@ function checkDuplicate() {
 	}else{
 		$.ajax({
 		    type: "POST",
-		    url: "duplicateid.jsp", // URL
-		    data: { id : id },
+		    url: "register/duplicate", // URL
+		    data: { userid : id },
 		    success: function(result) {
 				console.log(result)
 				if (result === 0) {
