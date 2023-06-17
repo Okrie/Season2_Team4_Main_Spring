@@ -14,13 +14,13 @@ import com.springlec.base.model.admin.BoardDto;
 @Service
 @Transactional(rollbackFor = Exception.class) // rollback을 안하면 data가 꼬인다.
 public class BoardServiceImpl implements BoardService{
-
 	
 	@Autowired
 	ProductDao productDao;
 
 	@Autowired
 	BoardDao boardDao;
+	
 	
 	@Override
 	public ArrayList<ArrayList<String>> searchBoard() throws Exception {
@@ -84,11 +84,11 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public int insertBoard(int seq, int parent, int layer, String pcode, String adminid, String title, String brcontext)
+	public int insertBoard(int seq, int parent, int layer, String pcode, String adminid, String brtitle, String brcontext)
 			throws Exception {
 		// TODO Auto-generated method stub
 		int result_01 = boardDao.insertBoard_01(seq, parent, layer, pcode, adminid);
-		int result_02 = boardDao.insertBoard_02(seq, adminid, title, brcontext);
+		int result_02 = boardDao.insertBoard_02(seq, adminid, brtitle, brcontext);
 		return result_01 + result_02;
 	}
 
@@ -99,9 +99,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public int modifyBoard(int seq, String adminid, String title, String brcontext) throws Exception {
+	public int modifyBoard(int seq, String adminid, String brtitle, String brcontext) throws Exception {
 		// TODO Auto-generated method stub
-		return boardDao.modifyBoard(seq, adminid,title, brcontext);
+		return boardDao.modifyBoard(seq, adminid,brtitle, brcontext);
 	} 
 
 	@Override

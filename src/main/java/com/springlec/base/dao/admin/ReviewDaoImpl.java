@@ -11,7 +11,7 @@ public class ReviewDaoImpl implements ReviewDao {
 
 	SqlSession sqlsession;
 
-	public static String namespace = "com.spring.base.dao.admin.ReviewDao";
+	public static String namespace = "com.springlec.base.dao.admin.ReviewDao";
 
 	@Override
 	public ArrayList<ReviewDto> searchReview() throws Exception {

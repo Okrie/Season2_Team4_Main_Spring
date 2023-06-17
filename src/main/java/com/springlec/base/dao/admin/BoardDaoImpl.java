@@ -11,7 +11,7 @@ public class BoardDaoImpl implements BoardDao {
 	
 	SqlSession sqlsession;
 
-	public static String namespace = "com.spring.base.dao.admin.ReviewDao";
+	public static String namespace = "com.springlec.base.dao.admin.BoardDao";
 	
 	@Override
 	public ArrayList<BoardDto> searchBoard() throws Exception {
@@ -28,7 +28,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public int insertBoard_02(int seq, String adminid, String title, String brcontext) throws Exception {
+	public int insertBoard_02(int seq, String adminid, String brtitle, String brcontext) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlsession.insert(namespace + ".insertBoard_02");
 	}
@@ -40,7 +40,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public int modifyBoard(int seq, String adminid, String title, String brcontext) throws Exception {
+	public int modifyBoard(int seq, String adminid, String brtitle, String brcontext) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlsession.update(namespace + ".modifyBoard");
 	}

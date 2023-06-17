@@ -8,16 +8,16 @@ import org.apache.ibatis.session.SqlSession;
 import com.springlec.base.model.admin.ProductDto;
 
 public class ProductDaoImpl implements ProductDao {
-	
+
 	SqlSession sqlsession;
-	
-	public static String namespace = "com.spring.base.dao.admin.ProductDao";
-	
+
+	public static String namespace = "com.springlec.base.dao.admin.ProductDao";
+
 	@Override
 	public ArrayList<ProductDto> searchOrders() throws Exception {
 		// TODO Auto-generated method stub
 		List<ProductDto> resultList = sqlsession.selectList(namespace + ".searchOrders");
-		ArrayList<ProductDto> productList =new ArrayList<>(resultList);
+		ArrayList<ProductDto> productList = new ArrayList<>(resultList);
 		return productList;
 	}
 
@@ -25,15 +25,15 @@ public class ProductDaoImpl implements ProductDao {
 	public ArrayList<ProductDto> searchProduct() throws Exception {
 		// TODO Auto-generated method stub
 		List<ProductDto> resultList = sqlsession.selectList(namespace + ".searchProduct");
-		ArrayList<ProductDto> productList =new ArrayList<>(resultList);
+		ArrayList<ProductDto> productList = new ArrayList<>(resultList);
 		return productList;
 	}
 
 	@Override
 	public ArrayList<ProductDto> findProduct(String pcode) throws Exception {
 		// TODO Auto-generated method stub
-		List<ProductDto> resultList = sqlsession.selectList(namespace + ".findProduct");
-		ArrayList<ProductDto> productList =new ArrayList<>(resultList);
+		List<ProductDto> resultList = sqlsession.selectList(namespace + ".findProduct", pcode);
+		ArrayList<ProductDto> productList = new ArrayList<>(resultList);
 		return productList;
 	}
 
@@ -54,7 +54,7 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public ProductDto getPname(String pcode) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlsession.selectOne(namespace+".getPname");
+		return sqlsession.selectOne(namespace + ".getPname", pcode);
 	}
 
 }
