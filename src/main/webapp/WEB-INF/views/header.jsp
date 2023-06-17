@@ -50,13 +50,13 @@
                         <div class="header__top__right">
                             <div class="header__top__right__auth">
                             	<c:if test="${not empty sessionScope.ID}">
-                            		<a href="logout.do"><i class="fa fa-user">Logout</i></a>
-									<a href="mypage.do"><i class="fa fa-user">MyPage</i></a>
+                            		<a href="logout"><i class="fa fa-user">Logout</i></a>
+									<a href="mypage"><i class="fa fa-user">MyPage</i></a>
 								    <!-- id session이 있는  처리할 내용 -->
 								</c:if>
 								<c:if test="${empty sessionScope.ID}">
-									<a href="login.do"><i class="fa fa-user">Login</i></a>
-									<a href="registerPage.do"><i class="fa fa-user">Register</i></a>
+									<a href="login"><i class="fa fa-user">Login</i></a>
+									<a href="registerPage"><i class="fa fa-user">Register</i></a>
 								    <!-- id session이 없는 경우 처리할 내용 -->
 								</c:if>
                               
@@ -76,7 +76,7 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="main.do">Home</a></li>
+                            <li class="active"><a href="/">Home</a></li>
                             <!-- <li><a href="./shop-grid.html">체험단</a></li> -->
                             <li><a href="productList.do">상품구매</a>
                                 <ul class="header__menu__dropdown">
