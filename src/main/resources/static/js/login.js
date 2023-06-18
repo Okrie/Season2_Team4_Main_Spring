@@ -152,7 +152,7 @@ function checkUser(getResult, getId){
 		window.location.href = "main"
 	} else if(getResult === admin){
 		alert('안녕하세요, 관리자님')
-		window.location.href = "admin_main"
+		window.location.href = "adminLogin"
 	} else{
 		alert('아이디 혹은 비밀번호가 틀렸습니다. 다시 시도해 주세요.')
 		return;
