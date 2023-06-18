@@ -1,4 +1,4 @@
-<%@page import="com.javalec.bbs.function.AllergyList"%>
+<%@page import="com.springlec.base.function.AllergyList"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -20,7 +20,7 @@
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">회원 상세정보</h1>
                     </div>
-                    <form class="user" action="userinfoupdate.do" method="get" name="user">
+                    <form class="user" action="userinfoupdate" method="post" name="user">
 						<c:forEach items="${userinfo}" var="user">
                     	<div class="form-group">
                         	<input type="text" class="form-control form-control-user" name="userid" id="userid" placeholder="ID" readonly="readonly" value="${sessionScope.ID}">
@@ -43,10 +43,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-user" id="address_detail" placeholder="Address" name="address_detail" value="${user.address}">
+                            <input type="text" class="form-control form-control-user" id="address_detail" placeholder="Address" name="address" value="${user.address}">
                         </div>
                         <div class="form-group sm">
-                            <input type="text" class="form-control form-control-user" id="age" placeholder="Birthdate ex)2000.01.01" name="age" onkeyup="formatBirthdate(this)" value="${user.age}">
+                            <input type="text" class="form-control form-control-user" id="birthdate" placeholder="Birthdate ex)2000.01.01" name="birthdate" onkeyup="formatBirthdate(this)" value="${user.age}">
                         </div>
                         <div class="form-group sm">
                             <input type="text" class="form-control form-control-user" name="gender" value="${user.gender}" readonly="readonly">

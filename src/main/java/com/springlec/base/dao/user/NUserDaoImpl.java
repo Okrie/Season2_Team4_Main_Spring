@@ -1,6 +1,7 @@
 package com.springlec.base.dao.user;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -55,19 +56,23 @@ public class NUserDaoImpl implements NUserDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(nameSpace + ".adminCheckDao");
 	}
-//
-//	@Override
-//	public ArrayList<NUserLoginDto> userInfo(String userid) throws Exception {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public String mypageUserinfoCheck(String userid) throws Exception {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
+
+	@Override
+	public List<NUserLoginDto> userInfo(String userid) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(userid);
+	}
+
+	@Override
+	public int userMypageCheckDao(String userid, String userpw) throws Exception {
+		// TODO Auto-generated method stub
+		Map<String, String> parameters = new HashMap<>();
+		parameters.put("userid", userid);
+		parameters.put("userpw", userpw);
+		
+		return sqlSession.selectOne(nameSpace + "userMypageCheckDao", parameters);
+	}
+
 //	@Override
 //	public void myPageUpdate(NUserLoginDto dto, String id) throws Exception {
 //		// TODO Auto-generated method stub

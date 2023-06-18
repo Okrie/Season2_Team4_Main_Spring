@@ -1,6 +1,6 @@
 package com.springlec.base.dao.user;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.springlec.base.model.user.NUserLoginDto;
 
@@ -19,9 +19,9 @@ public interface NUserDao {
 	// 유저 이미 있는지 확인
 	public int userCheckDao(String userid) throws Exception;
 	// 유저 정보 받아 오기
-	// public ArrayList<NUserLoginDto> userInfo(String userid) throws Exception;
+	public List<NUserLoginDto> userInfo(String userid) throws Exception;
 	// mypage user 정보
-	// public String mypageUserinfoCheck(String userid) throws Exception;
+	 public int userMypageCheckDao(String userid, String userpw) throws Exception;
 	// 유저 정보 변경 -수정클릭시 작동
 	// public void myPageUpdate(NUserLoginDto dto, String id) throws Exception;
 	// 유저의 구매내역 가져오기

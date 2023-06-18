@@ -1,6 +1,6 @@
 package com.springlec.base.service.user;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,18 +77,18 @@ public class NUserServiceImpl implements NUserService{
 		}
 	}
 
-//	@Override
-//	public ArrayList<NUserLoginDto> userInfo(String userid) throws Exception {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public String mypageUserinfoCheck(String userid) throws Exception {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
+	@Override
+	public String mypageUserinfoCheck(String userid, String userpw) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.userMypageCheckDao(userid, userid) > 0 ? "1" : "0";
+	}
+	
+	@Override
+	public List<NUserLoginDto> userInfo(String userid) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.userInfo(userid);
+	}
+
 //	@Override
 //	public void myPageUpdate(NUserLoginDto dto, String id) throws Exception {
 //		// TODO Auto-generated method stub

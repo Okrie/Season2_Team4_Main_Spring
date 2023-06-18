@@ -1,5 +1,7 @@
 package com.springlec.base.controller.user;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -73,5 +75,22 @@ public class NUserController {
 	@RequestMapping("/register/duplicate")
 	public int duplicateCheck(@RequestParam("userid") String userid) throws Exception{
 		return service.userCheck(userid);
+	}
+	
+	// Userpw Check
+	@RequestMapping("/NDUserCheck")
+	public int mypageUserCheck(HttpServletRequest request) throws Exception{
+		service.mypageUserinfoCheck(request.getParameter("userid"), request.getParameter("userpw"));
+		return 0;
+	}
+	
+	
+	// UserInfo Detail
+	@RequestMapping("/mypageDetail")
+	public String mypageDetail(HttpServletRequest request, Model model) throws Exception{
+		HttpSession session = request.getSession();
+		List<NUserLoginDto> dto = service.userInfo((String) session.getAttribute("ID"));
+		model.addAttribute("userinfo", dto);
+		return "mypageDetail";
 	}
 }

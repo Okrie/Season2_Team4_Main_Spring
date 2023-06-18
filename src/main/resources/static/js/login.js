@@ -331,15 +331,16 @@ function checkid(id){
 	});
 }
 
-function chkpw(id){
+function chkpw(userid, userpw){
 	var password = document.getElementById('password').value
 	$.ajax({
 	    type: "POST",
 	    url: "NDUserCheck", // URL
-	    data: { id : id },
+	    data: { userid : userid,
+	    		userpw : userpw },
 	    success: function(result) {
-			if (result === String(password)) {
-				window.location.href = "mypageDetail.do"
+			if (Number(result) === Number(1)) {
+				window.location.href = "mypageDetail"
 			} else{
 				alert("비밀번호가 틀렸습니다.")
 			}
