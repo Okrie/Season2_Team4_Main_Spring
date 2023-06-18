@@ -2,10 +2,10 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.springlec.base.dao.main.MainDao">
+<mapper namespace="com.springlec.base.dao.main.NDMainDao">
 
 	<!--모든 제품 보여주는 dao  -->
-	<select id = "NDTakeAll" resultType="com.springlec.base.model.NDProductDto">
+	<select id = "NDTakeAll" resultType="com.springlec.base.model.admin.ProductDto">
 		SELECT p.pcode, p.pname, m.price, p.photo, p.calories 
 		FROM product p, manage m 
 		WHERE p.pcode = m.pcode AND m.invalidate = '1'
