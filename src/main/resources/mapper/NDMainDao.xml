@@ -5,7 +5,7 @@
 <mapper namespace="com.springlec.base.dao.main.NDMainDao">
 
 	<!--모든 제품 보여주는 dao  -->
-	<select id = "NDTakeAll" resultType="com.springlec.base.model.admin.ProductDto">
+	<select id = "NDTakeAll" resultType="com.springlec.base.model.main.NDProductListDto">
 		SELECT p.pcode, p.pname, m.price, p.photo, p.calories 
 		FROM product p, manage m 
 		WHERE p.pcode = m.pcode AND m.invalidate = '1'
