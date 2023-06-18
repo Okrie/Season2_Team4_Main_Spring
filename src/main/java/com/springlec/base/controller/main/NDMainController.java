@@ -1,5 +1,6 @@
 package com.springlec.base.controller.main;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,46 +47,29 @@ public class NDMainController {
 		session.getAttribute("userid");
 		
 		int heartCount = headerCountDaoService.heartCountDao("userid");
-		
-		model.addAttribute("heartCount", heartCount);
-		
-		session.setAttribute("heartCount", heartCount);
-		
-		return "heartCount";
-	}//heartCountEnd
-	
-	@RequestMapping("/NDHeaderCount")
-	public String cartCount(HttpServletRequest request, Model model) throws Exception{
-		session.getAttribute("userid");
-		
 		int cartCount = headerCountDaoService.cartCountDao("userid");
-		
-		model.addAttribute("cartCount", cartCount);
-		
-		session.setAttribute("heartCount", cartCount);
-		
-		return "cartCount";
-		
-	}
-	
-	@RequestMapping("/NDHeaderCount")
-	public String cartTotalPrice(HttpServletRequest request, Model model) throws Exception{
-		session.getAttribute("userid");
-		
 		int cartTotalPrice = headerCountDaoService.cartTotalPriceDao("userid");
-		
+		model.addAttribute("heartCount", heartCount);
+		model.addAttribute("cartCount", cartCount);
 		model.addAttribute("cartTotalPrice", cartTotalPrice);
 		
+		session.setAttribute("heartCount", heartCount);
+		session.setAttribute("heartCount", cartCount);
 		session.setAttribute("cartTotalPrice", cartTotalPrice);
 		
-		return "cartTotalPrice";
-	}
+
+		
+		return "redirect:header";
+		
+		
+	}//headerCountEnd
 	
 	@RequestMapping("/NDHeaderCount")
 	public String remainDate(HttpServletRequest request, Model model) throws Exception{
 		session.getAttribute("userid");
 		
-		int remainDate = headerCountDaoService.remainDateDao("userid");
+		
+		String remainDate = headerCountDaoService.remainDateDao("userid");
 		
 		model.addAttribute("remainDate", remainDate);
 		

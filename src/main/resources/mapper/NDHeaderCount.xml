@@ -28,11 +28,6 @@
         WHERE c.userid =#{userid}
 	</select>
 	
-	<!--remainDate파트  -->
-	<!--subscribeDate를 저장할 resultMap사용  -->
-	<resultMap type="com.springlec.base.model.NDHeaderCountDto" id="subscribeDate">
-		<result property="subscribeDate" column="subscribeDate"/>
-	</resultMap>
 	
 	<select id="remainDateDao">
 		SELECT subscribedate FROM subscribe WHERE userid = #{userid}

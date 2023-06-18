@@ -1,10 +1,10 @@
 package com.springlec.base.dao.main;
 
-import java.security.Timestamp;
+
+import java.sql.Timestamp;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.springlec.base.model.main.NDHeaderCountDto;
 
 public class NDHeaderCountDaoImpl implements NDHeaderCountDao {
 	
@@ -34,15 +34,11 @@ public class NDHeaderCountDaoImpl implements NDHeaderCountDao {
 	}
 
 	@Override
-	public int remainDateDao(String userid, Timestamp subscribeDate) throws Exception {
+	public Timestamp remainDateDao(String userid) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return session.selectOne(namespace, ".NDHeaderCountDao");
 	}
 
-	@Override
-	public NDHeaderCountDto subscribeDate(String userid) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

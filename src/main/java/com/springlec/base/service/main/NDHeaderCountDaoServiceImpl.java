@@ -1,9 +1,8 @@
 package com.springlec.base.service.main;
 
-import java.security.Timestamp;
-import java.time.*;
+import java.util.Date;
+import java.sql.Timestamp;
 import java.time.Duration;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -36,15 +35,9 @@ public class NDHeaderCountDaoServiceImpl implements NDHeaderCountDaoService {
 	
 	//remainDate관련 
 	@Override
-	public int remainDateDao(String userid, Timestamp subscribeDate) throws Exception {
+	public String remainDateDao(String userid) throws Exception {
 		// TODO Auto-generated method stub
-		
-		return dao.remainDateDao(userid, subscribeDate);
-	}
-	
-    @Override
-    public long calculateRemainingDays(String userid) {
-        Timestamp subscribeDate = dao.subscribeDate(userid);
+		Timestamp subscribeDate = dao.remainDateDao("userid");
         
         LocalDateTime subscribeDateTime = subscribeDate.toLocalDateTime();
         LocalDateTime endDate = subscribeDateTime.plusDays(30);
@@ -52,9 +45,13 @@ public class NDHeaderCountDaoServiceImpl implements NDHeaderCountDaoService {
         LocalDate currentDate = LocalDate.now();
         LocalDate endDateDate = endDate.toLocalDate();
         Duration duration = Duration.between(currentDate.atStartOfDay(), endDateDate.atStartOfDay());
-
-        return duration.toDays();
-    }
+        
+        long remainingDays = duration.toDays();
+        
+        String remainDate= String.valueOf(remainingDays);
+        
+        return remainDate;
+	}
 
 
 }
