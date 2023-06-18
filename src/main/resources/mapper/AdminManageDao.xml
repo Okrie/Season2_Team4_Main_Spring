@@ -6,7 +6,7 @@
 
 
 	<!-- 오더관련 재고 불러오기 : admin_searchOrders.do -->
-	<select id="searchOrders"
+	<select id="searchOrdersManage"
 		resultType="com.springlec.base.model.admin.ProductDto">
 		SELECT 
 			manage.stock
@@ -19,7 +19,7 @@
 	</select>
 
 	<!-- 오더관련 모든 정보 불러오기 : admin_searchOrders.do -->
-	<select id="searchUpdate"
+	<select id="searchUpdateManage"
 		resultType="com.springlec.base.model.admin.ProductDto">
 		SELECT 
 			manage.stock
@@ -34,7 +34,7 @@
 	</select>
 
 	<!-- 테이블 제품 관련 정보 불러오기 : admin_searchProduct.do -->
-	<select id="searchProduct"
+	<select id="searchProductManage"
 		resultType="com.springlec.base.model.admin.ProductDto">
 		SELECT *
 		FROM 
@@ -44,7 +44,7 @@
 	</select>
 
 	<!-- 업데이트 관련 상품 관련 정보 불러오기 : admin_findproduct.do -->
-	<select id="findProduct"
+	<select id="findProductManage"
 		resultType="com.springlec.base.model.admin.ProductDto">
 		SELECT *
 		FROM manage
@@ -53,7 +53,7 @@
 	</select>
 
 	<!-- 데이터 입력하기 : admin_insertproduct.do -->
-	<insert id="insertProduct">
+	<insert id="insertProductManage">
 		INSERT INTO 
 			manage (adminid, pcode, stock, price, updatedate, invalidate)
 		SELECT 
@@ -68,7 +68,7 @@
 	</insert>
 
 	<!-- 데이터 수정하기 : admin_updateproduct.do -->
-	<update id="updateProduct">
+	<update id="updateProductManage">
 		UPDATE 
 			manage
 		SET 
@@ -81,7 +81,7 @@
 	</update>
 
 	<!-- 상품 관련 정보 삭제하기 : admin_deleteproduct.do -->
-	<update id="deleteProduct">
+	<update id="deleteProductManage">
 		UPDATE 
 			manage
 		SET 
@@ -91,7 +91,7 @@
 	</update>
 
 	<!-- 상품 관련 정보 복구하기 : admin_deleteproduct.do -->
-	<update id="recoverProduct">
+	<update id="recoverProductManage">
 		UPDATE 
 			manage
 		SET 
