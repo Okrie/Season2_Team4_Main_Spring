@@ -7,11 +7,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderDto {
+public class OrdersDto {
 	int ordercode;
 	String userid;
 	String pcode;
@@ -22,4 +23,8 @@ public class OrderDto {
 	Timestamp deliverydate;
 	int totalsales;
 	String month;
+	int yearSales;
+	int monthSales;
+	int todo;
+	
 }
