@@ -49,13 +49,17 @@ public class NDMainController {
 		int heartCount = headerCountDaoService.heartCountDao("userid");
 		int cartCount = headerCountDaoService.cartCountDao("userid");
 		int cartTotalPrice = headerCountDaoService.cartTotalPriceDao("userid");
+		String remainDate = headerCountDaoService.remainDateDao("userid");
+		
 		model.addAttribute("heartCount", heartCount);
 		model.addAttribute("cartCount", cartCount);
 		model.addAttribute("cartTotalPrice", cartTotalPrice);
+		model.addAttribute("remainDate", remainDate);
 		
 		session.setAttribute("heartCount", heartCount);
 		session.setAttribute("heartCount", cartCount);
 		session.setAttribute("cartTotalPrice", cartTotalPrice);
+		session.setAttribute("remainDate", remainDate);
 		
 
 		
@@ -64,20 +68,6 @@ public class NDMainController {
 		
 	}//headerCountEnd
 	
-	@RequestMapping("/NDHeaderCount")
-	public String remainDate(HttpServletRequest request, Model model) throws Exception{
-		session.getAttribute("userid");
-		
-		
-		String remainDate = headerCountDaoService.remainDateDao("userid");
-		
-		model.addAttribute("remainDate", remainDate);
-		
-		session.setAttribute("remainDate", remainDate);
-		
-		return "remainDate";
-		
-	}
 	
 	
 	
