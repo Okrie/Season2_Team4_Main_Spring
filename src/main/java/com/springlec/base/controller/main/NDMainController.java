@@ -69,7 +69,12 @@ public class NDMainController {
 	}//headerCountEnd
 	
 	
-	
+	@RequestMapping("/main")
+	public String mainView(HttpServletRequest request, Model model) throws Exception{
+		List<NDProductListDto> dto = mainDaoService.NDTakeAll();
+		model.addAttribute("TakeAll", dto);
+		return "index";
+	}
 	
 	
 
