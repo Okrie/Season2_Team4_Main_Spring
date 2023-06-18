@@ -46,8 +46,7 @@ function dataConnect(dataSetOrders) {
 			var deliverydate = rowData[8];
 
 			if (refunddate === '환불되지 않았습니다.' && deliverydate === '배송되지 않았습니다.') {
-				var url = 'admin_updateorders.do?ordercode=' + ordercode;
-				console.log(url);
+				var url = 'adminUpdateorders?ordercode=' + ordercode;
 				// 페이지 이동
 				window.location.href = url;
 			} else {

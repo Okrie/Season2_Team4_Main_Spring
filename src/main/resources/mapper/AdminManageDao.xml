@@ -2,12 +2,12 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.springlec.base.dao.admin.ProductDao">
+<mapper namespace="com.springlec.base.dao.admin.ManageDao">
 
 
 	<!-- 오더관련 재고 불러오기 : admin_searchOrders.do -->
 	<select id="searchOrdersManage"
-		resultType="com.springlec.base.model.admin.ProductDto">
+		resultType="com.springlec.base.model.admin.ManageDto">
 		SELECT 
 			manage.stock
 		FROM 
@@ -20,7 +20,7 @@
 
 	<!-- 오더관련 모든 정보 불러오기 : admin_searchOrders.do -->
 	<select id="searchUpdateManage"
-		resultType="com.springlec.base.model.admin.ProductDto">
+		resultType="com.springlec.base.model.admin.ManageDto">
 		SELECT 
 			manage.stock
 		FROM 
@@ -35,7 +35,7 @@
 
 	<!-- 테이블 제품 관련 정보 불러오기 : admin_searchProduct.do -->
 	<select id="searchProductManage"
-		resultType="com.springlec.base.model.admin.ProductDto">
+		resultType="com.springlec.base.model.admin.ManageDto">
 		SELECT *
 		FROM 
 			manage
@@ -45,7 +45,7 @@
 
 	<!-- 업데이트 관련 상품 관련 정보 불러오기 : admin_findproduct.do -->
 	<select id="findProductManage"
-		resultType="com.springlec.base.model.admin.ProductDto">
+		resultType="com.springlec.base.model.admin.ManageDto">
 		SELECT *
 		FROM manage
 		WHERE 

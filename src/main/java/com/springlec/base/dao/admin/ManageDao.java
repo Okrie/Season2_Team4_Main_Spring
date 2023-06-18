@@ -6,7 +6,7 @@ import com.springlec.base.model.admin.ManageDto;
 
 public interface ManageDao {
 	// 오더관련 재고 불러오기 : admin_searchOrders.do
-    public ManageDto searchOrdersManage();
+    public ArrayList<ManageDto> searchOrdersManage();
 
     // 오더관련 모든 정보 불러오기 : admin_searchOrders.do
     public ManageDto searchUpdateManage(int ordercode);

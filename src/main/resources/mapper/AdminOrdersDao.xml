@@ -71,6 +71,12 @@
         dates.date
 	</select>
 	
+	<!-- 오더관련 모든 정보 불러오기 : searchOrders.do -->
+	<select id="searchOrders"
+		resultType="com.springlec.base.model.admin.OrdersDto">
+		SELECT * FROM orders o
+	</select>
+	
 	<!-- 하나의 오더코드관련 모든 정보 불러오기 : searchOrders.do -->
 	<select id="searchupdate"
 		resultType="com.springlec.base.model.admin.OrdersDto">

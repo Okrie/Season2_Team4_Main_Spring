@@ -14,8 +14,10 @@ public class ManageDaoImpl implements ManageDao {
 	public static String namespace = "com.springlec.base.dao.admin.ManageDao";
 
 	@Override
-	public ManageDto searchOrdersManage() {
-		return sqlSession.selectOne(namespace + ".searchOrdersManage");
+	public ArrayList<ManageDto> searchOrdersManage() {
+		List<ManageDto> resultList = sqlSession.selectList(namespace + ".searchOrdersManage");
+		ArrayList<ManageDto> manageList = new ArrayList<>(resultList);
+		return manageList;
 	}
 
 	@Override

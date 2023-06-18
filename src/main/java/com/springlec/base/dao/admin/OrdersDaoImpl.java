@@ -55,7 +55,7 @@ public class OrdersDaoImpl implements OrdersDao {
 	}
 
 	@Override
-	public ArrayList<OrdersDto> searchupdate() throws Exception {
+	public ArrayList<OrdersDto> searchupdate(int ordercode) throws Exception {
 		// TODO Auto-generated method stub
 		List<OrdersDto> resultList = sqlsession.selectList(namespace + ".searchupdate");
 		ArrayList<OrdersDto> ordersList = new ArrayList<>(resultList);

@@ -17,7 +17,7 @@ public interface OrdersDao {
 	
 	public ArrayList<OrdersDto> searchOrders() throws Exception;
 	
-	public ArrayList<OrdersDto> searchupdate() throws Exception;
+	public ArrayList<OrdersDto> searchupdate(int ordercode) throws Exception;
 	
 	public int refundupdate(int ordercode) throws Exception;
 	
