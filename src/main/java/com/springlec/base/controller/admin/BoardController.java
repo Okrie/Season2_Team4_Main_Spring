@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gson.Gson;
 import com.springlec.base.model.admin.BoardDto;
+import com.springlec.base.model.admin.NoticeDto;
 import com.springlec.base.model.admin.ReviewDto;
 import com.springlec.base.service.admin.BoardService;
+import com.springlec.base.service.admin.NoticeService;
 import com.springlec.base.service.admin.ReviewService;
 
 import jakarta.servlet.http.HttpSession;
@@ -26,6 +28,9 @@ public class BoardController {
 
 	@Autowired
 	BoardService boardService;
+
+	@Autowired
+	NoticeService noticeService;
 	
 	// board_table.js 초기화
 	@RequestMapping("/adminSearchBoard")
@@ -33,8 +38,10 @@ public class BoardController {
 		session.setAttribute("ID", "root1");
 		ArrayList<ArrayList<String>> dataSetReview = reviewService.searchReview();
 		ArrayList<ArrayList<String>> dataSetBoard = boardService.searchBoard();
+		ArrayList<ArrayList<String>> dataSetNotice = noticeService.searchNotice();
 		model.addAttribute("dataSetReview", dataSetReview);
 		model.addAttribute("dataSetBoard", dataSetBoard);
+		model.addAttribute("dataSetNotice", dataSetNotice);
 
 		return "admin_board";
 	}
@@ -60,8 +67,8 @@ public class BoardController {
 		return "redirect:admin_board";
 	}
 
-	// 수정하기
-	@PostMapping(value = "/adminModifyBoard", consumes = MediaType.APPLICATION_JSON_VALUE)
+	// 삭제
+	@PostMapping(value = "/adminDeleteBoard", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String adminModifyBoard(@RequestBody String json, HttpSession session) throws Exception {
 		session.setAttribute("ID", "root1");
 		Gson gson = new Gson();
@@ -71,8 +78,8 @@ public class BoardController {
 		return "redirect:admin_board";
 	}
 
-	// 지우기
-	@PostMapping(value = "/adminDeleteBoard", consumes = MediaType.APPLICATION_JSON_VALUE)
+	// 수정
+	@PostMapping(value = "/adminModifyBoard", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String adminDeleteBoard(@RequestBody String json, HttpSession session) throws Exception {
 		session.setAttribute("ID", "root1");
 		Gson gson = new Gson();
@@ -109,8 +116,8 @@ public class BoardController {
 		return "redirect:admin_board";
 	}
 
-	// 수정하기
-	@PostMapping(value = "/adminModifyReview", consumes = MediaType.APPLICATION_JSON_VALUE)
+	// 삭제
+	@PostMapping(value = "/adminDeleteReview", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String adminModifyReview(@RequestBody String json, HttpSession session) throws Exception {
 		session.setAttribute("ID", "root1");
 		Gson gson = new Gson();
@@ -120,8 +127,8 @@ public class BoardController {
 		return "redirect:admin_board";
 	}
 
-	// 지우기
-	@PostMapping(value = "/adminDeleteReview", consumes = MediaType.APPLICATION_JSON_VALUE)
+	// 수정
+	@PostMapping(value = "/adminModifyReview", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String adminDeleteReview(@RequestBody String json, HttpSession session) throws Exception {
 		session.setAttribute("ID", "root1");
 		Gson gson = new Gson();
@@ -130,6 +137,50 @@ public class BoardController {
 		String rrcontext = reviewDto.getRrcontext();
 		String adminid = (String) session.getAttribute("ID");
 		reviewService.modifyReview(seq, adminid, rrcontext);
+		return "redirect:admin_board";
+	}
+	
+	
+	//	Notice
+	
+	// 쓰기
+	@PostMapping(value = "/adminInsertNotice", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public String adminInsertNotice(@RequestBody String json, HttpSession session) throws Exception {
+		session.setAttribute("ID", "root1");
+		Gson gson = new Gson();
+		NoticeDto noticeDto = gson.fromJson(json, NoticeDto.class);
+		NoticeDto newseqDto = noticeService.searchNoticeseq();
+		int seq = newseqDto.getSeq();
+		String title = noticeDto.getTitle();
+		String adminid = (String) session.getAttribute("ID");
+		String brcontext = noticeDto.getContext();
+
+		noticeService.insertNotice(seq, adminid, title, brcontext);
+		return "redirect:admin_board";
+	}
+
+	// 삭제
+	@PostMapping(value = "/adminDeleteNotice", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public String adminModifyNotice(@RequestBody String json, HttpSession session) throws Exception {
+		session.setAttribute("ID", "root1");
+		Gson gson = new Gson();
+		NoticeDto noticeDto = gson.fromJson(json, NoticeDto.class);
+		int seq = noticeDto.getSeq();
+		noticeService.deleteNotice(seq);
+		return "redirect:admin_board";
+	}
+
+	// 수정
+	@PostMapping(value = "/adminModifyNotice", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public String adminDeleteNotice(@RequestBody String json, HttpSession session) throws Exception {
+		session.setAttribute("ID", "root1");
+		Gson gson = new Gson();
+		NoticeDto noticeDto = gson.fromJson(json, NoticeDto.class);
+		int seq = noticeDto.getSeq();
+		String title = noticeDto.getTitle();
+		String context = noticeDto.getContext();
+		String adminid = (String) session.getAttribute("ID");
+		noticeService.modifyNotice(seq, adminid,title, context);
 		return "redirect:admin_board";
 	}
 

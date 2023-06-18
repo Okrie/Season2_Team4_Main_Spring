@@ -39,7 +39,7 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 				[7, 'desc'], [1,'asc'],[2,'asc']
 			],
 			columnDefs: [{
-				targets: [1, 2, 3, 8, 9, 10], // 감추고자 하는 열의 인덱스
+				targets: [1, 2, 3, 8, 9, 10, 12], // 감추고자 하는 열의 인덱스
 				visible: false // 열을 감춤
 			}]
 		});
@@ -98,12 +98,12 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 								const replyContent = document.getElementById('reply-content').value;
 
 								const sendData = {
-									replySeq: rowData[0],
-									replyParent: rowData[1],
-									replyLayer: rowData[2],
-									replyPcode: rowData[12],
-									replyTitle: replyTitle,
-									replyContent: replyContent
+									seq: rowData[0],
+									parent: rowData[1],
+									layer: rowData[2],
+									pcode: rowData[12],
+									brtitle: replyTitle,
+									brcontext: replyContent
 								};
 
 								$.ajax({
@@ -146,7 +146,7 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 						if (result.isConfirmed) {
 
 							const sendData = {
-								replySeq: rowData[0],
+								seq: rowData[0],
 							};
 
 							$.ajax({
@@ -202,9 +202,9 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 								const replyContent = document.getElementById('reply-content').value;
 
 								const sendData = {
-									replySeq: rowData[0],
-									replyTitle: replyTitle,
-									replyContent: replyContent
+									seq: rowData[0],
+									brtitle: replyTitle,
+									brcontext: replyContent
 								};
 
 								$.ajax({
@@ -314,11 +314,11 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 									const replyContent = document.getElementById('reply-content').value;
 
 									const sendData = {
-										replyParent: rowData[1],
-										replyLayer: rowData[2],
-										replyPcode: rowData[11],
-										replySeq: rowData[0],
-										replyContent: replyContent
+										parent: rowData[1],
+										layer: rowData[2],
+										pcode: rowData[11],
+										seq: rowData[0],
+										rrcontext: replyContent
 									};
 
 									$.ajax({
@@ -360,7 +360,7 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 							if (result.isConfirmed) {
 
 								const sendData = {
-									replySeq: rowData[0],
+									seq: rowData[0],
 								};
 
 								$.ajax({
@@ -414,8 +414,8 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 									const replyContent = document.getElementById('reply-content').value;
 
 									const sendData = {
-										replySeq: rowData[0],
-										replyContent: replyContent
+										seq: rowData[0],
+										context: replyContent
 									};
 
 									$.ajax({
@@ -513,11 +513,11 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 								const replyContent = document.getElementById('reply-content').value;
 
 								const sendData = {
-									replyParent: '0',
-									replyLayer: '0',
-									replyPcode: '',
-									replyTitle: replyTitle,
-									replyContent: replyContent
+									parent: '0',
+									layer: '0',
+									pcode: '',
+									title: replyTitle,
+									context: replyContent
 								};
 
 								$.ajax({
@@ -559,8 +559,7 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 							if (result.isConfirmed) {
 
 								const sendData = {
-									replySelect: '3',
-									replySeq: rowData[0],
+									seq: rowData[0],
 								};
 
 								$.ajax({
@@ -609,10 +608,9 @@ function dataConnect(dataSetBoard, dataSetReview, dataSetNotice) {
 								const replyContent = document.getElementById('reply-content').value;
 
 								const sendData = {
-									replySelect: '3',
-									replySeq: rowData[0],
-									replyTitle: replyTitle,
-									replyContent: replyContent
+									seq: rowData[0],
+									title: replyTitle,
+									context: replyContent
 								};
 
 								$.ajax({

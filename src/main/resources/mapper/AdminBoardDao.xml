@@ -34,7 +34,7 @@
 
 	<!-- 게시판 데이터 삽입 -->
 	<insert id="insertBoard_01">
-		INSERT INTO review (seq, parent, layer, userid,
+		INSERT INTO board (seq, parent, layer, userid,
 		pcode, adminid, insertdate, invalidate)
 		VALUES (#{seq+1}, #{parent},
 		#{layer+1}, NULL, #{pcode}, #{adminid}, now(), 1)

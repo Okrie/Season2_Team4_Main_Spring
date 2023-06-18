@@ -101,7 +101,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int modifyBoard(int seq, String adminid, String brtitle, String brcontext) throws Exception {
 		// TODO Auto-generated method stub
-		return boardDao.modifyBoard(seq, adminid,brtitle, brcontext);
+		return boardDao.modifyBoard(seq, adminid, brtitle, brcontext);
 	} 
 
 	@Override
