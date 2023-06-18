@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.springlec.base.dao.CartDao">
+
+
+		<!-- 카트 리스트 -->
+		<select id="cartListDao" resultType="com.springlec.base.model.cart.NCartDto">
+		
+			SELECT cart.userid, cart.seq, product.pcode, product.name, product.photo, manage.price, cart.count FROM product JOIN cart ON product.pcode = cart.pcode JOIN manage ON product.pcode = manage.pcode WHERE cart.userid = #{userid}
+	
+		</select>
+
+		<!-- 카트 삭제 -->
+		<delete id="cartDeleteDao">
+		
+			DELETE FROM cart WHERE seq = #{seq}	
+		
+		</delete>
+
+</mapper>

@@ -37,7 +37,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <form id="deleteForm" action="cartdelete.do" method="post">
+                <form id="deleteForm" action="cartdelete" method="post">
                     <div class="shoping__cart__table">
                         <table>
                             <thead>
@@ -53,10 +53,7 @@
                             <tbody>
                                 <c:set var="totalPrice" value="0" />
                                 <c:forEach items="${list}" var="dto">
-                                    <input type="hidden" name="userid" value="${dto.userid1}">
                                     <input type="hidden" name="seq" value="${dto.seq}">
-                                    <input type="hidden" name="pcode" value="${dto.pcode}">
-                                    <input type="hidden" id="count" name="count" value="${dto.count}">
                                     <tr>
                                         <td class="center-align" style="text-align: center;">
                                             <input type="checkbox" name="pcode" value="${dto.pcode}" data-count="${dto.count}" data-price="${dto.price}" onchange="calculateTotalPrice()">
@@ -67,7 +64,7 @@
                                         <td><input type="hidden" name="price" value="${dto.price}">${dto.price}₩</td>
                                         <td><input type="hidden" name="totalPrice" value="${dto.count * dto.price}"><span class="itemTotalPrice">${dto.count * dto.price}₩</span></td>
                                         <td class="shoping__cart__item__close">
-                                            <span class="icon_close" onclick="location.href='cartdelete.do?seq=${dto.seq}'"></span>
+                                            <span class="icon_close" onclick="location.href='cartdelete?seq=${dto.seq}'"></span>
                                         </td>
                                     </tr>
                                     <c:set var="totalPrice" value="${totalPrice + (dto.count * dto.price)}" />
@@ -129,6 +126,7 @@ function submitForm(action) {
 
   // 선택된 체크박스들을 반복하며 정보를 저장할 객체를 생성합니다.
   var data = [];
+  
   checkboxes.forEach(function(checkbox) {
     // 필요한 정보들을 추출하여 객체에 저장합니다.
     var pcode = checkbox.value;
