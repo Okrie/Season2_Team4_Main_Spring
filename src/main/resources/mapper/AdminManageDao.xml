@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springlec.base.dao.admin.ProductDao">
+
+
+	<!-- 오더관련 재고 불러오기 : admin_searchOrders.do -->
+	<select id="searchOrders"
+		resultType="com.springlec.base.model.admin.ProductDto">
+		SELECT 
+			manage.stock
+		FROM 
+			orders
+		JOIN 
+			product ON orders.pcode	= product.pcode
+		JOIN 
+			manage ON product.pcode = manage.pcode
+	</select>
+
+	<!-- 오더관련 모든 정보 불러오기 : admin_searchOrders.do -->
+	<select id="searchUpdate"
+		resultType="com.springlec.base.model.admin.ProductDto">
+		SELECT 
+			manage.stock
+		FROM 
+			orders
+		JOIN 
+			product ON orders.pcode	= product.pcode
+		JOIN 
+			manage ON product.pcode = manage.pcode
+		WHERE
+			orders.ordercode = #{ordercode}
+	</select>
+
+	<!-- 테이블 제품 관련 정보 불러오기 : admin_searchProduct.do -->
+	<select id="searchProduct"
+		resultType="com.springlec.base.model.admin.ProductDto">
+		SELECT *
+		FROM 
+			manage
+		ORDER BY 
+			CAST(pcode AS UNSIGNED)
+	</select>
+
+	<!-- 업데이트 관련 상품 관련 정보 불러오기 : admin_findproduct.do -->
+	<select id="findProduct"
+		resultType="com.springlec.base.model.admin.ProductDto">
+		SELECT *
+		FROM manage
+		WHERE 
+		pcode = #{pcode}
+	</select>
+
+	<!-- 데이터 입력하기 : admin_insertproduct.do -->
+	<insert id="insertProduct">
+		INSERT INTO 
+			manage (adminid, pcode, stock, price, updatedate, invalidate)
+		SELECT 
+			#{adminid}, 
+			IFNULL(MAX(CAST(pcode AS UNSIGNED)), 0) + 1, 
+			#{stock}, 
+			#{price}, 
+			now(), 
+			1
+		FROM 
+			manage
+	</insert>
+
+	<!-- 데이터 수정하기 : admin_updateproduct.do -->
+	<update id="updateProduct">
+		UPDATE 
+			manage
+		SET 
+			adminid = #{adminid}, 
+			stock =	#{stock}, 
+			price = #{price}, 
+			updatedate	= NOW()
+		WHERE 
+			pcode = #{pcode}
+	</update>
+
+	<!-- 상품 관련 정보 삭제하기 : admin_deleteproduct.do -->
+	<update id="deleteProduct">
+		UPDATE 
+			manage
+		SET 
+			invalidate = 0
+		WHERE
+			pcode = #{pcode}
+	</update>
+
+	<!-- 상품 관련 정보 복구하기 : admin_deleteproduct.do -->
+	<update id="recoverProduct">
+		UPDATE 
+			manage
+		SET 
+			invalidate = 1
+		WHERE 
+			pcode = #{pcode}
+	</update>
+
+
+
+
+</mapper>
