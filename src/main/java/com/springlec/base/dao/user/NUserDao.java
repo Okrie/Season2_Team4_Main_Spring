@@ -19,7 +19,7 @@ public interface NUserDao {
 	// 유저 이미 있는지 확인
 	public int userCheckDao(String userid) throws Exception;
 	// 유저 정보 받아 오기
-	public List<NUserLoginDto> userInfo(String userid) throws Exception;
+	public List<NUserLoginDto> userInfoDao(String userid) throws Exception;
 	// mypage user 정보
 	 public int userMypageCheckDao(String userid, String userpw) throws Exception;
 	// 유저 정보 변경 -수정클릭시 작동

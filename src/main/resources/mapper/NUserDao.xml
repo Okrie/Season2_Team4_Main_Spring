@@ -22,7 +22,7 @@
 	<select id="userisAliveDao" resultType="String">
 		SELECT invalidate FROM user WHERE userid = #{userid}
 	</select>
-	<select id="userInfoDao" resultType="com.springlec.base.model.user.NUserDto">
+	<select id="userInfoDao" resultType="com.springlec.base.model.user.NUserLoginDto">
 		SELECT * FROM user WHERE userid = #{userid}
 	</select>
 	<select id="userMypageCheckDao">

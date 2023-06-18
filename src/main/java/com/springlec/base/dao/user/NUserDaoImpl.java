@@ -22,20 +22,12 @@ public class NUserDaoImpl implements NUserDao {
 	@Override
 	public String userLoginDao(String userid, String userpw) throws Exception {
 		// TODO Auto-generated method stub
-		Map<String, String> parameters = new HashMap<>();
-		parameters.put("userid", userid);
-		parameters.put("userpw", userpw);
-		
-		return sqlSession.selectOne(nameSpace + ".userLoginDao", parameters);
+		return sqlSession.selectOne(nameSpace + ".userLoginDao");
 	}
 	
 	@Override
 	public String adminLoginDao(String adminid, String adminpw) throws Exception {
-		Map<String, String> parameters = new HashMap<>();
-		parameters.put("adminid", adminid);
-		parameters.put("adminpw", adminpw);
-		
-		return sqlSession.selectOne(nameSpace + ".adminLoginDao", parameters);
+		return sqlSession.selectOne(nameSpace + ".adminLoginDao");
 	}
 
 	
@@ -58,19 +50,15 @@ public class NUserDaoImpl implements NUserDao {
 	}
 
 	@Override
-	public List<NUserLoginDto> userInfo(String userid) throws Exception {
+	public List<NUserLoginDto> userInfoDao(String userid) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(userid);
+		return sqlSession.selectList(nameSpace + ".userInfoDao", userid);
 	}
 
 	@Override
 	public int userMypageCheckDao(String userid, String userpw) throws Exception {
 		// TODO Auto-generated method stub
-		Map<String, String> parameters = new HashMap<>();
-		parameters.put("userid", userid);
-		parameters.put("userpw", userpw);
-		
-		return sqlSession.selectOne(nameSpace + "userMypageCheckDao", parameters);
+		return sqlSession.selectOne(nameSpace + ".userMypageCheckDao");
 	}
 
 //	@Override

@@ -86,7 +86,7 @@ public class NUserServiceImpl implements NUserService{
 	@Override
 	public List<NUserLoginDto> userInfo(String userid) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.userInfo(userid);
+		return dao.userInfoDao(userid);
 	}
 
 //	@Override
