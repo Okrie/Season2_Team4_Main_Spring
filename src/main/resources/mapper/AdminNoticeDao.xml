@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springlec.base.dao.admin.NoticeDao">
+
+	<!-- 게시판 데이터 테이블로 가져오기 -->
+  <select id="searchNotice"
+		resultType="com.springlec.base.model.admin.NoticeDto">
+	SELECT
+	notice.seq AS seq,
+	notice.adminid AS adminid,
+	notice.insertdate AS insertdate,
+	notice.invalidate AS invalidate,
+	nwrite.title AS title,
+	nwrite.context AS context,
+	nwrite.updatedate AS updatedate
+	FROM notice
+	LEFT JOIN 
+	nwrite ON notice.seq = nwrite.seq
+	</select> 
+
+	<!-- 게시판 데이터 삽입 -->
+	<insert id="insertNotice_01">
+		INSERT INTO notice (seq, adminid, insertdate, invalidate)
+		VALUES (#{seq+1}, #{adminid}, now(), 1)
+	</insert>
+	<insert id="insertNotice_02">
+		INSERT INTO nwrite (seq, adminid, title, context,
+		updatedate)
+		VALUES (#{seq+1}, #{adminid}, #{title} ,#{context}, now())
+	</insert>
+
+	<!-- 게시판 최신 pcode알기 -->
+	<select id="searchNoticeseq"
+		resultType="com.springlec.base.model.admin.NoticeDto">
+		SELECT MAX(seq) AS seq FROM notice
+	</select> 
+
+	<!-- 게시판 수정 -->
+	<update id="modifyNotice">
+		UPDATE nwrite SET 
+		title = #{title} ,
+		context = #{context}, adminid =#{adminid}, updatedate = now() 
+		WHERE seq =	#{seq}
+	</update>
+
+	<!-- 게시판 삭제 -->
+	<update id="deleteNotice">
+		UPDATE notice SET invalidate = 0 WHERE seq = #{seq}
+	</update>
+
+
+
+</mapper>
