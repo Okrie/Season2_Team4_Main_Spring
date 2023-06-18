@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="address_detail" placeholder="Detail Address" name="address_detail">
+                                    <input type="text" class="form-control form-control-user" id="address_detail" placeholder="Detail Address" name="address">
                                 </div>
                                 <div class="form-group sm">
                                     <input type="text" class="form-control form-control-user" id="age" placeholder="Birthdate ex)2000.01.01" name="birthdate">
@@ -149,7 +149,7 @@
                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="login.do">Already have an account? Login!</a>
+                                <a class="small" href="login">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>

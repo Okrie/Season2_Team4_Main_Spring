@@ -18,7 +18,7 @@ public class NUserServiceImpl implements NUserService{
 	public boolean userInsert(NUserLoginDto dto) throws Exception {
 		// TODO Auto-generated method stub
 		try {
-			dao.userInsert(dto);
+			dao.userRegisterDao(dto);
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -65,12 +65,16 @@ public class NUserServiceImpl implements NUserService{
 	}
 
 	@Override
-	public boolean userCheck(String userid) throws Exception {
+	public int userCheck(String userid) throws Exception {
 		// TODO Auto-generated method stub
-		if(dao.userCheckDao(userid) > 0) {
-			return false;
-		}else {
-			return true;
+		try {
+			if(dao.userCheckDao(userid) > 0) {
+				return 1;
+			}else {
+				return 0;
+			}
+		}catch (Exception e) {
+			return -1;
 		}
 	}
 

@@ -13,7 +13,7 @@ public class NUserDaoImpl implements NUserDao {
 	public static String nameSpace = "com.springlec.base.dao.user";
 
 	@Override
-	public int userInsert(NUserLoginDto dto) throws Exception {
+	public int userRegisterDao(NUserLoginDto dto) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.insert(nameSpace + ".userRegisterDao");
 	}

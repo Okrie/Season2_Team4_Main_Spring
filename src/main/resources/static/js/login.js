@@ -27,13 +27,11 @@
 	
 	if(!regExpId.test(id)){
 		alert("아이디는 문자로 시작해 주세요.")
-		//form.uid.select()
 		return
 	}
 	
 	if(!regExpAdmin.test(inputid)){
 		alert("사용이 불가능한 아이디 입니다. 다시 작성해주세요.")
-		//form.uid.select()
 		return
 	}
 	
@@ -44,31 +42,26 @@
 	
 	if(!regExpName.test(name)){
 		alert("이름은 한글로만 입력해주세요.")
-		//form.uname.select()
 		return
 	}
 	
 	if(passwd1 == "" || passwd2 == ""){
 		alert("비밀번호를 입력해주세요.")
-		//form.upasswd1.select()
 		return
 	}
 	
 	if(!regExpPasswd.test(passwd1) || !regExpPasswd.test(passwd2)){
 		alert("비밀번호는 영문 또는 숫자로만 입력해주세요.")
-		//form.upasswd1.select()
 		return
 	}
 	
 	if(passwd1 !== passwd2){
 		alert("비밀번호가 일치 하지 않습니다.")
-		//form.upasswd2.select()
 		return
 	}
 	
 	if(address == ""){
 		alert("상세 주소를 입력해주세요.")
-		//form.uaddress.select()
 		return	
 	}
 		

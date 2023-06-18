@@ -18,7 +18,7 @@ public class NUserLoginDto {
 	String userpw;
 	String name;
 	String gender;
-	String age;
+	String birthdate;
 	String telno;
 	String email;
 	String address;

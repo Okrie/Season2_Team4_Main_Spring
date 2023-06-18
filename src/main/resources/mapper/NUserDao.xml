@@ -5,7 +5,7 @@
 	<insert id="userRegisterDao">
 		INSERT INTO user 
 		(userid, userpw, name, gender, birthdate, telno, address, email, allergy, insertdate, invalidate) 
-		VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, now(), 1)
+		VALUES (#{userid}, #{userpw}, #{name}, #{gender}, #{birthdate}, #{telno}, #{address}, #{email}, #{allergy}, now(), 1)
 	</insert>
 	<select id="userCheckDao">
 		SELECT COUNT(*) FROM user WHERE userid = #{userid}

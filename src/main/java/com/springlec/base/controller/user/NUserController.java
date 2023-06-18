@@ -67,7 +67,7 @@ public class NUserController {
 	// Duplicate
 	@ResponseBody
 	@RequestMapping("/register/duplicate")
-	public boolean duplicateCheck(@RequestParam("userid") String userid) throws Exception{
+	public int duplicateCheck(@RequestParam("userid") String userid) throws Exception{
 		return service.userCheck(userid);
 	}
 }

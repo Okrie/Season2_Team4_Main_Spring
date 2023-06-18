@@ -12,7 +12,7 @@ public interface NUserService {
 	//어드민 인지 판별
 	public boolean isAdmin(String adminid) throws Exception;
 	// 유저 이미 있는지 확인
-	public boolean userCheck(String userid) throws Exception;
+	public int userCheck(String userid) throws Exception;
 	// 유저 정보 받아 오기
 	// public ArrayList<NUserLoginDto> userInfo(String userid) throws Exception;
 	// mypage user 정보
