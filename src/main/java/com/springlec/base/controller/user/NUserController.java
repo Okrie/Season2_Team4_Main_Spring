@@ -60,8 +60,12 @@ public class NUserController {
 	// Register
 	@RequestMapping("/register")
 	public String userRegister(NUserLoginDto dto, Model model) throws Exception{
-		service.userInsert(dto);
-		return "redirect:login";
+		boolean result = service.userInsert(dto);
+		if(result) {
+			return "redirect:login";
+		} else {
+			return "register";
+		}
 	}
 	
 	// Duplicate

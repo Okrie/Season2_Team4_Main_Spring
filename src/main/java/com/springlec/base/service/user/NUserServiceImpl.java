@@ -22,7 +22,6 @@ public class NUserServiceImpl implements NUserService{
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
 			return false;
 		}
 	}
