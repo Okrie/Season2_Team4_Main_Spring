@@ -61,12 +61,12 @@ public class NUserDaoImpl implements NUserDao {
 		return sqlSession.selectOne(nameSpace + ".userMypageCheckDao");
 	}
 
-//	@Override
-//	public void myPageUpdate(NUserLoginDto dto, String id) throws Exception {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
+	@Override
+	public int userMypageUpdateDao(NUserLoginDto dto) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.update(nameSpace + ".userMypageUpdateDao");
+	}
+
 //	@Override
 //	public int userCartIn(String pcode, String userid) throws Exception {
 //		// TODO Auto-generated method stub

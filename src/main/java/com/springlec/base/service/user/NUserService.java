@@ -18,7 +18,7 @@ public interface NUserService {
 	// 유저 정보 받아 오기
 	public List<NUserLoginDto> userInfo(String userid) throws Exception;
 	// 유저 정보 변경 -수정클릭시 작동
-	// public void myPageUpdate(NUserLoginDto dto, String id) throws Exception;
+	public void myPageUpdate(NUserLoginDto dto) throws Exception;
 	// 유저의 구매내역 가져오기
 	// public ArrayList<NDUserOrdersDto> mypageUserOrderinfo(String userid) throws Exception;
 	// 유저 카트 추가

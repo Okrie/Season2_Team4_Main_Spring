@@ -56,7 +56,6 @@ public class NUserServiceImpl implements NUserService{
 	@Override
 	public boolean isAdmin(String adminid) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(dao.adminCheckDao(adminid));
 		if(dao.adminCheckDao(adminid) == 1) {
 			return true;
 		}
@@ -80,7 +79,7 @@ public class NUserServiceImpl implements NUserService{
 	@Override
 	public String mypageUserinfoCheck(String userid, String userpw) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.userMypageCheckDao(userid, userid) > 0 ? "1" : "0";
+		return dao.userMypageCheckDao(userid, userpw) > 0 ? "1" : "0";
 	}
 	
 	@Override
@@ -89,12 +88,12 @@ public class NUserServiceImpl implements NUserService{
 		return dao.userInfoDao(userid);
 	}
 
-//	@Override
-//	public void myPageUpdate(NUserLoginDto dto, String id) throws Exception {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
+	@Override
+	public void myPageUpdate(NUserLoginDto dto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.userMypageUpdateDao(dto);
+	}
+
 //	@Override
 //	public int userCartIn(String pcode, String userid) throws Exception {
 //		// TODO Auto-generated method stub

@@ -331,15 +331,15 @@ function checkid(id){
 	});
 }
 
-function chkpw(userid, userpw){
-	var password = document.getElementById('password').value
+function chkpw(userid){
+	var userpw = document.getElementById('password').value
 	$.ajax({
 	    type: "POST",
 	    url: "NDUserCheck", // URL
 	    data: { userid : userid,
 	    		userpw : userpw },
 	    success: function(result) {
-			if (Number(result) === Number(1)) {
+			if (result === Number(1)) {
 				window.location.href = "mypageDetail"
 			} else{
 				alert("비밀번호가 틀렸습니다.")
@@ -363,9 +363,8 @@ function updateMember() {
 	const phone = document.getElementById("telno").value
 	const address = document.getElementById("address_detail").value
 	const email = document.getElementById("email").value
-	const birthdate = document.getElementById("age").value
+	const birthdate = document.getElementById("birthdate").value
 	const allergy = document.getElementById("allergyCheck").value
-	console.log(1)
 	
 	if(!regExpName.test(name)){
 		alert("이름은 한글로만 입력해주세요.")

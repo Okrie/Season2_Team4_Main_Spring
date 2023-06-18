@@ -78,12 +78,19 @@ public class NUserController {
 	}
 	
 	// Userpw Check
+	@ResponseBody
 	@RequestMapping("/NDUserCheck")
 	public int mypageUserCheck(HttpServletRequest request) throws Exception{
-		service.mypageUserinfoCheck(request.getParameter("userid"), request.getParameter("userpw"));
-		return 0;
+		String temp = service.mypageUserinfoCheck(request.getParameter("userid"), request.getParameter("userpw"));
+		return Integer.parseInt(temp);
 	}
 	
+	// User Mypage
+	@RequestMapping("/mypage")
+	public String mypageView() throws Exception{
+		
+		return "mypage";
+	}
 	
 	// UserInfo Detail
 	@RequestMapping("/mypageDetail")
@@ -92,5 +99,12 @@ public class NUserController {
 		List<NUserLoginDto> dto = service.userInfo((String) session.getAttribute("ID"));
 		model.addAttribute("userinfo", dto);
 		return "mypageDetail";
+	}
+	
+	// mypage update
+	@RequestMapping("/userinfoupdate")
+	public String mypageUpdate(NUserLoginDto dto) throws Exception{
+		service.myPageUpdate(dto);
+		return "mypage";
 	}
 }

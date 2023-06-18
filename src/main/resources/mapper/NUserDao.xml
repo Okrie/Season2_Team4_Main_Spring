@@ -28,13 +28,13 @@
 	<select id="userMypageCheckDao">
 		SELECT COUNT(*) FROM user WHERE userid = #{userid} AND userpw = #{userpw}
 	</select>
-	<!-- <update id="userMypageUpdateDao">
-		update user 
-		set name = #{name}, telno = #{telno}
-		, address = #{address}, email = #{email}
-		, allergy = #{allergy} where userid = #{userid}
+	<update id="userMypageUpdateDao">
+		UPDATE user 
+		SET name = #{name}, telno = #{telno}, birthdate = #{birthdate}
+		, address = #{address}, email = #{email}, allergy = #{allergy} 
+		WHERE userid = #{userid}
 	</update>
-	<select id="userMypageOrderedDao" resultType="com.springlec.base.model.product.NOrderDto">
+	<!--<select id="userMypageOrderedDao" resultType="com.springlec.base.model.product.NOrderDto">
 		SELECT o.ordercode, pr.photo, pr.name, o.count, m.price, o.orderdate, o.deliverydate, o.refunddate, pr.pcode 
 		FROM user u 
 		JOIN orders o ON u.userid = o.userid 

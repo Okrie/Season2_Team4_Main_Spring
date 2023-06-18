@@ -8,10 +8,10 @@
 		            <div class="sidebar__item">
 		                <h4>Mypage</h4>
 		                <ul>
-		                    <li><a href="mypage.do"><b>상세정보</b></a></li>
-		                    <li><a href="cart.do">장바구니</a></li>
-		                    <li><a href="userorderinfo.do">구매내역</a></li>
-		                    <li><a href="usersubscribe.do">구독일정</a></li>
+		                    <li><a href="mypage"><b>상세정보</b></a></li>
+		                    <li><a href="cart">장바구니</a></li>
+		                    <li><a href="userorderinfo">구매내역</a></li>
+		                    <li><a href="usersubscribe">구독일정</a></li>
 		                </ul>
 		            </div>
 		        </div>

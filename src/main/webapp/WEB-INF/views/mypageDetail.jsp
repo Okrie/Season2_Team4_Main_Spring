@@ -46,7 +46,7 @@
                             <input type="text" class="form-control form-control-user" id="address_detail" placeholder="Address" name="address" value="${user.address}">
                         </div>
                         <div class="form-group sm">
-                            <input type="text" class="form-control form-control-user" id="birthdate" placeholder="Birthdate ex)2000.01.01" name="birthdate" onkeyup="formatBirthdate(this)" value="${user.age}">
+                            <input type="text" class="form-control form-control-user" id="birthdate" placeholder="Birthdate ex)2000.01.01" name="birthdate" onkeyup="formatBirthdate(this)" value="${user.birthdate}">
                         </div>
                         <div class="form-group sm">
                             <input type="text" class="form-control form-control-user" name="gender" value="${user.gender}" readonly="readonly">
@@ -64,7 +64,7 @@
                    	<a href="#" class="btn btn-primary btn-user btn-block" onclick="updateMember()"> 수정 </a>
                     <hr>
 					<input type="hidden">
-		                            <!-- allergy Modal -->
+                        <!-- allergy Modal -->
 					    <div class="modal fade" id="allergyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
