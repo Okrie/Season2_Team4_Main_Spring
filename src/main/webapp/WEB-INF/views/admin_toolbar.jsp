@@ -27,7 +27,7 @@ String ID = (String) sessions.getAttribute("ID");
 
 		<!-- Nav Item - Dashboard -->
 		<li class="nav-item active"><a class="nav-link"
-			href="admin_main.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
+			href="adminMain"> <i class="fas fa-fw fa-tachometer-alt"></i>
 				<span>메인으로</span></a></li>
 
 		<!-- Divider -->
@@ -46,8 +46,8 @@ String ID = (String) sessions.getAttribute("ID");
 				data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">상세 메뉴:</h6>
-					<a class="collapse-item" href="admin_searchorders.do">주문 목록</a> <a
-						class="collapse-item" href="admin_graphorders.do">주문 현황 그래프</a>
+					<a class="collapse-item" href="adminSearchorders">주문 목록</a> <a
+						class="collapse-item" href="adminGraphorders">주문 현황 그래프</a>
 				</div>
 			</div></li>
 
@@ -61,8 +61,8 @@ String ID = (String) sessions.getAttribute("ID");
 				aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">상세 메뉴:</h6>
-					<a class="collapse-item" href="admin_searchsubscribe.do">구독 목록</a> <a
-						class="collapse-item" href="admin_schedulesubscribe.do">구독 일정</a>
+					<a class="collapse-item" href="adminSearchsubscribe">구독 목록</a> <a
+						class="collapse-item" href="adminSchedulesubscribe">구독 일정</a>
 				</div>
 			</div></li>
 
@@ -77,8 +77,8 @@ String ID = (String) sessions.getAttribute("ID");
 				aria-labelledby="headingPages" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">상세 메뉴:</h6>
-					<a class="collapse-item" href="admin_searchusers.do">유저 목록</a> <a
-						class="collapse-item" href="admin_graphusers.do">유저 성향 그래프</a>
+					<a class="collapse-item" href="adminSearchusers">유저 목록</a> <a
+						class="collapse-item" href="adminGraphusers">유저 성향 그래프</a>
 				</div>
 			</div></li>
 
@@ -93,7 +93,7 @@ String ID = (String) sessions.getAttribute("ID");
 				aria-labelledby="headingPages" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">상세 메뉴:</h6>
-					<a class="collapse-item" href="admin_searchproduct.do">상품 목록</a> <a
+					<a class="collapse-item" href="adminSearchproduct.do">상품 목록</a> <a
 						class="collapse-item" href="admin_product_insert.jsp">상품 등록</a>
 				</div>
 			</div></li>
@@ -111,7 +111,7 @@ String ID = (String) sessions.getAttribute("ID");
 				aria-labelledby="headingPages" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">상세 메뉴:</h6>
-					<a class="collapse-item" href="admin_searchboard.do">게시글 목록</a> 
+					<a class="collapse-item" href="adminSearchBoard">게시글 목록</a> 
 				</div>
 			</div></li>
 
@@ -184,7 +184,7 @@ String ID = (String) sessions.getAttribute("ID");
 						<div class="modal-footer">
 							<button class="btn btn-secondary" type="button"
 								data-dismiss="modal">취소</button>
-							<a class="btn btn-primary" href="logout.do">로그아웃 후, 메인페이지로
+							<a class="btn btn-primary" href="logout">로그아웃 후, 메인페이지로
 								돌아갑니다.</a>
 						</div>
 					</div>
