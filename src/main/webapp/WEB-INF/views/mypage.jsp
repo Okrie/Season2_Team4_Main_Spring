@@ -42,7 +42,7 @@
 		    			</div>
 		    		</div>
 		    	</div>
-		    	<form action="mypageDetail.do" method="post">
+		    	<form action="mypageDetail" method="post">
 	    		<div class="row">
 	    			<div class="col-md-6">
 	    				<div class="form-group">

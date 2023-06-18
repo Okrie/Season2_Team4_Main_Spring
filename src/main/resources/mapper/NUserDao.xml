@@ -22,13 +22,13 @@
 	<select id="userisAliveDao" resultType="String">
 		SELECT invalidate FROM user WHERE userid = #{userid}
 	</select>
-	<!-- <select id="userInfoDao" resultType="com.springlec.base.model.user.NUserDto">
+	<select id="userInfoDao" resultType="com.springlec.base.model.user.NUserDto">
 		SELECT * FROM user WHERE userid = #{userid}
 	</select>
 	<select id="userMypageCheckDao">
-		SELECT userpw FROM user WHERE userid = #{userid}
+		SELECT COUNT(*) FROM user WHERE userid = #{userid} AND userpw = #{userpw}
 	</select>
-	<update id="userMypageUpdateDao">
+	<!-- <update id="userMypageUpdateDao">
 		update user 
 		set name = #{name}, telno = #{telno}
 		, address = #{address}, email = #{email}
