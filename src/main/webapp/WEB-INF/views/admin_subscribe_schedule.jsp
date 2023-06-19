@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
 							}
 						}).then(() => {
 							// 배송 처리
-							var url = 'admin_updatesubscribe.do?plcode=' + eventPlcode;
+							var url = 'adminUpdateSubscribe?plcode=' + eventPlcode;
 							window.location.href = url;
 						});
 					}

@@ -63,7 +63,7 @@ function dataConnect(dataSetSubscribe) {
 					title: '금일 배송 작업은 끝났습니다.'
 				})
 			} else {
-				var url = 'admin_updatesubscribe.do?plcode=' + plcode;
+				var url = 'adminUpdateSubscribe?plcode=' + plcode;
 				// 페이지 이동
 				window.location.href = url;
 
