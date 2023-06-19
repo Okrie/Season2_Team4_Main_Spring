@@ -38,7 +38,7 @@ public class NDHeaderCountDaoServiceImpl implements NDHeaderCountDaoService {
 	@Override
 	public String remainDateDao(String userid) throws Exception {
 		// TODO Auto-generated method stub
-		Timestamp subscribeDate = dao.remainDateDao("userid");
+		Timestamp subscribeDate = dao.remainDateDao(userid);
         
         LocalDateTime subscribeDateTime = subscribeDate.toLocalDateTime();
         LocalDateTime endDate = subscribeDateTime.plusDays(30);
