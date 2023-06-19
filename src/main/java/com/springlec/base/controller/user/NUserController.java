@@ -1,5 +1,9 @@
 package com.springlec.base.controller.user;
 
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,5 +110,41 @@ public class NUserController {
 	public String mypageUpdate(NUserLoginDto dto) throws Exception{
 		service.myPageUpdate(dto);
 		return "mypage";
+	}
+	
+	// Logout
+	@RequestMapping("/logout")
+	public String userLogout(HttpServletRequest request) throws Exception{
+		HttpSession session = request.getSession();
+		try {
+			String requestURL = "https://kapi.kakao.com/v1/user/logout";
+			
+			if(session.getAttribute("social") != null) {
+				String accessToken = (String)session.getAttribute("social");
+				URL url = new URL(requestURL);
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				
+				conn.setRequestMethod("POST");
+				conn.setDoOutput(true);
+				
+				BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+				String headers = "Authorization=Bearer " + accessToken;
+				bufferedWriter.write(headers);
+				bufferedWriter.flush();
+				
+				int responseCode = conn.getResponseCode();
+				System.out.println("responseCode : " + responseCode);
+				
+				if(responseCode == 200) {
+					bufferedWriter.close();
+					System.out.println("Kakao session invalidate..");
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		session.invalidate();
+		return "/";
 	}
 }
