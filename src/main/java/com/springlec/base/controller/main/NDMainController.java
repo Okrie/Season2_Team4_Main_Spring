@@ -66,7 +66,7 @@ public class NDMainController {
 		model.addAttribute("remainDate", remainDate);
 		
 		session.setAttribute("heartCount", heartCount);
-		session.setAttribute("heartCount", cartCount);
+		session.setAttribute("cartCount", cartCount);
 		session.setAttribute("cartTotalPrice", cartTotalPrice);
 		session.setAttribute("remainDate", remainDate);
 		

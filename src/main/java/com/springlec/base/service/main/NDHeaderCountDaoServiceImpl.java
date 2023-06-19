@@ -1,6 +1,5 @@
 package com.springlec.base.service.main;
 
-import java.util.Date;
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDate;
