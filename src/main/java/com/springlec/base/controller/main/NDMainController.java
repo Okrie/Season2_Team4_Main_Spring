@@ -1,6 +1,5 @@
 package com.springlec.base.controller.main;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.springlec.base.dao.main.NDHeaderCountDao;
 import com.springlec.base.model.main.NDProductListDto;
+import com.springlec.base.model.main.NDSearchQueryDto;
 import com.springlec.base.service.main.NDHeaderCountDaoService;
 import com.springlec.base.service.main.NDMainDaoService;
+import com.springlec.base.service.main.NDSearchQueryDaoService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -26,6 +26,9 @@ public class NDMainController {
 	
 	@Autowired
 	NDHeaderCountDaoService headerCountDaoService;
+	
+	@Autowired
+	NDSearchQueryDaoService searchQueryDaoService;
 	
 	//제품 전부 출력
 	@RequestMapping("/NDTakeAll")
@@ -53,11 +56,11 @@ public class NDMainController {
 		
 		if(userid != null) {
 
-			heartCount = headerCountDaoService.heartCountDao("userid");
-			cartCount = headerCountDaoService.cartCountDao("userid");
-			cartTotalPrice = headerCountDaoService.cartTotalPriceDao("userid");
+			heartCount = headerCountDaoService.heartCountDao(userid);
+			cartCount = headerCountDaoService.cartCountDao(userid);
+			cartTotalPrice = headerCountDaoService.cartTotalPriceDao(userid);
 			
-			remainDate = headerCountDaoService.remainDateDao("userid");
+			remainDate = headerCountDaoService.remainDateDao(userid);
 		}
 		
 		model.addAttribute("heartCount", heartCount);
@@ -76,9 +79,15 @@ public class NDMainController {
 		
 		
 	}//headerCountEnd
-	
-	
-	
+
+	//NDSearchQuery영역
+	@RequestMapping("/NDSearchQuery")
+	public String list(HttpServletRequest request, Model model) throws Exception{
+		List<NDSearchQueryDto> NDSearchQuery = searchQueryDaoService.NDSearchQuery();
+		model.addAttribute("NDSearchQuery", NDSearchQuery);
+		return "redirect:NDHeaderCount";
+		
+	}
 	
 
 }
