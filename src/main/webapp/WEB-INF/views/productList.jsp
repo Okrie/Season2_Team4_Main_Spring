@@ -75,10 +75,10 @@
 									<i class="fa fa-bars"></i> <span>정렬목록</span>
 								</div>
 								<ul style="display: flex; list-style-type: none; padding: 1;">
-									<li style="margin-right: 150px;"><a href="#">●모든 제품</a></li>
-									<li style="margin-right: 150px;"><a href="#">●칼로리 적은순</a></li>
-									<li style="margin-right: 150px;"><a href="#">●가격 높은순</a></li>
-									<li style="margin-right: 150px;"><a href="#">●가격 낮은순</a></li>
+									<li style="margin-right: 150px;"><a href="NDSortProductListAll">●모든 제품</a></li>
+									<li style="margin-right: 150px;"><a href="productListCal">●칼로리 적은순</a></li>
+									<li style="margin-right: 150px;"><a href="productListHighPrice">●가격 높은순</a></li>
+									<li style="margin-right: 150px;"><a href="productListLowPrice">●가격 낮은순</a></li>
 								</ul>
 
 
