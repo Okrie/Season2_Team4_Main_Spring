@@ -75,7 +75,7 @@
                                         </td>
                                         <!-- 리뷰 작성하는 버튼 -->
                                         <td>
-                                        <a href="productInformSend.do?pcode=${dto.pcode}" class="btn btn-primary btn-user btn-block">제품<br/>페이지</a>
+                                        <a href="productInformSend?pcode=${dto.pcode}" class="btn btn-primary btn-user btn-block">제품<br/>페이지</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -154,14 +154,13 @@ function openRefundModal(refundButton) {
 function refundRequest(){
 	var orderCode = document.getElementById('refundOrderCode').textContent;
 	var refundButton = document.querySelector('.refund_btn');
-	
     $.ajax({
 	    type: "POST",
 	    url: "NDRefund", // URL
 	    data: { ordercode : orderCode },
 	    success: function(result) {
 	    	console.log(result)
-			if (Number(result) == Number(0)) {
+			if (result === Number(0)) {
 				alert("환불 신청 완료 되었습니다.");
 		        refundButton.classList.add('disabled'); // 버튼 비활성화를 위한 클래스 추가
 		        window.location.reload();

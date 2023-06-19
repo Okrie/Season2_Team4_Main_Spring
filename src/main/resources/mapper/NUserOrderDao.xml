@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springlec.base.dao.user.NUserOrderDao">
+	<select id="mypageUserOrderinfo" resultType="com.springlec.base.model.user.NUserOrderDto">
+		SELECT o.ordercode, pr.photo, pr.name, o.count, m.price, o.orderdate, o.deliverydate, o.refunddate, pr.pcode 
+		FROM user u 
+		JOIN orders o ON u.userid = o.userid 
+		JOIN product pr ON o.pcode = pr.pcode 
+		JOIN manage m ON pr.pcode = m.pcode 
+		WHERE u.userid = #{userid}
+	</select>
+</mapper>
