@@ -47,7 +47,7 @@ function dataConnect(dataSetProduct) {
 			var rowData = table.row(this).data();
 			var ordercode = rowData[0];
 
-				var url = 'admin_findproduct.do?pcode=' + ordercode;
+				var url = 'adminFindProduct?pcode=' + ordercode;
 				window.location.href = url;
 					
 		});

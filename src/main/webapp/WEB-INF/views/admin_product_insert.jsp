@@ -1,4 +1,3 @@
-<%@page import="com.javalec.bbs.dto.NDOrdersDto_OKH"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -97,7 +96,7 @@ $("#confirmInsert").on("click", function(e){
 								<input style="text-align: left" type="text" name="pcode"
 									class="form-control form-control-user" id="pcode"
 									readonly="readonly"
-									value="${ pcode != null ? pcode : '입력을 누르시면 자동 완성됩니다.'}">
+									value="${dataSetProduct[0].pcode != null ? dataSetProduct[0].pcode : '입력을 누르시면 자동 완성됩니다.'}">
 							</div>
 						</div>
 						<br />
@@ -111,7 +110,7 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="name"
 									class="form-control form-control-user" id="name"
-									placeholder="이름을 입력해주세요." value="${name != null ? name : '' }">
+									placeholder="이름을 입력해주세요." value="${dataSetProduct[0].name != null ? dataSetProduct[0].name : '' }">
 							</div>
 						</div>
 						<br />
@@ -125,7 +124,7 @@ $("#confirmInsert").on("click", function(e){
 								<input style="text-align: left" type="text" name="category"
 									class="form-control form-control-user" id="category"
 									placeholder="카테고리를 입력해주세요"
-									value="${category != null ? category : '' }">
+									value="${dataSetProduct[0].category != null ? dataSetProduct[0].category : '' }">
 							</div>
 						</div>
 						<br />
@@ -138,7 +137,7 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="rice"
 									class="form-control form-control-user" id="rice"
-									placeholder="밥을 정해주세요." value="${rice != null ? rice : '' }">
+									placeholder="밥을 정해주세요." value="${dataSetProduct[0].rice != null ? dataSetProduct[0].rice : '' }">
 							</div>
 						</div>
 						<br />
@@ -152,7 +151,7 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="cook1"
 									class="form-control form-control-user" id="cook1"
-									placeholder="반찬을 정해주세요." value="${cook1 != null ? cook1 : '' }">
+									placeholder="반찬을 정해주세요." value="${dataSetProduct[0].cook1 != null ? dataSetProduct[0].cook1 : '' }">
 							</div>
 						</div>
 						<br />
@@ -166,7 +165,7 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="cook2"
 									class="form-control form-control-user" id="cook2"
-									placeholder="반찬을 정해주세요." value="${cook2 != null ? cook2 : '' }">
+									placeholder="반찬을 정해주세요." value="${dataSetProduct[0].cook2 != null ? dataSetProduct[0].cook2 : '' }">
 							</div>
 						</div>
 						<br />
@@ -180,7 +179,7 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="cook3"
 									class="form-control form-control-user" id="cook3"
-									placeholder="반찬을 정해주세요." value="${cook3 != null ? cook3 : '' }">
+									placeholder="반찬을 정해주세요." value="${dataSetProduct[0].cook3 != null ? dataSetProduct[0].cook3 : '' }">
 							</div>
 						</div>
 						<br />
@@ -193,7 +192,7 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="soup"
 									class="form-control form-control-user" id="soup"
-									placeholder="국을 정해주세요." value="${soup != null ? soup : '' }">
+									placeholder="국을 정해주세요." value="${dataSetProduct[0].soup != null ? dataSetProduct[0].soup : '' }">
 							</div>
 						</div>
 						<br />
@@ -206,7 +205,7 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="photoname"
 									class="form-control form-control-user" id="photo"
-									placeholder="${ photo != null ? photo : '사진경로를 입력해주세요.'}"
+									placeholder="${ dataSetProduct[0].photo != null ? dataSetProduct[0].photo : '사진경로를 입력해주세요.'}"
 									readonly="readonly" onclick="openFileUploader()"> <input
 									type="file" id="fileUploader" style="display: none;"
 									name="photo" onchange="handleFileSelect(event)">
@@ -217,7 +216,7 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-3"></div>
 							<div class="col-lg-8">
 								<img id="imagePreview" style="align-content: center"
-									alt="사진이 없습니다." src="${photo }" height="400px">
+									alt="사진이 없습니다." src="${dataSetProduct[0].photo }" height="400px">
 							</div>
 							<div class="col-lg-3"></div>
 						</div>
@@ -232,7 +231,7 @@ $("#confirmInsert").on("click", function(e){
 								<input style="text-align: left" type="text" name="stock"
 									class="form-control form-control-user" id="stock"
 									placeholder="재고를 입력해주세요."
-									value="${stock != null ? stock : '' }">
+									value="${dataSetProduct[0].stock != null ? dataSetProduct[0].stock : '' }">
 							</div>
 						</div>
 						<br />
@@ -245,7 +244,7 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="price"
 									class="form-control form-control-user" id="price"
-									placeholder="가격을 정해주세요." value="${price != null ? price : '' }">
+									placeholder="가격을 정해주세요." value="${dataSetProduct[0].price != null ? dataSetProduct[0].price : '' }">
 							</div>
 						</div>
 						<br />
@@ -259,7 +258,7 @@ $("#confirmInsert").on("click", function(e){
 								<input style="text-align: left" type="text" name="calories"
 									class="form-control form-control-user" id="calories"
 									placeholder="칼로리를 정해주세요."
-									value="${calories != null ? calories : '' }">
+									value="${dataSetProduct[0].calories != null ? dataSetProduct[0].calories : '' }">
 							</div>
 						</div>
 						<br />
@@ -272,7 +271,7 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="insertdate"
 									class="form-control form-control-user" id="insertdate"
-									value="${ insertdate != null ? insertdate : '입력을 누르시면 자동 완성됩니다.'}"
+									value="${ dataSetProduct[0].conditionInsert != null ? dataSetProduct[0].conditionInsert : '입력을 누르시면 자동 완성됩니다.'}"
 									readonly="readonly">
 							</div>
 						</div>
@@ -287,7 +286,7 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="updatedate"
 									class="form-control form-control-user" id="updatedate"
-									value="${ updatedate != null  ? updatedate : '입력을 누르시면 자동 완성됩니다.'}"
+									value="${ dataSetProduct[0].conditionUpdate != null  ? dataSetProduct[0].conditionUpdate : '입력을 누르시면 자동 완성됩니다.'}"
 									readonly="readonly">
 							</div>
 						</div>
@@ -301,7 +300,7 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="invalidate"
 									class="form-control form-control-user" id="invalidate"
-									value="${invalidate != null ? (invalidate == 1 ? '현재 판매중인 상품입니다.' : '현재 판매 중단 상품입니다.') : '입력을 누르시면 자동 완성됩니다.'}"
+									value="${dataSetProduct[0].invalidate != null ? (dataSetProduct[0].invalidate == 1 ? '현재 판매중인 상품입니다.' : '현재 판매 중단 상품입니다.') : '입력을 누르시면 자동 완성됩니다.'}"
 									readonly="readonly">
 							</div>
 						</div>
