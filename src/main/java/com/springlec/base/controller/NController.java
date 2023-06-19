@@ -9,6 +9,11 @@ public class NController {
 	
 	@RequestMapping("/")
 	public String mainView() throws Exception {
+		return "redirect:NDTakeAll";
+	}
+	
+	@RequestMapping("/index")
+	public String indexView() throws Exception {
 		return "index";
 	}
 }
