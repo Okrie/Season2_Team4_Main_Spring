@@ -109,9 +109,8 @@
  -->
 								<input type="text" name = "name" placeholder="What do yo u need?">
 								<button type="submit" class="site-btn">SEARCH</button>
-								<% String name = request.getParameter("name");
-								 System.out.print("name:" + name);
-								%>
+								<% String name = request.getParameter("name");	%>
+							
 							</form>
 
 						</div>

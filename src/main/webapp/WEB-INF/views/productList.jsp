@@ -67,20 +67,20 @@
 		<div class="container">
 			<div class="row">
 
-				<div class="col-lg-9">
+				<div class="col-lg-12">
 					<div class="hero__search">
 						<div class="hero__categories">
 							<form action="NDSearchQuery" method="get">
 								<div class="hero__categories_all">
 									<i class="fa fa-bars"></i> <span>정렬목록</span>
 								</div>
-								<ul>
-									<li><a href="#">모든 제품</a></li>
-									<li><a href="#">칼로리 적은순</a></li>
-									<li><a href="#">가격 높은순</a></li>
-									<li><a href="#">가격 낮은순</a></li>
-
+								<ul style="display: flex; list-style-type: none; padding: 1;">
+									<li style="margin-right: 150px;"><a href="#">●모든 제품</a></li>
+									<li style="margin-right: 150px;"><a href="#">●칼로리 적은순</a></li>
+									<li style="margin-right: 150px;"><a href="#">●가격 높은순</a></li>
+									<li style="margin-right: 150px;"><a href="#">●가격 낮은순</a></li>
 								</ul>
+
 
 								<input type="text" name="name" placeholder="What do yo u need?">
 								<button type="submit" class="site-btn">SEARCH</button>
