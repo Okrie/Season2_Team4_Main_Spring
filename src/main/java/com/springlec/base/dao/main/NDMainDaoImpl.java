@@ -10,7 +10,7 @@ public class NDMainDaoImpl implements NDMainDao {
 	
 	
 	SqlSession sqlSession;//DB와 상호작용하는 MyBatis의 객체.
-	public static String namespace = "com.springlec.base.dao.NDMainDao";//namespace변수 선언
+	public static String namespace = "com.springlec.base.dao.main.NDMainDao";//namespace변수 선언
 	
 
 	//NDProductDaoImpl은 'listDao()메서드를 오버라이딩을 통해 구현한다.
