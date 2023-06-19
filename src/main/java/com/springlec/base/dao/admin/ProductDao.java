@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.springlec.base.model.admin.ProductDto;
 
 public interface ProductDao {
-	public ArrayList<ProductDto> searchOrders() throws Exception;
+	public ArrayList<ProductDto> searchOrdersProduct() throws Exception;
 
 	public ArrayList<ProductDto> searchProduct() throws Exception;
 
