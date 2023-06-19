@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.springlec.base.dao.admin.OrdersDao;
 
 @Service
-public class OrderUpdateServiceImpl implements OrderUpdateService {
+public class OrdersUpdateServiceImpl implements OrdersUpdateService {
 
 	@Autowired
 	OrdersDao ordersDao;

@@ -18,7 +18,7 @@ String ID = (String) sessions.getAttribute("ID");
 		<!-- Sidebar - Brand -->
 		<a
 			class="sidebar-brand d-flex align-items-center justify-content-center"
-			href="admin_main.do"> <img alt="로고"
+			href="adminMain"> <img alt="로고"
 			src="http://okrie.kro.kr:25567/images/logo.png" width="60">
 		</a>
 

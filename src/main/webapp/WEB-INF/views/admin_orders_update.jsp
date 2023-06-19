@@ -221,7 +221,7 @@
                         '환불 처리되었습니다.',
                         'success'
                     ).then(() => {
-                      window.location.href= "admin_updateorders_checked.do?ordercode=${dtoOrders[0].ordercode}&insertmode=1";
+                      window.location.href= "adminUpdateOrdersRefund?ordercode=${dtoOrders[0].ordercode}";
                     });
                 }
             })
@@ -244,7 +244,7 @@
                      '배송이 완료처리되었습니다.',
                     'success'
                     ).then(() => {
-                    window.location.href="admin_updateorders_checked.do?ordercode=${dtoOrders[0].ordercode}&insertmode=2";
+                    window.location.href="adminUpdateOrdersDelivery?ordercode=${dtoOrders[0].ordercode}";
                     });
                }
             })
