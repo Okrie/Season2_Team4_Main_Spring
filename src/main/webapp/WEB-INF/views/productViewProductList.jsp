@@ -73,7 +73,7 @@
 		</div>
 		<div class="row featured__filter">
 		<% String[] filtername = {"mostheart", "mostpurchase", "lowcal"}; %>
-			<c:forEach items="${TakeAll}" var="dto" begin="0" end="29">
+			<c:forEach items="${NDTakeAll}" var="dto" begin="0" end="29">
 				<% int rn =(int) (Math.random()*3);  %>
 				<div class="col-lg-3 col-md-4 col-sm-6 mix <%=filtername[rn]%>">
 					<div class="featured__item">

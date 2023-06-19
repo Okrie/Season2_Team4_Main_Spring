@@ -84,8 +84,8 @@ public class NDMainController {
 	@RequestMapping("/NDSearchQuery")
 	public String list(HttpServletRequest request, Model model) throws Exception{
 		List<NDSearchQueryDto> NDSearchQuery = searchQueryDaoService.NDSearchQuery();
-		model.addAttribute("NDSearchQuery", NDSearchQuery);
-		return "redirect:NDHeaderCount";
+		model.addAttribute("searchAction", NDSearchQuery);
+		return "productList";
 		
 	}
 	

@@ -9,12 +9,12 @@ import com.springlec.base.model.main.NDSearchQueryDto;
 public class NDSearchQueryDaoImpl implements NDSearchQueryDao {
 	
 	SqlSession sqlSession;
-	public static String namespace = "com.springlec.base.dao.NDSearchQueryDao";	
+	public static String namespace = "com.springlec.base.dao.main.NDSearchQueryDao";	
 
 	@Override
 	public List<NDSearchQueryDto> NDSearchQuery() throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(namespace+ ".searchQuery");
+		return sqlSession.selectList(namespace+ ".NDSearchQuery");
 	}
 
 }

@@ -2,10 +2,11 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.springlec.base.dao.NDSearchQueryDao">
+<mapper namespace="com.springlec.base.dao.main.NDSearchQueryDao">
 
-	<select id="searchQuery" resultType="com.springlec.base.model.NDSearchQueryDto">
-		SELECT * FROM product p, manage m WHERE p.pcode = m.pcode AND name LIKE CONCAT('%', #{name}, '%')
+	<select id="NDSearchQuery" resultType="com.springlec.base.model.main.NDSearchQueryDto">
+		SELECT * FROM product p, manage m 
+		WHERE p.pcode = m.pcode AND name LIKE CONCAT('%', #{name}, '%')
 	</select>
 
 

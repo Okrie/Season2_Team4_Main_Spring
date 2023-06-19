@@ -91,7 +91,7 @@
 				<div class="col-lg-9">
 					<div class="hero__search">
 						<div class="hero__search__form">
-							<form action="searchActionProductList.do" method="GET">
+							<form action="NDSearchQuery" method="GET">
 							
 <!-- 								<div class="hero__search__categories">
 									All Categories
@@ -129,7 +129,7 @@
 								<h2>
 									NutriDelights와 함께 <br />건강한 하루를 시작하세요!
 								</h2>
-								<a href="productList.do" class="primary-btn">SHOP NOW</a>
+								<a href="productList" class="primary-btn">SHOP NOW</a>
 							</div>
 						</div>
 					</div>

@@ -70,7 +70,7 @@
 				<div class="col-lg-9">
 					<div class="hero__search">
 						<div class="hero__categories">
-							<form action="searchActionProductList.do" method="get">
+							<form action="NDSearchQuery" method="get">
 								<div class="hero__categories_all">
 									<i class="fa fa-bars"></i> <span>정렬목록</span>
 								</div>
