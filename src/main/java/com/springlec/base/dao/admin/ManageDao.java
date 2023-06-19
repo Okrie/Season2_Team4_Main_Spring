@@ -21,7 +21,7 @@ public interface ManageDao {
     public int insertProductManage(String adminid, int stock, int price);
 
     // 데이터 수정하기 : admin_updateproduct.do
-    public int updateProductManage(String adminid, String pcode, int stock, int price);
+    public int updateProductManage(String pcode, String adminid,  int stock, int price);
 
     // 상품 관련 정보 삭제하기 : admin_deleteproduct.do
     public int deleteProductManage(String pcode);

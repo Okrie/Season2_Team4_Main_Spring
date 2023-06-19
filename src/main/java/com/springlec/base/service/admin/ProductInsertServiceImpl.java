@@ -2,11 +2,13 @@ package com.springlec.base.service.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.springlec.base.dao.admin.ManageDao;
 import com.springlec.base.dao.admin.ProductDao;
 
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class ProductInsertServiceImpl implements ProductInsertService {
 	
 	@Autowired
@@ -38,12 +40,12 @@ public class ProductInsertServiceImpl implements ProductInsertService {
 		
 		
 		if (pcode.equals("입력을 누르시면 자동 완성됩니다.")) {
-			productDao.insertProduct(name, category, rice, cook1, cook2, cook3, soup, photo,calories);
+			productDao.insertProduct(name, category, rice, cook1, cook2, cook3, soup, photo, calories);
 			manageDao.insertProductManage(adminid, stock, price);
 			return 1;
 		} else {
 			productDao.updateProduct(pcode, name, category, rice, cook1, cook2, cook3, soup, photo,calories);
-			manageDao.updateProductManage(adminid, pcode, stock, price);
+			manageDao.updateProductManage(pcode, adminid, stock, price);
 			return 1;
 		}
 	}
