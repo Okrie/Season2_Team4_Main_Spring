@@ -74,7 +74,7 @@
                                         </a> -->
                                     </form>
                                     <hr>
-                                    <a href="#" class="btn btn-kakao btn-user btn-block" onclick="kakao_loginbtn()">
+                                    <a href="/kakaoLogin" class="btn btn-kakao btn-user btn-block">
                                         <i class="fas fa-comment-dots fa-flip-horizontal"></i> Login with Kakao
                                     </a>
                                     <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
