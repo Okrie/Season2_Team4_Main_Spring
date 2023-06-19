@@ -145,6 +145,6 @@ public class NUserController {
 			e.printStackTrace();
 		}
 		session.invalidate();
-		return "/";
+		return "login";
 	}
 }

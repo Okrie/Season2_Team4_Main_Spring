@@ -149,7 +149,7 @@ function checkUser(getResult, getId){
 
 	if(getResult === user){
 		alert('환영합니다. ' + getId)
-		window.location.href = "main"
+		window.location.href = "/"
 	} else if(getResult === admin){
 		alert('안녕하세요, 관리자님')
 		window.location.href = "adminLogin"
