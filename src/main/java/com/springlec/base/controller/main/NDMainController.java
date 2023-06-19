@@ -89,5 +89,9 @@ public class NDMainController {
 		
 	}
 	
-
+	@RequestMapping("/productList")
+	public String productList() throws Exception {
+		return "productList";
+	}
+		
 }
