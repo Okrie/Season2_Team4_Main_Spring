@@ -35,7 +35,6 @@ public class BoardController {
 	// board_table.js 초기화
 	@RequestMapping("/adminSearchBoard")
 	public String list(Model model, HttpSession session) throws Exception {
-		session.setAttribute("ID", "root1");
 		ArrayList<ArrayList<String>> dataSetReview = reviewService.searchReview();
 		ArrayList<ArrayList<String>> dataSetBoard = boardService.searchBoard();
 		ArrayList<ArrayList<String>> dataSetNotice = noticeService.searchNotice();
@@ -51,7 +50,6 @@ public class BoardController {
 	// 쓰기
 	@PostMapping(value = "/adminInsertBoard", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String adminInsertBoard(@RequestBody String json, HttpSession session) throws Exception {
-		session.setAttribute("ID", "root1");
 		Gson gson = new Gson();
 		BoardDto boardDto = gson.fromJson(json, BoardDto.class);
 		BoardDto newseqDto = boardService.searchBoardseq();
@@ -70,7 +68,6 @@ public class BoardController {
 	// 삭제
 	@PostMapping(value = "/adminDeleteBoard", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String adminModifyBoard(@RequestBody String json, HttpSession session) throws Exception {
-		session.setAttribute("ID", "root1");
 		Gson gson = new Gson();
 		BoardDto boardDto = gson.fromJson(json, BoardDto.class);
 		int seq = boardDto.getSeq();
@@ -81,7 +78,6 @@ public class BoardController {
 	// 수정
 	@PostMapping(value = "/adminModifyBoard", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String adminDeleteBoard(@RequestBody String json, HttpSession session) throws Exception {
-		session.setAttribute("ID", "root1");
 		Gson gson = new Gson();
 		BoardDto boardDto = gson.fromJson(json, BoardDto.class);
 		int seq = boardDto.getSeq();
@@ -101,7 +97,6 @@ public class BoardController {
 	// 쓰기
 	@PostMapping(value = "/adminInsertReview", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String adminInsertReview(@RequestBody String json, HttpSession session) throws Exception {
-		session.setAttribute("ID", "root1");
 		Gson gson = new Gson();
 		ReviewDto reviewDto = gson.fromJson(json, ReviewDto.class);
 		ReviewDto newseqDto = reviewService.searchReviewseq();
@@ -119,7 +114,6 @@ public class BoardController {
 	// 삭제
 	@PostMapping(value = "/adminDeleteReview", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String adminModifyReview(@RequestBody String json, HttpSession session) throws Exception {
-		session.setAttribute("ID", "root1");
 		Gson gson = new Gson();
 		ReviewDto reviewDto = gson.fromJson(json, ReviewDto.class);
 		int seq = reviewDto.getSeq();
@@ -130,7 +124,6 @@ public class BoardController {
 	// 수정
 	@PostMapping(value = "/adminModifyReview", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String adminDeleteReview(@RequestBody String json, HttpSession session) throws Exception {
-		session.setAttribute("ID", "root1");
 		Gson gson = new Gson();
 		ReviewDto reviewDto = gson.fromJson(json, ReviewDto.class);
 		int seq = reviewDto.getSeq();
@@ -146,7 +139,6 @@ public class BoardController {
 	// 쓰기
 	@PostMapping(value = "/adminInsertNotice", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String adminInsertNotice(@RequestBody String json, HttpSession session) throws Exception {
-		session.setAttribute("ID", "root1");
 		Gson gson = new Gson();
 		NoticeDto noticeDto = gson.fromJson(json, NoticeDto.class);
 		NoticeDto newseqDto = noticeService.searchNoticeseq();
@@ -162,7 +154,6 @@ public class BoardController {
 	// 삭제
 	@PostMapping(value = "/adminDeleteNotice", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String adminModifyNotice(@RequestBody String json, HttpSession session) throws Exception {
-		session.setAttribute("ID", "root1");
 		Gson gson = new Gson();
 		NoticeDto noticeDto = gson.fromJson(json, NoticeDto.class);
 		int seq = noticeDto.getSeq();
@@ -173,7 +164,6 @@ public class BoardController {
 	// 수정
 	@PostMapping(value = "/adminModifyNotice", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String adminDeleteNotice(@RequestBody String json, HttpSession session) throws Exception {
-		session.setAttribute("ID", "root1");
 		Gson gson = new Gson();
 		NoticeDto noticeDto = gson.fromJson(json, NoticeDto.class);
 		int seq = noticeDto.getSeq();

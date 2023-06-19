@@ -24,14 +24,12 @@ public class MainController {
 
 	@RequestMapping("/adminLogin")
 	public String login(Model model, HttpSession session) throws Exception {
-		session.getAttribute("ID");
 
-		return "adminMain";
+		return "redirect:adminMain";
 	}
 
 	@RequestMapping("/adminMain")
 	public String list(HttpServletRequest request, Model model, HttpSession session) throws Exception {
-		session.setAttribute("ID", "root1");
 		
 		DecimalFormat formatter = new DecimalFormat("###,###");
 		
@@ -64,5 +62,11 @@ public class MainController {
 		request.setAttribute("ordersSales", Integer.toString(count));
 		request.setAttribute("dataSales", dataSales);
 		return "admin_main";
+	}
+	
+	@RequestMapping("/adminLogout")
+	public String logout(Model model, HttpSession session) throws Exception {
+		session.invalidate();
+		return "index";
 	}
 }
