@@ -81,7 +81,7 @@ $("#confirmInsert").on("click", function(e){
 				<h6 class="m-0 font-weight-bold text-primary">상품 등록</h6>
 			</div>
 			<div class="card-body">
-				<form action="admin_insertproduct.do" class="product" method="post"
+				<form action="adminInsertProduct" class="product" method="post"
 					enctype="multipart/form-data" id="product">
 					<div class="table-responsive">
 						<br />
