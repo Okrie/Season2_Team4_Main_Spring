@@ -30,20 +30,25 @@
 	<div class="container">
 		<div class="row">
 		<div class="col-lg-12">
+			<div class = "section-title">
+				<c:if test="${not empty searchAction }">
+					<h2>검색결과</h2>
+				</c:if>
+			</div>
 		<div class="row">
 		<c:forEach items="${searchAction}" var="dto" begin="0" end="29">
 				<div class="col-lg-3 col-md-4 col-sm-6 mix">
 					<div class="featured__item">
 						<div class="featured__item__pic set-bg" data-setbg="${dto.photo}">
 							<ul class="featured__item__pic__hover">
-								<li><a href="heart.do"><i class="fa fa-heart"></i></a></li>
-								<li><a href="#" onclick="NDCartInsertFn(${dto.pcode})"><i class="fa fa-shopping-cart"></i></a></li>
+								<li><a href="wishlist"><i class="fa fa-heart"></i></a></li>
+								<li><a href="cart" onclick="NDCartInsertFn(${dto.pcode})"><i class="fa fa-shopping-cart"></i></a></li>
 							</ul>
 						</div>
 						<div class="featured__item__text">
 							<h6>
 								<input type="hidden" name="name" value ="${dto.name}"><a href="#"></a>
-								<a href="productInformSend.do?pcode=${dto.pcode}">${dto.name}</a> 
+								<a href="productInformSend?pcode=${dto.pcode}">${dto.name}</a> 
 								<input type="hidden" name ="pcode" value ="${dto.pcode}">
 								<input type="hidden" name ="photo" value ="${dto.photo}">
 								
@@ -79,14 +84,15 @@
 					<div class="featured__item">
 						<div class="featured__item__pic set-bg" data-setbg="${dto.photo}">
 							<ul class="featured__item__pic__hover">
-								<li><a href="heart.do"><i class="fa fa-heart"></i></a></li>
-								<li><a href="#" onclick="cartInsertFn(${dto.pcode})"><i class="fa fa-shopping-cart"></i></a></li>
+								<li><a href="wishlist"><i class="fa fa-heart"></i></a></li>
+								<li><a href="cart" onclick="cartInsertFn(${dto.pcode})"><i class="fa fa-shopping-cart"></i></a></li>
+								<!--cart랑 wishlist랑 받아줄 이름이 뭔지 윤재한테 물어보기  -->
 							</ul>
 						</div>
 						<div class="featured__item__text">
 							<h6>
 								<input type="hidden" name="name" value ="${dto.name}"><a href="#"></a>
-								<a href="productInformSend.do?pcode=${dto.pcode}">${dto.name}</a> 
+								<a href="productInformSend?pcode=${dto.pcode}">${dto.name}</a> 
 								<input type="hidden" name ="pcode" value ="${dto.pcode}">
 								<input type="hidden" name ="photo" value ="${dto.photo}">
 								
@@ -97,24 +103,6 @@
 					</div>
 				</div>
 			</c:forEach>
-			<%-- <c:forEach items="${TakeAll }"var="item" begin="1" end="8">
-				<div class="col-lg-3 col-md-4 col-sm-6 fresh-meat">
-					<div class="featured__item">
-						<div class="featured__item__pic set-bg" data-setbg="${item.photo }">
-							<ul class="featured__item__pic__hover">
-								<li><a href="heart.do"><i class="fa fa-heart"></i></a></li>
-								<li><a href="cart.do"><i class="fa fa-shopping-cart"></i></a></li>
-							</ul>
-						</div>
-						<div class="featured__item__text">
-							<h6>
-								<input type="hidden" name="name" value ="${item.name}"><a href="#">"${item.name}"</a>
-							</h6>
-							<h5><input type="hidden" name="price" value ="${item.price}">"${item.name}"</h5>
-						</div>
-					</div>
-				</div>
-			</c:forEach> --%>
 		</div>
 	</div>
 </section>

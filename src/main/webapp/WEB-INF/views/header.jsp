@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./main.do"><img src="http://okrie.kro.kr:25567/images/logo.png" alt=""></a>
+                        <a href="/"><img src="http://okrie.kro.kr:25567/images/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -78,22 +78,22 @@
                         <ul>
                             <li class="active"><a href="/">Home</a></li>
                             <!-- <li><a href="./shop-grid.html">체험단</a></li> -->
-                            <li><a href="productList.do">상품구매</a>
+                            <li><a href="#">상품구매</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="subscribe.do">구독상품구매</a></li>
-                                    <li><a href="productList.do">일반상품구매</a></li>
+                                    <li><a href="subscribe">구독상품구매</a></li>
+                                    <li><a href="productList">일반상품구매</a></li>
                                 </ul>
                             </li>
-                            <li><a href="notice.do">고객센터</a></li>
+                            <li><a href="notice">고객센터</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="heart.do"><i class="fa fa-heart"></i> 
+                            <li><a href="wishlist"><i class="fa fa-heart"></i> 
                             <span>${sessionScope.heartCount}</span></a></li>
-                            <li><a href="cart.do"><i class="fa fa-shopping-bag"></i> 
+                            <li><a href="cart"><i class="fa fa-shopping-bag"></i> 
                             <span>${sessionScope.cartCount }</span></a></li>
                         </ul>
                         <div class="header__cart__price">총금액 <span>${sessionScope.cartTotalPrice}</span>원</div>
