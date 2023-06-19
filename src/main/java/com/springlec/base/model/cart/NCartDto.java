@@ -5,8 +5,8 @@ public class NCartDto {
 	String userid;
 	int seq;
 	String pcode;
-	String photo;
 	String name;
+	String photo;
 	int prince;
 	String count;
 	
@@ -14,13 +14,13 @@ public class NCartDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public NCartDto(String userid, int seq, String pcode, String photo, String name, int prince, String count) {
+	public NCartDto(String userid, int seq, String pcode, String name, String photo, int prince, String count) {
 		super();
 		this.userid = userid;
 		this.seq = seq;
 		this.pcode = pcode;
-		this.photo = photo;
 		this.name = name;
+		this.photo = photo;
 		this.prince = prince;
 		this.count = count;
 	}

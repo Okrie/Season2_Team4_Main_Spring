@@ -19,11 +19,13 @@ public class NCartController {
 	NCartService nCartService;
 	
 	@RequestMapping("/shoping-cart")
-	public String cartlist(Model model) throws Exception{
-		List<NCartDto> cartListDao = nCartService.cartListDao();
-		model.addAttribute("list", cartListDao);
-		return "shoping-cart";
+	public String cartlist(HttpServletRequest request, Model model) throws Exception {
+	    List<NCartDto> NcartListDao = nCartService.NcartListDao(); 
+	    model.addAttribute("shoping-cart", NcartListDao);
+	    return "redirect:shoping-cart";
 	}
+	
+/*
 	
 	@RequestMapping("/cartdelete")
 	public String cartdelete(HttpServletRequest request, Model model)throws Exception{
@@ -31,5 +33,5 @@ public class NCartController {
 		nCartService.cartDeleteDao(seq);
 		return "redirect:shoping-cart";
 	}
-	
+	*/
 }

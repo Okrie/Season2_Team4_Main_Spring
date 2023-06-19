@@ -18,17 +18,17 @@ public class NCartServiceImpl implements NCartService {
 	
 
 		@Override
-		public List<NCartDto> cartListDao() throws Exception {
+		public List<NCartDto> NcartListDao() throws Exception {
 			// TODO Auto-generated method stub
-			return nCartDao.cartListDao();
+			return nCartDao.NcartListDao();
 		}
 
 
-
+/*
 		@Override
 		public void cartDeleteDao(int seq) throws Exception {
 			// TODO Auto-generated method stub
 			nCartDao.cartDeleteDao(seq);
 		}
-		
+		*/
 }

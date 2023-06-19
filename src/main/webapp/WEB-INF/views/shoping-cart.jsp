@@ -29,138 +29,139 @@
 </head>
 
 <body>
+    <%@ include file="header.jsp"%>
 
-	<%@ include file="header.jsp"%>
-	
     <!-- Shoping Cart Section Begin -->
-<section class="shoping-cart spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <form id="deleteForm" action="cartdelete" method="post">
-                    <div class="shoping__cart__table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>상품사진</th>
-                                    <th>상품명</th>
-                                    <th>수량</th>
-                                    <th>가격</th>
-                                    <th>총가격</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:set var="totalPrice" value="0" />
-                                <c:forEach items="${list}" var="dto">
-                                    <input type="hidden" name="seq" value="${dto.seq}">
+    <section class="shoping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                
+                    <form id="deleteForm" action="cartdelete.do" method="post">
+                        <div class="shoping__cart__table">
+                            <table>
+                                <thead>
                                     <tr>
-                                        <td class="center-align" style="text-align: center;">
-                                            <input type="checkbox" name="pcode" value="${dto.pcode}" data-count="${dto.count}" data-price="${dto.price}" onchange="calculateTotalPrice()">
-                                        </td>
-                                        <td><input type="hidden" name="photo"><img src="${dto.photo}" alt="Product"></td>
-                                        <td><input type="hidden" name="name" value="${dto.name}">${dto.name}</td>
-                                        <td>${dto.count}</td>
-                                        <td><input type="hidden" name="price" value="${dto.price}">${dto.price}₩</td>
-                                        <td><input type="hidden" name="totalPrice" value="${dto.count * dto.price}"><span class="itemTotalPrice">${dto.count * dto.price}₩</span></td>
-                                        <td class="shoping__cart__item__close">
-                                            <span class="icon_close" onclick="location.href='cartdelete?seq=${dto.seq}'"></span>
-                                        </td>
+                                        <th></th>
+                                        <th>상품사진</th>
+                                        <th>상품명</th>
+                                        <th>수량</th>
+                                        <th>가격</th>
+                                        <th>총가격</th>
                                     </tr>
-                                    <c:set var="totalPrice" value="${totalPrice + (dto.count * dto.price)}" />
-                                </c:forEach>	
-                            </tbody>
-                        </table>
-                    </div>
-                </form> 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="shoping__cart__btns">
-                    <a href="#" class="primary-btn cart-btn cart-btn-right" onclick="window.location.href='main.do'">메인페이지</a>
+                                </thead>
+                                <tbody>
+                                        <c:forEach var="dto" items="${shoping-cart}">
+                                            <input type="hidden" name="userid" value="${dto.userid}">
+                                            <input type="hidden" name="seq" value="${dto.seq}">
+                                            <input type="hidden" name="pcode" value="${dto.pcode}">
+                                            <input type="hidden" id="count" name="count" value="${dto.count}">
+                                            <tr>
+                                                <td class="center-align" style="text-align: center;">
+                                                    <input type="checkbox" name="pcode" value="${dto.pcode}" data-count="${dto.count}" data-price="${dto.price}" data-seq="${dto.seq}" onchange="calculateTotalPrice()">
+                                                </td>
+                                                <td><input type="hidden" name="photo"><img src="${dto.photo}" alt="Product"></td>
+                                                <td><input type="hidden" name="name" value="${dto.name}">${dto.name}</td>
+                                                <td>${dto.count}</td>
+                                                <td><input type="hidden" name="price" value="${dto.price}">${dto.price}₩</td>
+                                                <td><input type="hidden" name="totalPrice" value="${dto.count * dto.price}"><span class="itemTotalPrice">${dto.count * dto.price}₩</span></td>
+                                                <td class="shoping__cart__item__close">
+                                                    <span class="icon_close" onclick="deleteItem(${dto.seq})"></span>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                              
+                                </tbody>
+                            </table>
+                        </div>
+                    </form> 
                 </div>
             </div>
-            <div class="col-lg-12">
-                <form action="orders.do" method="post">
-                    <div class="shoping__checkout">
-                        <h5>카트 총 상품가격</h5>
-                        <ul>
-                            <li>총 주문가격 <span id="totalPriceDisplay">${totalPrice}₩</span></li>
-                            <li>총 상품가격 <span>${totalPrice}₩</span></li>
-                        </ul>    
-                        <a href="#" class="primary-btn" onclick="submitForm('orders.do')">결제페이지로</a>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__btns">
+                        <a href="#" class="primary-btn cart-btn cart-btn-right" onclick="window.location.href='main.do'">메인페이지</a>
                     </div>
-                </form>
+                    <div class="shoping__checkout">
+                        <h5>총 상품가격</h5>
+                        <ul>
+                            <li>합계 <span id="totalPriceDisplay">0₩</span></li>
+                        </ul>    
+                        <a href="#" class="primary-btn" onclick="submitForm('orders.do'); return false;">결제페이지로</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-<script>
-function calculateTotalPrice() {
-	  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-	  var totalPrice = 0;
-
-	  checkboxes.forEach(function(checkbox) {
-	    var count = checkbox.dataset.count;
-	    var price = checkbox.dataset.price;
-	    var numericPrice = parseInt(price.replace(/[^0-9]/g, ''));
-	    var itemTotalPrice = count * numericPrice;
-
-	    var row = checkbox.parentNode.parentNode;
-	    var totalCell = row.querySelector('.itemTotalPrice');
-	    totalCell.textContent = itemTotalPrice.toLocaleString('en-US', { useGrouping: false }) + '₩';
-
-	    totalPrice += itemTotalPrice;
-	  });
-
-	  var totalPriceDisplay = document.getElementById('totalPriceDisplay');
-	  totalPriceDisplay.innerHTML = totalPrice.toLocaleString('en-US', { useGrouping: false }) + '₩';
-	}
+    </section>
 
 
-function submitForm(action) {
-  // 체크된 체크박스 요소들을 선택합니다.
-  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    <script>
+    function calculateTotalPrice() {
+    	  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    	  var totalPrice = 0;
 
-  // 선택된 체크박스들을 반복하며 정보를 저장할 객체를 생성합니다.
-  var data = [];
-  
-  checkboxes.forEach(function(checkbox) {
-    // 필요한 정보들을 추출하여 객체에 저장합니다.
-    var pcode = checkbox.value;
-    var count = checkbox.dataset.count;
-    var item = {
-      pcode: pcode,
-      count: count
-    };
+    	  checkboxes.forEach(function (checkbox) {
+    	    var count = parseInt(checkbox.dataset.count, 10);
+    	    var price = parseFloat(checkbox.dataset.price);
+    	    var itemTotalPrice = count * price;
 
-    // 객체를 배열에 추가합니다.
-    data.push(item);
-  });
+    	    var row = checkbox.parentNode.parentNode;
+    	    var totalCell = row.querySelector('.itemTotalPrice');
+    	    totalCell.textContent = itemTotalPrice.toLocaleString('en-US', { useGrouping: false }) + '₩';
 
-  // 저장한 정보를 문자열로 변환하여 쿼리스트링 형식으로 만듭니다.
-  var queryString = '';
-  data.forEach(function(item, index) {
-    var prefix = (index === 0) ? '?' : '&';
-    queryString += prefix + 'pcode=' + encodeURIComponent(item.pcode);
-    queryString += '&count=' + encodeURIComponent(item.count);
-  });
+    	    totalPrice += itemTotalPrice;
+    	  });
 
-  // 최종적으로 action과 생성된 쿼리스트링을 합쳐서 이동합니다.
-  window.location.href = action + queryString;
-}
+    	  var totalPriceDisplay = document.getElementById('totalPriceDisplay');
+    	  totalPriceDisplay.innerHTML = totalPrice.toLocaleString('en-US', { useGrouping: false }) + '₩';
+    	}
 
-// 페이지 로드 후 총 상품가격 계산을 한번 수행합니다.
-calculateTotalPrice();
-</script>
 
+
+    function deleteItem(seq) {
+        if (confirm("해당 상품을 장바구니에서 삭제하시겠습니까?")) {
+            var deleteForm = document.getElementById('deleteForm');
+            deleteForm.action = 'cartdelete.do?seq=' + seq;
+            deleteForm.submit();
+        }
+    }
+
+    function submitForm(action) {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        var data = [];
+
+        checkboxes.forEach(function(checkbox) {
+            var pcode = checkbox.value;
+            var count = checkbox.dataset.count;
+            var price = checkbox.dataset.price;
+            var seq = checkbox.dataset.seq;
+            var item = {
+                pcode: pcode,
+                count: count,
+                price: price,
+                seq: seq
+            };
+
+            data.push(item);
+        });
+
+        var queryString = '';
+        data.forEach(function(item, index) {
+            var prefix = (index === 0) ? '?' : '&';
+            queryString += prefix + 'pcode=' + encodeURIComponent(item.pcode);
+            queryString += '&count=' + encodeURIComponent(item.count);
+            queryString += '&price=' + encodeURIComponent(item.price);
+            queryString += '&seq=' + encodeURIComponent(item.seq);
+        });
+
+        window.location.href = action + queryString;
+    }
+
+    calculateTotalPrice();
+    </script>
 
     <!-- Footer Section Begin -->
-   
    	<%@ include file="footer.jsp"%>
-   
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
@@ -172,8 +173,6 @@ calculateTotalPrice();
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-
-
 </body>
 
 </html>
