@@ -382,7 +382,7 @@ $("#confirmInsert").on("click", function(e){
 	                allowOutsideClick: false,
 	                allowEscapeKey: false
 	            }).then(() => {
-	                window.location.href = "admin_deleteproduct.do?invalidate=${invalidate}&pcode=${pcode}";
+	                window.location.href = "adminUpdateProduct?invalidate=${dataSetProduct[0].invalidate}&pcode=${dataSetProduct[0].pcode}";
 	            });
 	        }
 	    });
