@@ -23,7 +23,7 @@ public class OrdersGraphServiceImpl implements OrdersGraphService {
 	@Override
 	public ArrayList<ArrayList<String>> searchOrdersProduct() throws Exception {
 		// TODO Auto-generated method stub
-		ArrayList<ProductDto> dtoProduct = productDao.searchOrders();
+		ArrayList<ProductDto> dtoProduct = productDao.searchOrdersProduct();
 		ArrayList<ArrayList<String>> dataSetProduct = new ArrayList<ArrayList<String>>();
 		ArrayList<String> headerRow = new ArrayList<String>();
 		headerRow.add("'음식 이름'");

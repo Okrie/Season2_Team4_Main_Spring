@@ -14,7 +14,7 @@ public class ProductDaoImpl implements ProductDao {
 	public static String namespace = "com.springlec.base.dao.admin.ProductDao";
 
 	@Override
-	public ArrayList<ProductDto> searchOrders() throws Exception {
+	public ArrayList<ProductDto> searchOrdersProduct() throws Exception {
 		// TODO Auto-generated method stub
 		List<ProductDto> resultList = sqlsession.selectList(namespace + ".searchOrdersProduct");
 		ArrayList<ProductDto> productList = new ArrayList<>(resultList);

@@ -102,8 +102,8 @@
 	
 	<select id="searchWeekorders" resultType="com.springlec.base.model.admin.OrdersDto">
   	SELECT
-    	DATE(dates.date) AS date,
-    	IFNULL(COUNT(orders.orderdate), 0) AS ordercount
+    	DATE(dates.date) AS orderdate,
+    	IFNULL(COUNT(orders.orderdate), 0) AS count
   	FROM
     	(SELECT
       	CURDATE() - INTERVAL (a.a + (10 * b.a) + (100 * c.a)) DAY AS date
