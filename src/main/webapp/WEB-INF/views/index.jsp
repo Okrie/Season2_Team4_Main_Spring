@@ -197,7 +197,7 @@
         </div>
     </div> -->
 	<!-- Banner End -->
-	<%@ include file="productView.jsp"%>
+	<%@ include file="productViewIndex.jsp"%>
 	<!-- Latest Product Section Begin -->
 	<!-- <section class="latest-product spad">
         <div class="container">
