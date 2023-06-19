@@ -1,4 +1,3 @@
-<%@page import="com.javalec.bbs.dto.NDOrdersDto_OKH"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -32,17 +31,17 @@
 
 <!--get attribute from java  -->
 <%
-ArrayList<ArrayList<String>> dataSetup = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetup");
-ArrayList<ArrayList<String>> dataSetbelow = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetbelow");
+ArrayList<ArrayList<String>> dataSetProduct = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetProduct");
+ArrayList<ArrayList<String>> dataSetOrders = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetOrders");
 %>
 
 <script type="text/javascript">
 	$(document).ready(function() {
 		var dataSetup =
-<%=dataSetup%>
+<%=dataSetProduct%>
 	;
 		var dataSetbelow =
-<%=dataSetbelow%>
+<%=dataSetOrders%>
 	;
 		dataConnect(dataSetup, dataSetbelow);
 	});

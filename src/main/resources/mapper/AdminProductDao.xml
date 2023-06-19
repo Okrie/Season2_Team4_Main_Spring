@@ -16,7 +16,7 @@
 	</select>
 	
 	<!--테이블 상품 관련 정보 불러오기 : adminSearchProduct -->
-	<select id="searchProductProduct"
+	<select id="searchProduct"
 		resultType="com.springlec.base.model.admin.ProductDto">
 		SELECT *
 		FROM product
@@ -24,7 +24,7 @@
 	</select>
 
 	<!--업데이트관련 상품 관련 정보 불러오기 : adminFindProduct -->
-	<select id="findProductProduct"
+	<select id="findProduct"
 		resultType="com.springlec.base.model.admin.ProductDto">
 		SELECT *
 		FROM product
@@ -32,7 +32,7 @@
 	</select>
 
 	<!--데이터 입력 하기 : adminInsertProduct  -->
-	<insert id="insertProductProduct">
+	<insert id="insertProduct">
 		INSERT INTO product (pcode,
 		name, category, rice, cook1,
 		cook2, cook3, soup, photo,
@@ -45,7 +45,7 @@
 	</insert>
 
 	<!--데이터 입력 하기 : adminUpdateProduct  -->
-	<update id="updateProductProduct">
+	<update id="updateProduct">
 		UPDATE product SET name = #{name}, category = #{category}, rice = #{rice},
 		cook1 = #{cook1}, cook2 = #{cook2}, cook3 = #{cook3}, 
 		soup = #{soup}, photo = #{photo}, calories = #{calories} 

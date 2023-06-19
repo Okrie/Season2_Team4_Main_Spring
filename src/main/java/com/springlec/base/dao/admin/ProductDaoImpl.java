@@ -16,7 +16,7 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public ArrayList<ProductDto> searchOrders() throws Exception {
 		// TODO Auto-generated method stub
-		List<ProductDto> resultList = sqlsession.selectList(namespace + ".searchOrders");
+		List<ProductDto> resultList = sqlsession.selectList(namespace + ".searchOrdersProduct");
 		ArrayList<ProductDto> productList = new ArrayList<>(resultList);
 		return productList;
 	}
@@ -48,7 +48,7 @@ public class ProductDaoImpl implements ProductDao {
 	public int updateProduct(String pcode, String name, String category, String rice, String cook1, String cook2,
 			String cook3, String soup, String photo, int calories) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlsession.update(namespace + ".insertProduct");
+		return sqlsession.update(namespace + ".updateProduct");
 	}
 
 	@Override
