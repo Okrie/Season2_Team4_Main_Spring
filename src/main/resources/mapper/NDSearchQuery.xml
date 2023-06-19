@@ -4,7 +4,7 @@
 
 <mapper namespace="com.springlec.base.dao.main.NDSearchQueryDao">
 
-	<select id="NDSearchQuery" resultType="com.springlec.base.model.main.NDSearchQueryDto">
+	<select id="NDSearchQuery" resultType="com.springlec.base.model.main.NDProductListDto">
 		SELECT * FROM product p, manage m 
 		WHERE p.pcode = m.pcode AND name LIKE CONCAT('%', #{name}, '%')
 	</select>

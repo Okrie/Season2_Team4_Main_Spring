@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springlec.base.model.main.NDProductListDto;
-import com.springlec.base.model.main.NDSearchQueryDto;
 import com.springlec.base.service.main.NDHeaderCountDaoService;
 import com.springlec.base.service.main.NDMainDaoService;
 import com.springlec.base.service.main.NDSearchQueryDaoService;
@@ -82,8 +82,8 @@ public class NDMainController {
 
 	//NDSearchQuery영역
 	@RequestMapping("/NDSearchQuery")
-	public String list(HttpServletRequest request, Model model) throws Exception{
-		List<NDSearchQueryDto> NDSearchQuery = searchQueryDaoService.NDSearchQuery();
+	public String list(HttpServletRequest request,@RequestParam("name") String name, Model model) throws Exception{
+		List<NDProductListDto> NDSearchQuery = searchQueryDaoService.NDSearchQuery(name);
 		model.addAttribute("searchAction", NDSearchQuery);
 		return "productList";
 		

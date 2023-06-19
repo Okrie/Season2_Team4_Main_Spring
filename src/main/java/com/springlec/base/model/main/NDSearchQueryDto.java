@@ -27,6 +27,13 @@ public class NDSearchQueryDto {
 		this.cook3 = cook3;
 		this.soup = soup;
 	}
+	
+	
+
+	public NDSearchQueryDto(String name) {
+		super();
+		this.name = name;
+	}
 
 	public String getName() {
 		return name;
