@@ -93,7 +93,7 @@ String ID = (String) sessions.getAttribute("ID");
 				aria-labelledby="headingPages" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">상세 메뉴:</h6>
-					<a class="collapse-item" href="adminSearchproduct.do">상품 목록</a> <a
+					<a class="collapse-item" href="adminSearchProduct">상품 목록</a> <a
 						class="collapse-item" href="admin_product_insert.jsp">상품 등록</a>
 				</div>
 			</div></li>
