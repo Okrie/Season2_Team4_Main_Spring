@@ -36,7 +36,7 @@ public class NDMainController {
 		List<NDProductListDto> NDTakeAll = mainDaoService.NDTakeAll();
 		session = request.getSession();
 		
-		session.setAttribute("TakeAll", NDTakeAll);
+		session.setAttribute("NDTakeAll", NDTakeAll);
 		return "redirect:NDHeaderCount";
 	}
 	
