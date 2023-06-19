@@ -29,13 +29,12 @@ public class NDMainController {
 	
 	//제품 전부 출력
 	@RequestMapping("/NDTakeAll")
-	public String NDTakeAll(Model model) throws Exception{
-		
+	public String NDTakeAll(HttpServletRequest request, Model model) throws Exception{
 		List<NDProductListDto> NDTakeAll = mainDaoService.NDTakeAll();
+		session = request.getSession();
 		
-		model.addAttribute("NDTakeAll", NDTakeAll);
-		
-		return "NDTakeAll";
+		session.setAttribute("TakeAll", NDTakeAll);
+		return "redirect:NDHeaderCount";
 	}
 	
 	/*
@@ -44,12 +43,22 @@ public class NDMainController {
 	 */
 	@RequestMapping("/NDHeaderCount")
 	public String heartCount(HttpServletRequest request, Model model) throws Exception{
-		session.getAttribute("userid");
+		session = request.getSession();
+		String userid = (String) session.getAttribute("ID");
 		
-		int heartCount = headerCountDaoService.heartCountDao("userid");
-		int cartCount = headerCountDaoService.cartCountDao("userid");
-		int cartTotalPrice = headerCountDaoService.cartTotalPriceDao("userid");
-		String remainDate = headerCountDaoService.remainDateDao("userid");
+		int heartCount = 0;
+		int cartCount = 0;
+		int cartTotalPrice = 0;
+		String remainDate = "";
+		
+		if(userid != null) {
+
+			heartCount = headerCountDaoService.heartCountDao("userid");
+			cartCount = headerCountDaoService.cartCountDao("userid");
+			cartTotalPrice = headerCountDaoService.cartTotalPriceDao("userid");
+			
+			remainDate = headerCountDaoService.remainDateDao("userid");
+		}
 		
 		model.addAttribute("heartCount", heartCount);
 		model.addAttribute("cartCount", cartCount);
@@ -63,18 +72,12 @@ public class NDMainController {
 		
 
 		
-		return "redirect:header";
+		return "redirect:/index";
 		
 		
 	}//headerCountEnd
 	
 	
-	@RequestMapping("/main")
-	public String mainView(HttpServletRequest request, Model model) throws Exception{
-		List<NDProductListDto> dto = mainDaoService.NDTakeAll();
-		model.addAttribute("TakeAll", dto);
-		return "index";
-	}
 	
 	
 
