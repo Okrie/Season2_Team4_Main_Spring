@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.springlec.base.dao.orders.NOrdersDao">
+
+		<select id="productInfoDao" resultType="com.springlec.base.model.orders.NOrdersDto">
+		
+		SELECT p.name, p.photo, m.price FROM product p INNER JOIN manage m ON p.pcode = m.pcode WHERE p.pcode = #{pcode}
+		
+		</select>
+		
+		
+		
+		<select id="userInfoDao" resultType="com.springlec.base.model.orders.NOrdersDto">
+		
+		 SELECT name, telno, address, email from user where userid = #{userid}
+		
+		</select>
+		
+		
+		
+		<insert id="insertOrdersDao">
+		
+		 Insert into orders (userid, pcode, count, address, orderdate) values(#{userid},#{pcode},#{count},#{address},now())
+		
+		</insert>
+		
+		
+		
+		<select id="cartOrdersDao" resultType="com.springlec.base.model.orders.NOrdersDto">
+		
+		SELECT pr.photo, pr.name, c.count, m.price, c.seq FROM user u JOIN cart c ON u.userid = c.userid JOIN product pr ON c.pcode = pr.pcode JOIN manage m ON pr.pcode = m.pcode WHERE pr.pcode = #{pcode}
+		
+		</select>
+
+</mapper>

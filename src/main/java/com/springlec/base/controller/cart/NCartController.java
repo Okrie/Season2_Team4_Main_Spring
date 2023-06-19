@@ -20,11 +20,9 @@ public class NCartController {
 	
 	@RequestMapping("/shoping-cart")
 	public String cartlist(Model model) throws Exception{
-		
 		List<NCartDto> cartListDao = nCartService.cartListDao();
-		model.addAttribute("shoping-cart", cartListDao);
+		model.addAttribute("list", cartListDao);
 		return "shoping-cart";
-		
 	}
 	
 	@RequestMapping("/cartdelete")
