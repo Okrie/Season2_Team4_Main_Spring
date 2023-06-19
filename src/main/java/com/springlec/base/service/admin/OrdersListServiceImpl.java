@@ -92,4 +92,12 @@ public class OrdersListServiceImpl implements OrdersListService {
 		return dtoManage.getStock();
 	}
 
+
+	@Override
+	public ArrayList<OrdersDto> searchupdate(int ordercode) throws Exception {
+		// TODO Auto-generated method stub
+		ArrayList<OrdersDto> dtoOrders = ordersDao.searchupdate(ordercode);
+		return dtoOrders;
+	}
+
 }

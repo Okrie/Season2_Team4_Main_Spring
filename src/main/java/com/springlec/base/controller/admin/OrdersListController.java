@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.springlec.base.model.admin.OrdersDto;
 import com.springlec.base.service.admin.OrdersListService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,7 +30,7 @@ public class OrdersListController {
 	@RequestMapping("/adminUpdateorders")
 	public String searchUpdate(HttpServletRequest request, Model model) throws Exception {
 		int ordercode = Integer.parseInt(request.getParameter("ordercode"));
-		ArrayList<ArrayList<String>> dtoOrders = orderService.searchOrders();
+		ArrayList<OrdersDto> dtoOrders = orderService.searchupdate(ordercode);
 		String Refunddate = orderService.searchUpdateRefunddate(ordercode);
 		String Deliverydate = orderService.searchUpdateDeliverydate(ordercode);
 		int Stock = orderService.searchUpdateStock(ordercode);
