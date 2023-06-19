@@ -5,6 +5,7 @@ import java.io.File;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,9 +35,14 @@ public class ProductInsertController {
 		int calories = Integer.parseInt(request.getParameter("calories"));
 
 		if (!file.isEmpty()) {
-			String fileName = file.getOriginalFilename();
-			photo = "static/img/" + fileName;
-			File uploadedFile = new File(photo);
+			String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+			photo = "img/" + fileName;
+			String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/img/"; // 저장할 경로 설정
+			File uploadPathDir = new File(uploadDir);
+			if (!uploadPathDir.exists()) {
+				uploadPathDir.mkdirs(); // 경로가 존재하지 않으면 생성합니다.
+			}
+			File uploadedFile = new File(uploadDir + fileName);
 			file.transferTo(uploadedFile);
 		}
 		
