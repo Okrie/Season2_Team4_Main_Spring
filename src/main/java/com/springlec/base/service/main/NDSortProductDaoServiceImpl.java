@@ -1,0 +1,24 @@
+package com.springlec.base.service.main;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.springlec.base.dao.main.NDSortProductDao;
+import com.springlec.base.model.main.NDSortProductDto;
+
+@Service
+public class NDSortProductDaoServiceImpl implements NDSortProductDaoService {
+
+	@Autowired
+	NDSortProductDao dao;
+	
+	@Override
+	public List<NDSortProductDto> NDSortProductListAll() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.NDSortProductListAll();
+	}
+
+
+}

@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springlec.base.model.main.NDProductListDto;
+import com.springlec.base.model.main.NDSortProductDto;
 import com.springlec.base.service.main.NDHeaderCountDaoService;
 import com.springlec.base.service.main.NDMainDaoService;
 import com.springlec.base.service.main.NDSearchQueryDaoService;
+import com.springlec.base.service.main.NDSortProductDaoService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -30,6 +32,9 @@ public class NDMainController {
 	@Autowired
 	NDSearchQueryDaoService searchQueryDaoService;
 	
+	@Autowired
+	NDSortProductDaoService sortProductDaoService;
+	
 	//제품 전부 출력
 	@RequestMapping("/NDTakeAll")
 	public String NDTakeAll(HttpServletRequest request, Model model) throws Exception{
@@ -45,7 +50,7 @@ public class NDMainController {
 	 * userid를 가져와서 heartCount, cartCount, cartTotalPrice의 역할을 한다.
 	 */
 	@RequestMapping("/NDHeaderCount")
-	public String heartCount(HttpServletRequest request, Model model) throws Exception{
+	public String headerCount(HttpServletRequest request, Model model) throws Exception{
 		session = request.getSession();
 		String userid = (String) session.getAttribute("ID");
 		
@@ -89,9 +94,21 @@ public class NDMainController {
 		
 	}
 	
+	//ProductList로 연결만 시켜줌
 	@RequestMapping("/productList")
 	public String productList() throws Exception {
 		return "productList";
 	}
 		
+	
+	
+	//정렬목록 중 모든제품 출력
+	@RequestMapping("/NDSortProductListAll")
+	public String NDSortProductListAll(HttpServletRequest request, Model model) throws Exception{
+		List<NDSortProductDto> NDSortProductListAll = sortProductDaoService.NDSortProductListAll();
+		session = request.getSession();
+		
+		session.setAttribute("NDSortProductListAll", NDSortProductListAll);
+		return "redirect:productList";
+	}
 }

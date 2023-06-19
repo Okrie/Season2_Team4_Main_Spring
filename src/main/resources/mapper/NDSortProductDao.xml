@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springlec.base.dao.main.NDSortProductDao">
+
+	<!--Sort productListAll ==>모든상품 -->
+	<select id = "NDSortProductListAll" resultType="com.springlec.base.model.main.NDSortProductDto">
+		SELECT p.pcode, p.name, m.price, p.photo, p.calories 
+		FROM product p, manage m 
+		WHERE p.pcode = m.pcode AND m.invalidate = '1'
+	</select>
+	
+	<!--Sort productListCal ==>칼로리낮은순  -->
+
+
+	<!--Sort productListHighPrice ==>높은 가격순 -->
+
+
+	<!--Sort productListLowPrice ==>낮은 가격순  -->
+	
+	
+</mapper>
