@@ -148,7 +148,7 @@
 	</section>
 	<!-- Categories Section End -->
 
-	<%@ include file="productView.jsp"%>
+	<%@ include file="productViewProductList.jsp"%>
 
 	<!-- Banner Begin -->
 	<!-- <div class="banner">
