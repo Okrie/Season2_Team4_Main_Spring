@@ -68,24 +68,22 @@
 	<select id="searchInsertdate"
 		resultType="com.springlec.base.model.admin.UserDto">
 		SELECT 
-			dates.date, 
-			COALESCE(counts.count, 0) AS count
+    		dates.date, 
+   		COALESCE(counts.count, 0) AS count
 		FROM (
-		SELECT DATE(DATE_SUB(CURDATE(), INTERVAL (n.num) DAY)) AS date
-		FROM (
-		SELECT 0 AS num UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT
-		3 UNION ALL
-		SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6
-		) AS n
+    	SELECT DATE(DATE_SUB(CURDATE(), INTERVAL (n.num) DAY)) AS date
+    	FROM (
+        	SELECT 0 AS num UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL
+        	SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6
+    	) AS n
 		) AS dates
 		LEFT JOIN (
-		SELECT DATE(insertdate) AS date, COUNT(*) AS count
-		FROM user
-		WHERE insertdate &gt;= DATE_SUB(CURDATE(), INTERVAL 1 WEEK)
-		AND invalidate
-		= 1
-		GROUP BY DATE(insertdate)
+    	SELECT DATE(insertdate) AS date, COUNT(*) AS count
+    	FROM user
+    	WHERE insertdate >= DATE_SUB(CURDATE(), INTERVAL 1 WEEK)
+    	GROUP BY DATE(insertdate)
 		) AS counts ON dates.date = counts.date
 		ORDER BY dates.date
+
 	</select>
 </mapper>
