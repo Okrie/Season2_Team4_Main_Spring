@@ -64,9 +64,4 @@ public class MainController {
 		return "admin_main";
 	}
 	
-	@RequestMapping("/adminLogout")
-	public String logout(Model model, HttpSession session) throws Exception {
-		session.invalidate();
-		return "index";
-	}
 }

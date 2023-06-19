@@ -184,7 +184,7 @@ String ID = (String) sessions.getAttribute("ID");
 						<div class="modal-footer">
 							<button class="btn btn-secondary" type="button"
 								data-dismiss="modal">취소</button>
-							<a class="btn btn-primary" href="adminLogout">로그아웃 후, 메인페이지로
+							<a class="btn btn-primary" href="logout">로그아웃 후, 메인페이지로
 								돌아갑니다.</a>
 						</div>
 					</div>
