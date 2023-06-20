@@ -34,14 +34,9 @@
 	src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="admin/js/user_table.js"></script>
 <!--get attribute from java  -->
-<%
-ArrayList<ArrayList<String>> dataSetUser = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetUser");
-%>
 <script type="text/javascript">
 	$(document).ready(function() {
-		var dataSetUser =
-<%=dataSetUser%>
-	;
+		var dataSetUser =<%=(ArrayList<ArrayList<String>>) request.getAttribute("dataSetUser")%>;
 
 		dataConnect(dataSetUser);
 	});

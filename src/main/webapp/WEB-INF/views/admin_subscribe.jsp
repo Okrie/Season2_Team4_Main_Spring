@@ -37,14 +37,9 @@
 	src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="admin/js/subscribe_table.js"></script>
 <!--get attribute from java  -->
-<%
-ArrayList<ArrayList<String>> dataSetSubscribe = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetSubscribe");
-%>
 <script type="text/javascript">
 	$(document).ready(function() {
-		var dataSetSubscribe =
-<%=dataSetSubscribe%>
-	;
+		var dataSetSubscribe =<%= (ArrayList<ArrayList<String>>) request.getAttribute("dataSetSubscribe")%>	;
 		dataConnect(dataSetSubscribe);
 	});
 </script>
