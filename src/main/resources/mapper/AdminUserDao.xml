@@ -60,8 +60,7 @@
 		END
 		WHERE invalidate = 1
 		GROUP BY age_ranges.age_group
-		ORDER BY FIELD(age_ranges.age_group, '20대 미만', '20대', '30대', '40대', '50대',
-		'60대 이상')
+		ORDER BY count DESC
 	</select>
 
 	<!-- 유저의 가입자 추이 불러오기 : admin_graphusers.do -->
