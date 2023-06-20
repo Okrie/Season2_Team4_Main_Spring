@@ -73,6 +73,6 @@ public class NSosialLoginController {
 		String wkResult = result == 1 ? "user" : "admin";
 		session.setAttribute("login", wkResult);
 		session.setAttribute("ID", userid);
-		return "redirect:/login";
+		return "/login";
 	}
 }

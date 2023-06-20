@@ -89,29 +89,6 @@ public class NUserController {
 		return Integer.parseInt(temp);
 	}
 	
-	// User Mypage
-	@RequestMapping("/mypage")
-	public String mypageView() throws Exception{
-		
-		return "mypage";
-	}
-	
-	// UserInfo Detail
-	@RequestMapping("/mypageDetail")
-	public String mypageDetail(HttpServletRequest request, Model model) throws Exception{
-		HttpSession session = request.getSession();
-		List<NUserLoginDto> dto = service.userInfo((String) session.getAttribute("ID"));
-		model.addAttribute("userinfo", dto);
-		return "mypageDetail";
-	}
-	
-	// mypage update
-	@RequestMapping("/userinfoupdate")
-	public String mypageUpdate(NUserLoginDto dto) throws Exception{
-		service.myPageUpdate(dto);
-		return "mypage";
-	}
-	
 	// Logout
 	@RequestMapping("/logout")
 	public String userLogout(HttpServletRequest request) throws Exception{
