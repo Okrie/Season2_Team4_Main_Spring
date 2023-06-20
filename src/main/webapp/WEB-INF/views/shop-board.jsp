@@ -101,15 +101,15 @@ function checkOrder(event) {
 						<div class="hero__text">
 							<table>
 								<tr>
-									<td><img src="http://okrie.kro.kr:25567/images/main/product/test1.jpg" alt="Product 3"></td>
-									<td><span>Product Info</span>
+									<td><img src="${list.photo}" alt="Product 3"></td>
+									<td><span>상품 정보</span>
 										<p>
-										<h6>불고기세트</h6>
+										<h6>${list.name}</h6>
 										</p>
 										<p>
-										<h4>가격 : 7000 </h4>
+										<h4>가격 : ${list.price} </h4>
 										</p>
-										<p>칼로리 : 250 </p>
+										<p>칼로리 : ${list.calories} </p>
 
 										<div class="quantity">
 											수량 : 
@@ -119,8 +119,8 @@ function checkOrder(event) {
 											<script>
 												var qty = document.getElementById("qty").value;
 											</script>
-											<a href="orders.do?pcode=10&count=2" class="primary-btn">Buy Now</a> 
-											<a href="#" class="primary-btn" onclick="cartInsertFn(10)">Add Cart</a>
+											<a href="orders?pcode=10&count=2" class="primary-btn">Buy Now</a> 
+											<a href="#" class="primary-btn" onclick="cartInsertFn(${qty})">Add Cart</a>
 										</div></td>
 								</tr>
 							</table>
