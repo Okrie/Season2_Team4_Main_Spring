@@ -38,22 +38,19 @@
 
 <!--get attribute from java  -->
 <%
-ArrayList<ArrayList<String>> dataSales = (ArrayList<ArrayList<String>>) request.getAttribute("dataSales");
 String monthSales = (String) request.getAttribute("monthSales");
-String subscribeSales = (String) request.getAttribute("subscribeSales");
-String ordersSales = (String) request.getAttribute("ordersSales");
 %>
 
 <script type="text/javascript">
 	$(document).ready(function() {
 		var dataSales =
-<%=dataSales%>
+<%=(ArrayList<ArrayList<String>>) request.getAttribute("dataSales")%>
 	;
 		var subscribeSales =
-<%=subscribeSales%>
+<%=(String) request.getAttribute("subscribeSales")%>
 	;
 		var ordersSales =
-<%=ordersSales%>
+<%=(String) request.getAttribute("ordersSales")%>
 	;
 		dataConnect(dataSales, subscribeSales, ordersSales);
 	});
@@ -121,7 +118,7 @@ String ordersSales = (String) request.getAttribute("ordersSales");
 			<!-- Earnings (Monthly) Card Example -->
 			<div class="col-xl-3 col-md-6 mb-4" >
 				<div class="card border-left-info shadow h-100 py-2">
-					<div class="card-body" onclick="redirectToURL('admin_searchorders.do')">
+					<div class="card-body" onclick="redirectToURL('adminSearchorders')">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
 								<div
@@ -151,7 +148,7 @@ String ordersSales = (String) request.getAttribute("ordersSales");
 			<!-- Pending Requests Card Example -->
 			<div class="col-xl-3 col-md-6 mb-4">
 				<div class="card border-left-warning shadow h-100 py-2">
-					<div class="card-body" onclick="redirectToURL('admin_searchsubscribe.do')">
+					<div class="card-body" onclick="redirectToURL('adminSearchsubscribe')">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
 								<div
