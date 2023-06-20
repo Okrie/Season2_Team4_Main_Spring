@@ -27,4 +27,7 @@ public class OrdersDto {
 	int monthSales;
 	int todo;
 	
+	String email;
+	String name;
+	
 }

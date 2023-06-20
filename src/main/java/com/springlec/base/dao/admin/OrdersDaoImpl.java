@@ -82,4 +82,12 @@ public class OrdersDaoImpl implements OrdersDao {
 		return ordersList;
 	}
 
+	@Override
+	public ArrayList<OrdersDto> searchEmail(int ordercode) throws Exception {
+		// TODO Auto-generated method stub
+		List<OrdersDto> resultList = sqlsession.selectList(namespace + ".searchEmail", ordercode);
+		ArrayList<OrdersDto> ordersList = new ArrayList<>(resultList);
+		return ordersList;
+	}
+
 }
