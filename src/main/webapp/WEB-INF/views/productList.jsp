@@ -116,7 +116,7 @@
 						<div class="categories__item set-bg"
 							data-setbg="http://okrie.kro.kr:25567/images/all.png">
 							<h5>
-								<a href="#">모든상품</a>
+								<a href="NDSortProductListAll">모든상품</a>
 							</h5>
 						</div>
 					</div>
@@ -124,7 +124,7 @@
 						<div class="categories__item set-bg"
 							data-setbg="http://okrie.kro.kr:25567/images/diet.png">
 							<h5>
-								<a href="#">다이어트를 고민하고 있다면?</a>
+								<a href="NDSortProductListDiet">다이어트를 고민하고 있다면?</a>
 							</h5>
 						</div>
 					</div>

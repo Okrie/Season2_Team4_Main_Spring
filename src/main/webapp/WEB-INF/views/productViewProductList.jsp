@@ -78,7 +78,6 @@
 		<div class="col-lg-12">
 			<div class = "section-title">
 					<h2>정렬결과</h2>
-				
 			</div>
 		<div class="row">
 		<c:forEach items="${NDSortProductList}" var="dto" begin="0" end="29">

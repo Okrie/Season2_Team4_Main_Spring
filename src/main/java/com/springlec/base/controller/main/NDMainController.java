@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.springlec.base.model.main.NDProductListDto;
 import com.springlec.base.model.main.NDSortProductDto;
 import com.springlec.base.service.main.NDHeaderCountDaoService;
@@ -130,6 +129,16 @@ public class NDMainController {
 	public String NDSortProductListLowPrice(Model model) throws Exception{
 		List<NDSortProductDto> NDSortProductListLowPrice = sortProductDaoService.NDSortProductListLowPrice();
 		model.addAttribute("NDSortProductList", NDSortProductListLowPrice);
+		return "productList";
+	}
+	
+	
+	
+	//정렬목록 중 400kcal이하 제품만 출력
+	@RequestMapping("/NDSortProductListDiet")
+	public String NDSortProductListDiet(Model model) throws Exception{
+		List<NDSortProductDto> NDSortProductListDiet = sortProductDaoService.NDSortProductListDiet();
+		model.addAttribute("NDSortProductList", NDSortProductListDiet);
 		return "productList";
 	}
 	

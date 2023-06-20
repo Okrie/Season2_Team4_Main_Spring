@@ -35,4 +35,13 @@
 		ORDER BY price ASC;
 	</select>
 	
+	<!--Sort productList400under==>다이어트를 고민하고 있다면?  -->
+	<select id="NDSortProductListDiet" resultType="com.springlec.base.model.main.NDSortProductDto">
+		 <![CDATA[  
+		SELECT p.pcode, p.name, m.price, p.photo, p.calories
+		FROM product p, manage m
+		WHERE p.pcode = m.pcode AND m.invalidate ='1' AND p.calories<=400
+		ORDER BY calories ASC;
+		]]>
+	</select>
 </mapper>

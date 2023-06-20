@@ -38,5 +38,11 @@ public class NDSortProductDaoServiceImpl implements NDSortProductDaoService {
 		return dao.NDSortProductListLowPrice();
 	}
 
+	@Override
+	public List<NDSortProductDto> NDSortProductListDiet() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.NDSortProductListDiet();
+	}
+
 
 }
