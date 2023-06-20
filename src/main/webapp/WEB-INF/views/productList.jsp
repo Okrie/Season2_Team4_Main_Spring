@@ -74,14 +74,13 @@
 								<div class="hero__categories_all">
 									<i class="fa fa-bars"></i> <span>정렬목록</span>
 								</div>
-								<ul style="display: flex; list-style-type: none; padding: 1;">
-									<li style="margin-right: 150px;"><a href="NDSortProductListAll">●모든 제품</a></li>
-									<li style="margin-right: 150px;"><a href="productListCal">●칼로리 적은순</a></li>
-									<li style="margin-right: 150px;"><a href="productListHighPrice">●가격 높은순</a></li>
-									<li style="margin-right: 150px;"><a href="productListLowPrice">●가격 낮은순</a></li>
-								</ul>
-
-
+								
+									<ul style="display: flex; list-style-type: none; padding: 1;">
+										<li style="margin-right: 150px;"><a href="NDSortProductListAll">●모든 제품</a></li>
+										<li style="margin-right: 150px;"><a href="NDSortProductListCal">●칼로리 적은순</a></li>
+										<li style="margin-right: 150px;"><a href="productListHighPrice">●가격 높은순</a></li>
+										<li style="margin-right: 150px;"><a href="productListLowPrice">●가격 낮은순</a></li>
+									</ul>
 								<input type="text" name="name" placeholder="What do yo u need?">
 								<button type="submit" class="site-btn">SEARCH</button>
 							</form>
@@ -147,6 +146,8 @@
 		</div>
 	</section>
 	<!-- Categories Section End -->
+	
+
 
 	<%@ include file="productViewProductList.jsp"%>
 

@@ -8,4 +8,5 @@ public interface NDSortProductDaoService {
 
 	
 	public List<NDSortProductDto> NDSortProductListAll()throws Exception;
+	public List<NDSortProductDto> NDSortProductListCal()throws Exception;
 }
