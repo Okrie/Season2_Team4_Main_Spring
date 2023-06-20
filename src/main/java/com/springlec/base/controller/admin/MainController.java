@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.springlec.base.model.admin.ManageDto;
 import com.springlec.base.model.admin.OrdersDto;
 import com.springlec.base.model.admin.SubscribeDto;
 import com.springlec.base.service.admin.MainService;
@@ -37,6 +38,7 @@ public class MainController {
 		OrdersDto searchordersHowmany = mainservice.searchordersHowmany();
 		OrdersDto searchyearSalessolo = mainservice.searchyearSalessolo();
 		OrdersDto searchtodo = mainservice.searchtodo();
+		ManageDto searchWarningManage = mainservice.searchWarningManage();
 		SubscribeDto searchsubscribeSalessolo = mainservice.searchsubscribeSalessolo();
 
 		String monthSales = formatter
@@ -49,6 +51,9 @@ public class MainController {
 		String percenttodo = formatter.format((100 - ((double) toDo / count) * 100));
 		// 이번달 구독갯수
 		String subscribeSales = formatter.format(searchsubscribeSalessolo.getSubscribeSales());
+		
+		//	재고 확인
+		String warningstock = Integer.toString(searchWarningManage.getCount())+"건";
 
 		// 매출액그래프 가져오기
 		ArrayList<ArrayList<String>> dataSales = mainservice.searchyearsales();
@@ -59,6 +64,7 @@ public class MainController {
 		request.setAttribute("yearSales", yearSales);
 		request.setAttribute("percenttodo", percenttodo);
 		request.setAttribute("subscribeSales", subscribeSales);
+		request.setAttribute("warningstock", warningstock);
 		request.setAttribute("ordersSales", Integer.toString(count));
 		request.setAttribute("dataSales", dataSales);
 		return "admin_main";

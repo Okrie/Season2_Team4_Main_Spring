@@ -28,4 +28,7 @@ public interface ManageDao {
 
     // 상품 관련 정보 복구하기 : admin_deleteproduct.do
     public int recoverProductManage(String pcode);
+    
+    // 재고 위험 개수 알려주기 : adminMain
+    public ManageDto searchWarningManage();
 }

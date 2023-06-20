@@ -39,6 +39,7 @@
 <!--get attribute from java  -->
 <%
 String monthSales = (String) request.getAttribute("monthSales");
+String warningstock = (String) request.getAttribute("warningstock");
 %>
 
 <script type="text/javascript">
@@ -165,11 +166,67 @@ String monthSales = (String) request.getAttribute("monthSales");
 				</div>
 			</div>
 		</div>
-
-		<!-- Content Row -->
-
+		
 		<div class="row">
+			<!-- Area Chart -->
+			<div class="col-xl-6 col-lg-6">
+				<div class="card border-left-danger shadow h-100 py-2">
+					<div class="card-body" onclick="redirectToURL('adminSearchProduct')">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div
+									class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+									재고 위험 건수</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">${warningstock }</div>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-exclamation-triangle  fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
+			<!-- Pie Chart -->
+			<div class="col-xl-3 col-lg-3">
+				<div class="card border-left-secondary shadow h-100 py-2">
+					<div class="card-body" onclick="redirectToURL('download-csv')">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div
+									class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+									매출 그래프 출력하기</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">CSV Download</div>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-download fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-lg-3">
+				<div class="card border-left-dark shadow h-100 py-2">
+					<div class="card-body" onclick="redirectToURL('download-excel')">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div
+									class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+									매출 그래프 출력하기</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">EXCEL Download</div>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-download fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Content Row -->
+		
+		<br/>
+		<div class="row">
 			<!-- Area Chart -->
 			<div class="col-xl-8 col-lg-6">
 				<div class="card shadow mb-4">

@@ -60,4 +60,10 @@ public class ManageDaoImpl implements ManageDao {
 		return sqlSession.update(namespace + ".recoverProductManage");
 	}
 
+	@Override
+	public ManageDto searchWarningManage() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + ".searchUpdateManage");
+	}
+
 }

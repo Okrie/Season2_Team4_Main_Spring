@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springlec.base.dao.admin.ManageDao;
 import com.springlec.base.dao.admin.OrdersDao;
 import com.springlec.base.dao.admin.SubscribeDao;
+import com.springlec.base.model.admin.ManageDto;
 import com.springlec.base.model.admin.OrdersDto;
 import com.springlec.base.model.admin.SubscribeDto;
 
@@ -19,6 +21,9 @@ public class MainServiceImpl implements MainService {
 	@Autowired
 	OrdersDao ordersdao;
 
+	@Autowired
+	ManageDao managedao;
+	
 	@Override
 	public OrdersDto searchmonthSales() throws Exception {
 		// TODO Auto-generated method stub
@@ -66,6 +71,12 @@ public class MainServiceImpl implements MainService {
 	public SubscribeDto searchsubscribeSalessolo() throws Exception {
 		// TODO Auto-generated method stub
 		return subscribedao.searchsubscribeSalessolo();
+	}
+
+	@Override
+	public ManageDto searchWarningManage() throws Exception {
+		// TODO Auto-generated method stub
+		return managedao.searchWarningManage();
 	}
 
 }

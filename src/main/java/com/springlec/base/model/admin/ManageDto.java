@@ -18,4 +18,6 @@ public class ManageDto {
 	int price;
 	Timestamp updatedate;
 	int invalidate;
+	
+	int count;
 }

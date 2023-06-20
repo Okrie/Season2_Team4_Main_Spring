@@ -2,6 +2,7 @@ package com.springlec.base.service.admin;
 
 import java.util.ArrayList;
 
+import com.springlec.base.model.admin.ManageDto;
 import com.springlec.base.model.admin.OrdersDto;
 import com.springlec.base.model.admin.SubscribeDto;
 
@@ -18,5 +19,7 @@ public interface MainService {
 	public ArrayList<ArrayList<String>> searchyearsales() throws Exception;
 	
 	public SubscribeDto searchsubscribeSalessolo() throws Exception;
+	
+	public ManageDto searchWarningManage() throws Exception;
 	
 }

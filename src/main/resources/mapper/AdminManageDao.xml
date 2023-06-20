@@ -8,39 +8,39 @@
 	<!-- 오더관련 재고 불러오기 : admin_searchOrders.do -->
 	<select id="searchOrdersManage"
 		resultType="com.springlec.base.model.admin.ManageDto">
-		SELECT 
-			manage.stock
-		FROM 
-			orders
-		JOIN 
-			product ON orders.pcode	= product.pcode
-		JOIN 
-			manage ON product.pcode = manage.pcode
+		SELECT
+		manage.stock
+		FROM
+		orders
+		JOIN
+		product ON orders.pcode = product.pcode
+		JOIN
+		manage ON product.pcode = manage.pcode
 	</select>
 
 	<!-- 오더관련 모든 정보 불러오기 : admin_searchOrders.do -->
 	<select id="searchUpdateManage"
 		resultType="com.springlec.base.model.admin.ManageDto">
-		SELECT 
-			manage.stock
-		FROM 
-			orders
-		JOIN 
-			product ON orders.pcode	= product.pcode
-		JOIN 
-			manage ON product.pcode = manage.pcode
+		SELECT
+		manage.stock
+		FROM
+		orders
+		JOIN
+		product ON orders.pcode = product.pcode
+		JOIN
+		manage ON product.pcode = manage.pcode
 		WHERE
-			orders.ordercode = #{ordercode}
+		orders.ordercode = #{ordercode}
 	</select>
 
 	<!-- 테이블 제품 관련 정보 불러오기 : admin_searchProduct.do -->
 	<select id="searchProductManage"
 		resultType="com.springlec.base.model.admin.ManageDto">
 		SELECT *
-		FROM 
-			manage
-		ORDER BY 
-			CAST(pcode AS UNSIGNED)
+		FROM
+		manage
+		ORDER BY
+		CAST(pcode AS UNSIGNED)
 	</select>
 
 	<!-- 업데이트 관련 상품 관련 정보 불러오기 : admin_findproduct.do -->
@@ -48,59 +48,65 @@
 		resultType="com.springlec.base.model.admin.ManageDto">
 		SELECT *
 		FROM manage
-		WHERE 
+		WHERE
 		pcode = #{pcode}
 	</select>
 
 	<!-- 데이터 입력하기 : admin_insertproduct.do -->
 	<insert id="insertProductManage">
-		INSERT INTO 
-			manage (adminid, pcode, stock, price, updatedate, invalidate)
-		SELECT 
-			#{adminid}, 
-			IFNULL(MAX(CAST(pcode AS UNSIGNED)), 0) + 1, 
-			#{stock}, 
-			#{price}, 
-			now(), 
-			1
-		FROM 
-			manage
+		INSERT INTO
+		manage (adminid, pcode, stock, price, updatedate, invalidate)
+		SELECT
+		#{adminid},
+		IFNULL(MAX(CAST(pcode AS UNSIGNED)), 0) + 1,
+		#{stock},
+		#{price},
+		now(),
+		1
+		FROM
+		manage
 	</insert>
 
 	<!-- 데이터 수정하기 : admin_updateproduct.do -->
 	<update id="updateProductManage">
-		UPDATE 
-			manage
-		SET 
-			adminid = #{adminid}, 
-			stock =	#{stock}, 
-			price = #{price}, 
-			updatedate	= NOW()
-		WHERE 
-			pcode = #{pcode}
+		UPDATE
+		manage
+		SET
+		adminid = #{adminid},
+		stock = #{stock},
+		price = #{price},
+		updatedate = NOW()
+		WHERE
+		pcode = #{pcode}
 	</update>
 
 	<!-- 상품 관련 정보 삭제하기 : admin_deleteproduct.do -->
 	<update id="deleteProductManage">
-		UPDATE 
-			manage
-		SET 
-			invalidate = 0
+		UPDATE
+		manage
+		SET
+		invalidate = 0
 		WHERE
-			pcode = #{pcode}
+		pcode = #{pcode}
 	</update>
 
 	<!-- 상품 관련 정보 복구하기 : admin_deleteproduct.do -->
 	<update id="recoverProductManage">
-		UPDATE 
-			manage
-		SET 
-			invalidate = 1
-		WHERE 
-			pcode = #{pcode}
+		UPDATE
+		manage
+		SET
+		invalidate = 1
+		WHERE
+		pcode = #{pcode}
 	</update>
 
-
+	<!--재고 위험 개수 알려주기 -->
+	<select id="searchWarningManage"
+		resultType="com.springlec.base.model.admin.ManageDto">
+		SELECT count(*) as count
+		FROM manage
+		WHERE stock &lt;= 5;
+	</select>
 
 
 </mapper>

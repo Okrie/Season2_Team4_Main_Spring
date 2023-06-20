@@ -284,14 +284,14 @@
 						<div class="form-group row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-4">
-								<input type="submit" id="confirmInsert"
-									class="btn btn-google btn-user btn-block" value="수정 및 입력">
-							</div>
-							<div class="col-sm-2"></div>
-							<div class="col-sm-4">
 								<a id="confirmDelete" class="btn btn-google btn-user btn-block" 
 								data-invalidate="${dataSetProduct[0].invalidate}" data-pcode="${dataSetProduct[0].pcode}" 
 								>삭제 및 복구</a>
+							</div>
+							<div class="col-sm-2"></div>
+							<div class="col-sm-4">
+								<input type="submit" id="confirmInsert"
+									class="btn btn-facebook btn-user btn-block" value="수정 및 입력">
 							</div>
 							<div class="col-sm-1"></div>
 						</div>
