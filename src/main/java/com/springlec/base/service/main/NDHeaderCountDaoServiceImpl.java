@@ -29,7 +29,7 @@ public class NDHeaderCountDaoServiceImpl implements NDHeaderCountDaoService {
 	}
 
 	@Override
-	public int cartTotalPriceDao(String userid) throws Exception {
+	public String cartTotalPriceDao(String userid) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.cartTotalPriceDao(userid);
 	}

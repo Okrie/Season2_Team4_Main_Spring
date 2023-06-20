@@ -27,7 +27,7 @@ public class NDHeaderCountDaoImpl implements NDHeaderCountDao {
 	}
 
 	@Override
-	public int cartTotalPriceDao(String userid) throws Exception {
+	public String cartTotalPriceDao(String userid) throws Exception {
 		// TODO Auto-generated method stub
 		return session.selectOne(namespace, ".NDHeaderCountDao");
 

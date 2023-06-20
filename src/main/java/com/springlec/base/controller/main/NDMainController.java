@@ -56,16 +56,24 @@ public class NDMainController {
 		
 		int heartCount = 0;
 		int cartCount = 0;
-		int cartTotalPrice = 0;
+		String cartTotalPrice = "";
 		String remainDate = "";
 		
 		if(userid != null) {
 
 			heartCount = headerCountDaoService.heartCountDao(userid);
 			cartCount = headerCountDaoService.cartCountDao(userid);
-			cartTotalPrice = headerCountDaoService.cartTotalPriceDao(userid);
+			try {
+				cartTotalPrice = headerCountDaoService.cartTotalPriceDao(userid);
+			} catch (Exception e) {
+				cartTotalPrice = Integer.toString(0);
+			}
 			
-			remainDate = headerCountDaoService.remainDateDao(userid);
+			try {
+				remainDate = headerCountDaoService.remainDateDao(userid);
+			}catch (Exception e) {
+				remainDate = null;
+			}
 		}
 		
 		model.addAttribute("heartCount", heartCount);
