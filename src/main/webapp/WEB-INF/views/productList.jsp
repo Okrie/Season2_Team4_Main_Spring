@@ -132,7 +132,7 @@
 						<div class="categories__item set-bg"
 							data-setbg="http://okrie.kro.kr:25567/images/lowprice.png">
 							<h5>
-								<a href="#">가장 저렴한 한끼</a>
+								<a href="NDSortProductList7000">가장 저렴한 한끼</a>
 							</h5>
 						</div>
 					</div>

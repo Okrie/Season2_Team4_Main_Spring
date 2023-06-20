@@ -17,6 +17,8 @@ public interface NDSortProductDao {
 	public List<NDSortProductDto> NDSortProductListLowPrice() throws Exception;
 	//칼로리가 400kcal 이하인 제품만 출력
 	public List<NDSortProductDto> NDSortProductListDiet() throws Exception;
+	//가격이 7000이하인 제품만 출력
+	public List<NDSortProductDto> NDSortProductList7000() throws Exception;
 	
 
 }

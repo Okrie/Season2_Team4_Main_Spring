@@ -142,4 +142,14 @@ public class NDMainController {
 		return "productList";
 	}
 	
+	//정렬목록중 7000이하인 제품만 출력
+	@RequestMapping("/NDSortProductList7000")
+	public String NDSortProductList7000(Model model) throws Exception{
+		List<NDSortProductDto> NDSortProductList7000 = sortProductDaoService.NDSortProductList7000();
+		model.addAttribute("NDSortProductList", NDSortProductList7000);
+		return "productList";
+	}
+	
+	
+	
 }
