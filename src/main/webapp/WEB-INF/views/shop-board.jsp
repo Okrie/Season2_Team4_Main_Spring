@@ -101,15 +101,11 @@ function checkOrder(event) {
 						<div class="hero__text">
 							<table>
 								<tr>
-									<td><img src="${list.photo}" alt="Product 3"></td>
-									<td><span>상품 정보</span>
-										<p>
-										<h6>${list.name}</h6>
-										</p>
-										<p>
-										<h4>가격 : ${list.price} </h4>
-										</p>
-										<p>칼로리 : ${list.calories} </p>
+									<td colspan="10"><p><span style="font-size: 25px;">상품 정보</span></p>
+									<img src="${list.photo}" alt="Product 3"></td>
+									<td><p> ${list.name} <br/>
+										    가격 : ${list.price}	<br/>
+										    칼로리 : ${list.calories} </p>
 										<div class="quantity">
 										<form action="orders" method="get">
 											수량 : 
@@ -121,7 +117,7 @@ function checkOrder(event) {
 											<a href="#" class="primary-btn" onclick="cartInsertFn(${list.pcode})">Add Cart</a>
 										</form>
 										</div>
-										</td>
+									</td>
 								</tr>
 							</table>
 							<br />
@@ -134,13 +130,28 @@ function checkOrder(event) {
 							<h3>상품리뷰</h3>
 							</p>
 							<table class="table">
-								<thead>
-
-								</thead>
 								<tbody>
-
-									<c:forEach items="${RList}" var="dto" varStatus="status">
-										
+									<c:if test="${empty RList}">
+										<tr align="center">
+											<td>
+												해당 상품에 대한 리뷰가 없습니다. <br/>
+												첫 리뷰를 남겨 주세요.									
+											</td>
+										</tr>
+									</c:if>
+									<c:forEach items="${RList}" var="dto" varStatus="cnt">
+									<tr>
+										<td id="${dto.layer}" style="width: ${5 + (dto.layer*1.1)}px;">
+										<c:forEach begin="${cnt.index}" end="${dto.layer*3}">&nbsp</c:forEach>
+										${dto.userid} ${dto.image} ${dto.context} 
+										<div align="right"> ${dto.insertdate} 
+										<a href="#"><i class="fa fa-thumbs-up"></i></a> ${dto.likes} &nbsp&nbsp&nbsp
+										<a href="#" class="primary-btn" style="margin-right: 0px;">댓글 작성</a></div>
+										</td>
+									</tr>
+									</c:forEach>
+									
+									<%-- <c:forEach items="${RList}" var="dto" varStatus="status">
 										<c:set var="parentInput" value="${dto.parent}" />
 
 										<c:if test="${dto.layer == 1}">
@@ -160,13 +171,14 @@ function checkOrder(event) {
 																<p>${dto.insertdate}</p>
 																<p>${PList}</p>
 																<p>${dto.image}</p>
-																<p>${dto.contexts}</p> <input type="hidden"
+																<p>${dto.context}</p> <input type="hidden"
 																name="parent" value="${dto.parent}">
 															</td>
-															<td align="right"><a href="#" class="primary-btn">
-																	좋아요</a>
-																<p>좋아요 수 : ${dto.likes}</p> <a href="#"
-																class="primary-btn">댓글 작성</a></td>
+															<td align="right">
+																<a href="#" class="primary-btn">좋아요</a>
+																<p>좋아요 수 : ${dto.likes}</p> 
+																<a href="#" class="primary-btn">댓글 작성</a>
+															</td>
 														</tr>
 														
 														<c:forEach items="${RList}" var="dto" varStatus="status">
@@ -188,7 +200,7 @@ function checkOrder(event) {
 																								${dto.adminid}
 																							</c:if>
 																						</p>
-																						<p>${dto.contexts}</p>
+																						<p>${dto.context}</p>
 																						<p>
 																							좋아요 수 : 0 <a href="#" class="primary-btn">
 																								좋아요</a>
@@ -212,7 +224,7 @@ function checkOrder(event) {
 
 											</tr>
 										</c:if>
-									</c:forEach>
+									</c:forEach> --%>
 
 									<tr align="right">
 										<td colspan="3">
@@ -221,7 +233,7 @@ function checkOrder(event) {
 												<input type="hidden" name="pcode" value="9">
 												<input type="hidden" name="ID" value="dawn7778">
 												<input type="hidden" name="ocode" value="${ocode}">
-												<input type="submit" value="글쓰기" class="primary-btn" onclick="checkOrder(event)">
+												<input type="submit" style="border: 0px" value="글쓰기" class="primary-btn" onclick="checkOrder(event)">
 											</form>
 										</td>
 									</tr>
@@ -247,7 +259,7 @@ function checkOrder(event) {
 								</thead>
 								<tbody>
 								
-								<c:if test="${dto1Size == 0}">
+								<c:if test="${empty QList}">
 									<tr align="center">
 										<td>
 											해당 상품에 대한 문의가 없습니다.									
@@ -286,7 +298,7 @@ function checkOrder(event) {
 												<input type="hidden" name="pname" value="${PList}">
 												<input type="hidden" name="pcode" value="9">
 												<input type="hidden" name="ID" value="dawn7778">
-												<input type="submit" value="문의하기" class="primary-btn">
+												<input type="submit" value="문의하기" style="border: 0px" class="primary-btn">
 											</form>
 										</td>
 									</tr>
