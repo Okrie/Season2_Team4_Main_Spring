@@ -32,38 +32,6 @@
 <!-- DataTables library -->
 <script
 	src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<!--  -->
-<script type="text/javascript">
-function openFileUploader() {
-	// 파일 업로드 창을 열기 위해 fileUploader 요소를 클릭합니다.
-	document.getElementById('fileUploader').click();
-}
-
-function handleFileSelect(event) {
-	var file = event.target.files[0];
-
-	// FileReader 객체를 사용하여 이미지 파일을 읽습니다.
-	var reader = new FileReader();
-	reader.onload = function(e) {
-		// 이미지 파일의 데이터를 가져와서 이미지 미리보기를 업데이트합니다.
-		document.getElementById('imagePreview').src = e.target.result;
-	};
-	reader.readAsDataURL(file);
-	// 선택한 파일의 정보를 가져옵니다.
-
-	document.getElementById('photo').value = file.name;
-	document.getElementById('photoname').placeholder = fileName;
-}
-
-</script>
-<script src="admin/js/product_regex.js"></script>
-<script type="text/javascript">
-$("#confirmInsert").on("click", function(e){
-    e.preventDefault();
-  checkRegex(); // 정규식 검사 함수 실행
-});
-</script>
-<!-- regex -->
 </head>
 
 <body id="page-top">
@@ -110,7 +78,8 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="name"
 									class="form-control form-control-user" id="name"
-									placeholder="이름을 입력해주세요." value="${dataSetProduct[0].name != null ? dataSetProduct[0].name : '' }">
+									placeholder="이름을 입력해주세요."
+									value="${dataSetProduct[0].name != null ? dataSetProduct[0].name : '' }">
 							</div>
 						</div>
 						<br />
@@ -137,7 +106,8 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="rice"
 									class="form-control form-control-user" id="rice"
-									placeholder="밥을 정해주세요." value="${dataSetProduct[0].rice != null ? dataSetProduct[0].rice : '' }">
+									placeholder="밥을 정해주세요."
+									value="${dataSetProduct[0].rice != null ? dataSetProduct[0].rice : '' }">
 							</div>
 						</div>
 						<br />
@@ -151,7 +121,8 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="cook1"
 									class="form-control form-control-user" id="cook1"
-									placeholder="반찬을 정해주세요." value="${dataSetProduct[0].cook1 != null ? dataSetProduct[0].cook1 : '' }">
+									placeholder="반찬을 정해주세요."
+									value="${dataSetProduct[0].cook1 != null ? dataSetProduct[0].cook1 : '' }">
 							</div>
 						</div>
 						<br />
@@ -165,7 +136,8 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="cook2"
 									class="form-control form-control-user" id="cook2"
-									placeholder="반찬을 정해주세요." value="${dataSetProduct[0].cook2 != null ? dataSetProduct[0].cook2 : '' }">
+									placeholder="반찬을 정해주세요."
+									value="${dataSetProduct[0].cook2 != null ? dataSetProduct[0].cook2 : '' }">
 							</div>
 						</div>
 						<br />
@@ -179,7 +151,8 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="cook3"
 									class="form-control form-control-user" id="cook3"
-									placeholder="반찬을 정해주세요." value="${dataSetProduct[0].cook3 != null ? dataSetProduct[0].cook3 : '' }">
+									placeholder="반찬을 정해주세요."
+									value="${dataSetProduct[0].cook3 != null ? dataSetProduct[0].cook3 : '' }">
 							</div>
 						</div>
 						<br />
@@ -192,7 +165,8 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="soup"
 									class="form-control form-control-user" id="soup"
-									placeholder="국을 정해주세요." value="${dataSetProduct[0].soup != null ? dataSetProduct[0].soup : '' }">
+									placeholder="국을 정해주세요."
+									value="${dataSetProduct[0].soup != null ? dataSetProduct[0].soup : '' }">
 							</div>
 						</div>
 						<br />
@@ -216,7 +190,8 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-3"></div>
 							<div class="col-lg-8">
 								<img id="imagePreview" style="align-content: center"
-									alt="사진이 없습니다." src="${dataSetProduct[0].photo }" height="400px">
+									alt="사진이 없습니다." src="${dataSetProduct[0].photo }"
+									height="400px">
 							</div>
 							<div class="col-lg-3"></div>
 						</div>
@@ -244,7 +219,8 @@ $("#confirmInsert").on("click", function(e){
 							<div class="col-lg-8">
 								<input style="text-align: left" type="text" name="price"
 									class="form-control form-control-user" id="price"
-									placeholder="가격을 정해주세요." value="${dataSetProduct[0].price != null ? dataSetProduct[0].price : '' }">
+									placeholder="가격을 정해주세요."
+									value="${dataSetProduct[0].price != null ? dataSetProduct[0].price : '' }">
 							</div>
 						</div>
 						<br />
@@ -327,68 +303,40 @@ $("#confirmInsert").on("click", function(e){
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i></a>
-	<!-- modal  -->
-	<script>
-	document.getElementById("confirmInsert").addEventListener("click", function() {
-	    Swal.fire({
-	        title: '수정 및 입력 확인',
-	        text: '수정 및 입력하시겠습니까?',
-	        icon: 'warning',
-	        showCancelButton: true,
-	        showCloseButton: true,
-	        confirmButtonColor: '#3085d6',
-	        cancelButtonColor: '#d33',
-	        confirmButtonText: '승인',
-	        cancelButtonText: '취소',
-	        allowOutsideClick: false,
-	        allowEscapeKey: false
-	    }).then((result) => {
-	        if (result.isConfirmed) {
-	            const form = document.getElementById("product");
-	            Swal.fire({
-	                title: '승인',
-	                text: '수정 및 입력 처리되었습니다.',
-	                icon: 'success',
-	                confirmButtonText: '확인',
-	                confirmButtonColor: '#3085d6',
-	                allowOutsideClick: false,
-	                allowEscapeKey: false
-	            }).then(() => {
-	                form.submit();
-	            });
-	        }
-	    });
-	});
+	<!-- img_preview  openFileUploader, handleFileSelect-->
+	<script src="admin/js/img_preview.js"></script>
 
-	document.getElementById("confirmDelete").addEventListener("click", function() {
-	    Swal.fire({
-	        title: '삭제 및 복구 확인',
-	        text: '누르시면, 되돌릴 수 없습니다.',
-	        icon: 'warning',
-	        showCancelButton: true,
-	        showCloseButton: true,
-	        confirmButtonColor: '#3085d6',
-	        cancelButtonColor: '#d33',
-	        confirmButtonText: '승인',
-	        cancelButtonText: '취소'
-	    }).then((result) => {
-	        if (result.isConfirmed) {
-	            Swal.fire({
-	                title: '승인',
-	                text: '삭제 및 복구 처리되었습니다.',
-	                icon: 'success',
-	                confirmButtonText: '확인',
-	                confirmButtonColor: '#3085d6',
-	                allowOutsideClick: false,
-	                allowEscapeKey: false
-	            }).then(() => {
-	                window.location.href = "adminUpdateProduct?invalidate=${dataSetProduct[0].invalidate}&pcode=${dataSetProduct[0].pcode}";
-	            });
-	        }
-	    });
+	<script src="admin/js/product_regex.js"></script>
+	<script type="text/javascript">
+	$("#confirmDelete").on("click", function() {
+		Swal.fire({
+			title: '삭제 및 복구 확인',
+			text: '누르시면, 되돌릴 수 없습니다.',
+			icon: 'warning',
+			showCancelButton: true,
+			showCloseButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: '승인',
+			cancelButtonText: '취소'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				Swal.fire({
+					title: '승인',
+					text: '삭제 및 복구 처리되었습니다.',
+					icon: 'success',
+					confirmButtonText: '확인',
+					confirmButtonColor: '#3085d6',
+					allowOutsideClick: false,
+					allowEscapeKey: false
+				}).then(() => {
+					window.location.href = `adminUpdateProduct?invalidate=${dataSetProduct[0].invalidate}&pcode=${dataSetProduct[0].pcode}`;
+				});
+			}
+		});
 	});
+	</script>
 
-</script>
 
 	<!-- Custom scripts for all pages-->
 	<script src="admin/js/sb-admin-2.js"></script>

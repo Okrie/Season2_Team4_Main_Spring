@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,8 +22,8 @@ public class ProductInsertController {
 	ProductInsertService productService;
 
 	@PostMapping("/adminInsertProduct")
-	public String insertProduct(@RequestParam("photo") MultipartFile file, HttpServletRequest request, HttpSession session, Model model)
-			throws Exception {
+	public String insertProduct(@RequestParam("photo") MultipartFile file, HttpServletRequest request,
+			HttpSession session, Model model) throws Exception {
 		String photo = "";
 		String pcode = request.getParameter("pcode");
 		String name = request.getParameter("name");
@@ -32,7 +33,7 @@ public class ProductInsertController {
 		String cook2 = request.getParameter("cook2");
 		String cook3 = request.getParameter("cook3");
 		String soup = request.getParameter("soup");
-		String adminid = (String) session.getAttribute("ID"); 
+		String adminid = (String) session.getAttribute("ID");
 		int price = Integer.parseInt(request.getParameter("price"));
 		int stock = Integer.parseInt(request.getParameter("stock"));
 		int calories = Integer.parseInt(request.getParameter("calories"));
@@ -48,12 +49,16 @@ public class ProductInsertController {
 			File uploadedFile = new File(uploadDir + fileName);
 			file.transferTo(uploadedFile);
 		}
-		
-		productService.insertProduct( pcode,  name,  category,  rice,  cook1,  cook2,
-				 cook3,  soup,  photo,  calories,  adminid,  stock,  price);
+
+		productService.insertProduct(pcode, name, category, rice, cook1, cook2, cook3, soup, photo, calories, adminid,
+				stock, price);
 
 		return "redirect:adminSearchProduct";
 	}
 
+	@GetMapping("/adminInsertProductpage")
+	public String insertProductPage() {
+	    return "admin_product_insert";
+	}
 
 }

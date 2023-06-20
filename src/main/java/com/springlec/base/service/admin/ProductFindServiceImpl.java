@@ -32,8 +32,6 @@ public class ProductFindServiceImpl implements ProductFindService {
 		Timestamp insertdate = dtoProduct.get(0).getInsertdate();
 		Timestamp updatedate = dtoManage.get(0).getUpdatedate();
 		
-		String photo = dtoProduct.get(0).getPhoto();
-		photo.substring(4);
 
 		String conditionInsert = "";
 		if (insertdate == null) {
