@@ -1,5 +1,6 @@
 package com.springlec.base.controller.orders;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,20 +12,31 @@ import com.springlec.base.model.orders.NOrdersDto;
 import com.springlec.base.service.orders.NOrdersService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class NOrdersController {
+	HttpSession session;
+
+	
 
 	@Autowired
 	NOrdersService nOrdersService;
 	
 	// 결제 前 물건 정보랑 구매자 정보
 	@RequestMapping("/orders")
-	public String ordersInfoDao(HttpServletRequest request,Model model) throws Exception{
-		NOrdersDto productInfoDao =  nOrdersService.productInfoDao(request.getParameter("pcode"));
-		NOrdersDto userInfoDao = nOrdersService.userInfoDao(request.getParameter("userid"));
-		model.addAttribute("orders",productInfoDao);
-		model.addAttribute("orders",userInfoDao);
+	public String ordersInfoDao(HttpServletRequest request, Model model) throws Exception{
+		session = request.getSession();
+		String[] pcode = request.getParameterValues("pcode");
+		ArrayList<NOrdersDto> dto = new ArrayList<>();
+		for(String temp: pcode) {
+			NOrdersDto productInfoDao = nOrdersService.productInfoDao(temp);
+			dto.add(productInfoDao);
+		}
+		List<NOrdersDto> userInfoDao = nOrdersService.userInfoDao((String) session.getAttribute("ID"));
+		model.addAttribute("orders", dto);
+		model.addAttribute("user", userInfoDao);
+		model.addAttribute("count", request.getParameter("count"));
 		return "orders";
 	}
 	
@@ -32,8 +44,10 @@ public class NOrdersController {
 	@RequestMapping("/insertorders")
 	public String insertOrdersDao(HttpServletRequest request, Model model) throws Exception{
 		nOrdersService.insertOrdersDao(request.getParameter("userid"), request.getParameter("pcoude"), request.getParameter("count"), request.getParameter("address"));
-		return "insertorders";
+		return "ordersFinish";
 	}
+	
+	
 	
 	// 결제후 정보 보기
 	@RequestMapping("/ordersFinish")

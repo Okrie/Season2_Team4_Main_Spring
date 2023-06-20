@@ -15,18 +15,21 @@ public class NOrdersDaoImpl implements NOrdersDao {
 	public NOrdersDto productInfoDao(String pcode) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(nameSpace + ".productInfoDao");
+		
 	}
 
 	@Override
-	public NOrdersDto userInfoDao(String userid) throws Exception {
+	public List<NOrdersDto> userInfoDao(String userid) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(nameSpace + ".userInfoDao");
 	}
+
 
 	@Override
 	public void insertOrdersDao(String userid, String pcoude, String count, String address) throws Exception {
 		// TODO Auto-generated method stub
 		sqlSession.selectList(nameSpace + ".insertOrdersDao");
+		
 	}
 
 	@Override

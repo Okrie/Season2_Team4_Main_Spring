@@ -8,9 +8,11 @@ public interface NOrdersDao {
 
 	public NOrdersDto productInfoDao(String pcode) throws Exception;
 	
-	public NOrdersDto userInfoDao(String userid) throws Exception;
+	public List<NOrdersDto> userInfoDao(String userid) throws Exception;
 	
 	public void insertOrdersDao(String userid, String pcoude, String count, String address) throws Exception;
+	
+	
 	
 	public List<NOrdersDto> cartOrdersDao(String pcode) throws Exception;
 	
