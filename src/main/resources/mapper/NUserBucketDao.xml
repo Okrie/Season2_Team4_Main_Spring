@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springlec.base.dao.user.NUserBucketDao">
+	<insert id="userCartIn">
+		INSERT INTO cart (userid, pcode, count) VALUES(#{userid}, #{pcode}, 1)
+	</insert>
+	<insert id="userWishlistIn">
+		INSERT INTO wishlist (userid, pcode, insertdate) VALUES(#{userid}, #{pcode}, now())
+	</insert>
+</mapper>
