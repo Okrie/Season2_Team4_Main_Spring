@@ -13,6 +13,7 @@
 		WHERE o.refunddate IS NULL
 		GROUP BY
 		p.name
+		ORDER BY totalorders DESC		
 	</select>
 	
 	<!--테이블 상품 관련 정보 불러오기 : adminSearchProduct -->
