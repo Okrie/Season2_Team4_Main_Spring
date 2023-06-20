@@ -98,7 +98,7 @@ public class NUserKaKaoServiceImpl implements NUserKaKaoService {
 			conn.setRequestProperty("Authorization", "Bearer " + access_token);
 
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
+			//System.out.println("responseCode : " + responseCode);
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -108,8 +108,7 @@ public class NUserKaKaoServiceImpl implements NUserKaKaoService {
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
-			System.out.println("result type" + result.getClass().getName()); // java.lang.String
+			//System.out.println("response body : " + result);
 
 			try {
 				// gson 객체 생성
@@ -121,8 +120,6 @@ public class NUserKaKaoServiceImpl implements NUserKaKaoService {
 				System.out.println(jsonMap.get("properties"));
 
 				Map<String, Object> kakao_account = (Map<String, Object>) jsonMap.get("kakao_account");
-
-				// System.out.println(kakao_account.get("email"));
 
 				email = kakao_account.get("email").toString();
 

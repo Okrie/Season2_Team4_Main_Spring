@@ -41,11 +41,11 @@
                             </div>
                             <form class="user" action="register" method="post" name="user">
                             	<c:choose>
-                               		<c:when test="${not empty param.userid}">
+                               		<c:when test="${not empty userid}">
 	                                <div class="form-group row">
 	                                	<div class="col-sm-9 mb-3 mb-sm-0">
-	                                		<input type="hidden" id="uid" value="${param.userid}">
-	                                   		<input type="text" class="form-control form-control-user" name="userid" id="userid" placeholder="ID" readonly="readonly" value="${param.userid}">
+	                                		<input type="hidden" id="uid" value="${userid}">
+	                                   		<input type="text" class="form-control form-control-user" name="userid" id="userid" placeholder="ID" readonly="readonly" value="${userid}">
 	                                   	</div>
 	                                   	<div class="col-sm-3">
 		                                   	<!-- 사용 가능 확인 터치하여 나왔을 떄 비활성화 처리 해야 함 -->

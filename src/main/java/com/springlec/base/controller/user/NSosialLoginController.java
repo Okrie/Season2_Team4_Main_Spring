@@ -2,6 +2,7 @@ package com.springlec.base.controller.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -9,6 +10,7 @@ import com.springlec.base.service.user.NUserKaKaoService;
 import com.springlec.base.service.user.NUserService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class NSosialLoginController {
@@ -33,16 +35,18 @@ public class NSosialLoginController {
 			
 			try {
 				String userEmail = service.getUserInfo(access_token);
-				System.out.println(userEmail);
 				
-				return "kakaoCheck";
+				int result = uservice.userCheck(userEmail);
+				HttpSession session = request.getSession();
+				session.setAttribute("userid", userEmail);
+				return result == 1 ? "redirect:/kakaoLoginS" : "redirect:/registerPage";
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
-				return "registerPage";
+				return "redirect:/registerPage";
 			}
 		}
-		return "";
+		return "login";
 	}
 
 	@RequestMapping("/kakaoLogin")
@@ -54,11 +58,21 @@ public class NSosialLoginController {
 	@RequestMapping("/kakaoCheck")
 	public int kakaoUserCheck(HttpServletRequest request) throws Exception {
 		String id = request.getParameter("id");
-		System.out.print("kakao_ id = " + id);
 		
 		int result = uservice.userCheck(id);
-		System.out.println("result = " + result);
 		
 		return result;
+	}
+	
+	@RequestMapping("/kakaoLoginS")
+	public String kakaoLoginS(HttpServletRequest request) throws Exception{
+		HttpSession session = request.getSession();
+		String userid = (String) session.getAttribute("userid");
+		
+		int result = uservice.userCheck(userid);
+		String wkResult = result == 1 ? "user" : "admin";
+		session.setAttribute("login", wkResult);
+		session.setAttribute("ID", userid);
+		return "redirect:/login";
 	}
 }

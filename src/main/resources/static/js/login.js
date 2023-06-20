@@ -319,10 +319,10 @@ function checkid(id){
 				//console.log(result)
 				
 				// 이 부분에 로그인완료로 보내고 세션에 로그인 ID 올려야 함
-				window.location.href = "kakaoLogin.do?userid=" + id
+				window.location.href = "kakaoLoginS?userid=" + id
 				//setIdpw()
 			} else{
-				window.location.href = "registerPage.do?userid=" + id
+				window.location.href = "registerPage?userid=" + id
 			}
 		},
 		error: function(xhr, status, error) {
