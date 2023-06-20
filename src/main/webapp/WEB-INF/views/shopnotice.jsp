@@ -122,7 +122,7 @@
 								</thead>
 								<tbody>
 										
-								<c:forEach items="${NList}" var="dto" varStatus="status">
+								<c:forEach items="${NDNotice}" var="dto" varStatus="status">
 									
 									<c:set var="count1" value="${count1 + 1}" />
 									<tr>

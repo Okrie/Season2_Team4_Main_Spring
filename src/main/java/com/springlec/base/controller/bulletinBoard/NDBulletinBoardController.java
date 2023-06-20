@@ -1,11 +1,14 @@
 package com.springlec.base.controller.bulletinBoard;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.springlec.base.model.bulletinBoard.NDNoticeBoardDto;
 import com.springlec.base.service.bulletinBoard.NDNoticeDaoService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,10 +27,8 @@ public class NDBulletinBoardController {
 	//NDNoticeBoard관련
 	@RequestMapping("/NDNotice")
 	public String NDNoticeBoardDao(HttpServletRequest request,@RequestParam("pcode") String pcode, Model model) throws Exception{
-		String NDNoticeBoardDao = noticeDaoService.NDNoticeBoardDao(pcode);
-		model.addAttribute("Notice", NDNoticeBoardDao);
-		return "shop-board";
-		
-		
+		List<NDNoticeBoardDto> NDNoticeBoardDao = noticeDaoService.NDNoticeBoardDao(pcode);
+		model.addAttribute("NDNotice", NDNoticeBoardDao);
+		return "shop-notice";
 	}
 }

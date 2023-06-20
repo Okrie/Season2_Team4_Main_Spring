@@ -107,6 +107,13 @@ public class NDMainController {
 	public String productList() throws Exception {
 		return "productList";
 	}
+	
+	//shop-notice로 연결만 시켜줌
+	@RequestMapping("/shopnotice")
+	public String shopnotice() throws Exception{
+		return "shopnotice";
+		
+	}
 
 			
 	

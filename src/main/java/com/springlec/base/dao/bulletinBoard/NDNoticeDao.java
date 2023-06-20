@@ -1,7 +1,11 @@
 package com.springlec.base.dao.bulletinBoard;
 
+import java.util.List;
+
+import com.springlec.base.model.bulletinBoard.NDNoticeBoardDto;
+
 public interface NDNoticeDao {
 	
-	public String NDNoticeBoardDao(String pcode) throws Exception;
+	public List<NDNoticeBoardDto> NDNoticeBoardDao(String pcode) throws Exception;
 
 }
