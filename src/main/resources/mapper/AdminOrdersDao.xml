@@ -164,14 +164,18 @@
 		orders.address,
 		orders.count,
 		user.email,
-		orders.deliverydate
+		user.userid,
+		orders.deliverydate,
+		orders.refunddate,
+		manage.price
 		FROM
 		orders
 		JOIN
-		product ON
-		product.pcode = orders.pcode
+		product ON product.pcode = orders.pcode
 		JOIN
 		user ON user.userid = orders.userid
+		JOIN
+		manage ON manage.pcode = product.pcode
 		WHERE
 		orders.ordercode = #{ordercode};
 	</select>

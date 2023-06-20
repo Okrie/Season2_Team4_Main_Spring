@@ -26,6 +26,7 @@ public class OrdersDto {
 	int yearSales;
 	int monthSales;
 	int todo;
+	int price;
 	
 	String email;
 	String name;

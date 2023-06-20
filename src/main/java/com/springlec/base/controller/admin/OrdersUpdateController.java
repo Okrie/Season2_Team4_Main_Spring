@@ -18,11 +18,12 @@ public class OrdersUpdateController {
 	OrdersUpdateService orderService;
 
 
-
+	@Transactional
 	@RequestMapping("/adminUpdateOrdersRefund")
 	public String adminUpdateOrdersRefund(HttpServletRequest request, Model model) throws Exception {
 		int ordercode = Integer.parseInt(request.getParameter("ordercode"));
 		orderService.refundupdate(ordercode);
+		orderService.sendrefundMail(ordercode);
 		return "redirect:adminSearchorders";
 	}
 	
@@ -31,7 +32,7 @@ public class OrdersUpdateController {
 	public String adminUpdateOrdersDelivery(HttpServletRequest request, Model model) throws Exception {
 		int ordercode = Integer.parseInt(request.getParameter("ordercode"));
 		orderService.deliveryupdate(ordercode);
-		orderService.sendMail(ordercode);
+		orderService.senddeliveryMail(ordercode);
 		return "redirect:adminSearchorders";
 	}
 	

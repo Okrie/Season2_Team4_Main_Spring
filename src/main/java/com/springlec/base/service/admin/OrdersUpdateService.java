@@ -7,5 +7,8 @@ public interface OrdersUpdateService {
 	
 	public int deliveryupdate(int ordercode) throws Exception;
 	
-	public void sendMail(int ordercode) throws MessagingException, Exception;
+	public void sendrefundMail(int ordercode) throws MessagingException, Exception;
+
+	public void senddeliveryMail(int ordercode) throws MessagingException, Exception;
+	
 }
