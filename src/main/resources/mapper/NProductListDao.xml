@@ -3,7 +3,7 @@
 
 <mapper namespace="com.springlec.base.dao.main.NDProductListDao">
 	<select id="productListDao" resultType="com.springlec.base.model.user.NUserOrderDto">
-		SELECT pr.photo, pr.name, m.price, pr.pcode 
+		SELECT pr.photo, pr.name, m.price, pr.pcode, pr.calories 
 		FROM product pr 
 		JOIN manage m ON pr.pcode = m.pcode 
 		WHERE pr.pcode = #{pcode}

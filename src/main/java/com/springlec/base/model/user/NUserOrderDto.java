@@ -36,6 +36,7 @@ public class NUserOrderDto {
 	// product
 	String photo;
 	String name;
+	String calories;
 	
 	// manage
 	int price;

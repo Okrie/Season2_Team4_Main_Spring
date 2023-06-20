@@ -15,7 +15,7 @@ public class NDProdcutListServiceImpl implements NDProductListService {
 	NDProductListDao dao;
 	
 	@Override
-	public List<NUserOrderDto> productListDao(String pcode) throws Exception {
+	public NUserOrderDto productListDao(String pcode) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.productListDao(pcode);
 	}

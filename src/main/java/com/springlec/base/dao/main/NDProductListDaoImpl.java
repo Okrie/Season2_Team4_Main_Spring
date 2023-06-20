@@ -12,9 +12,9 @@ public class NDProductListDaoImpl implements NDProductListDao {
 	public static String nameSpace = "com.springlec.base.dao.main.NDProductListDao";
 	
 	@Override
-	public List<NUserOrderDto> productListDao(String pcode) throws Exception {
+	public NUserOrderDto productListDao(String pcode) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(nameSpace + ".productListDao");
+		return sqlSession.selectOne(nameSpace + ".productListDao");
 	}
 
 }
