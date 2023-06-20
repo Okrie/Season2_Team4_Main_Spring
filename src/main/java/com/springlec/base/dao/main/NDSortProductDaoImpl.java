@@ -23,4 +23,17 @@ public class NDSortProductDaoImpl implements NDSortProductDao {
 		return sqlSession.selectList(namespace + ".NDSortProductDao");
 	}
 
+	@Override
+	public List<NDSortProductDto> NDSortProductListHighPrice() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace + ".NDSortProductDao");
+	}
+
+	@Override
+	public List<NDSortProductDto> NDSortProductListLowPrice() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace + ".NDSortProductDao");
+	}
+
+
 }

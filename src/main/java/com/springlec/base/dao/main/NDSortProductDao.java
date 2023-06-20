@@ -11,6 +11,10 @@ public interface NDSortProductDao {
 	public List<NDSortProductDto> NDSortProductListAll() throws Exception;
 	//모든 제품 리스트 cal별로 정렬하는 DAO
 	public List<NDSortProductDto> NDSortProductListCal() throws Exception;
+	//모든 제품 리스트 highPrice순으로 정렬
+	public List<NDSortProductDto> NDSortProductListHighPrice() throws Exception;
+	//모든 제품 리스트 lowPrice순으로 정렬
+	public List<NDSortProductDto> NDSortProductListLowPrice() throws Exception;
 	
 	
 

@@ -118,4 +118,19 @@ public class NDMainController {
 		model.addAttribute("NDSortProductList", NDSortProductListCal);
 		return "productList";
 	}
+	//정렬목록 중 가격높은순 제품 출력
+	@RequestMapping("/NDSortProductListHighPrice")
+	public String NDSortProductListHighPrice(Model model) throws Exception{
+		List<NDSortProductDto> NDSortProductListHighPrice = sortProductDaoService.NDSortProductListHighPrice();
+		model.addAttribute("NDSortProductList", NDSortProductListHighPrice);
+		return "productList";
+	}
+	//정렬목록 중 가격낮은순 제품 출력
+	@RequestMapping("/NDSortProductListLowPrice")
+	public String NDSortProductListLowPrice(Model model) throws Exception{
+		List<NDSortProductDto> NDSortProductListLowPrice = sortProductDaoService.NDSortProductListCal();
+		model.addAttribute("NDSortProductList", NDSortProductListLowPrice);
+		return "productList";
+	}
+	
 }

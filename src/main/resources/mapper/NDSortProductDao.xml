@@ -20,9 +20,19 @@
 	</select>
 
 	<!--Sort productListHighPrice ==>높은 가격순 -->
-	<select id="NDSortProductListHighPrice" resultType="com.springlec.base.model.main.NDSortProductDto"></select>
+	<select id="NDSortProductListHighPrice" resultType="com.springlec.base.model.main.NDSortProductDto">
+		SELECT p.pcode, p.name, m.price, p.photo, p.calories
+		FROM product p, manage m
+		WHERE p.pcode = m.pcode AND m.invalidate ='1'
+		ORDER BY price DESC;
+	</select>
 
 	<!--Sort productListLowPrice ==>낮은 가격순  -->
-	
+	<select id="NDSortProductListLowPrice" resultType="com.springlec.base.model.main.NDSortProductDto">
+		SELECT p.pcode, p.name, m.price, p.photo, p.calories
+		FROM product p, manage m
+		WHERE p.pcode = m.pcode AND m.invalidate ='1'
+		ORDER BY price ASC;
+	</select>
 	
 </mapper>
