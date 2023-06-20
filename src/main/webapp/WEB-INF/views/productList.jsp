@@ -109,7 +109,7 @@
 							<h5>
 								
 							</h5>
-							<h5><a href="#">추천상품</a></h5>
+							<h5><a href="NDSortProductListTop10">인기상품</a></h5>
 						</div>
 					</div>
 					<div class="col-lg-3">

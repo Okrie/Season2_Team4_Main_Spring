@@ -13,4 +13,5 @@ public interface NDSortProductDaoService {
 	public List<NDSortProductDto> NDSortProductListLowPrice()throws Exception;
 	public List<NDSortProductDto> NDSortProductListDiet()throws Exception;
 	public List<NDSortProductDto> NDSortProductList7000()throws Exception;
+	public List<NDSortProductDto> NDSortProductListTop10()throws Exception;
 }

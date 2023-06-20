@@ -19,6 +19,7 @@ public interface NDSortProductDao {
 	public List<NDSortProductDto> NDSortProductListDiet() throws Exception;
 	//가격이 7000이하인 제품만 출력
 	public List<NDSortProductDto> NDSortProductList7000() throws Exception;
-	
+	//많이 구매한 순으로 탑10 출력
+	public List<NDSortProductDto> NDSortProductListTop10() throws Exception;
 
 }

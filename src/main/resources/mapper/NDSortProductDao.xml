@@ -55,6 +55,17 @@
 		]]>
 	</select>
 	
+	<!--Sort ordersTop10 ==>많이구매한 순으로 출력 -->
+	<select id="NDSortProductListTop10" resultType="com.springlec.base.model.main.NDSortProductDto">
+		SELECT p.pcode, p.name, m.price, p.photo, p.calories
+		FROM orders o
+		JOIN product p ON p.pcode = o.pcode
+		JOIN manage m ON p.pcode = m.pcode
+		WHERE m.invalidate = '1'
+		GROUP BY o.pcode, p.name, m.price, p.photo, p.calories
+		ORDER BY SUM(o.count) DESC
+		LIMIT 10;
+	</select>
 	
 	
 </mapper>

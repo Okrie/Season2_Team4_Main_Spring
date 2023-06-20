@@ -149,6 +149,14 @@ public class NDMainController {
 		model.addAttribute("NDSortProductList", NDSortProductList7000);
 		return "productList";
 	}
+
+	//정렬목록중 많이 팔린 기준 top10만 출력
+	@RequestMapping("/NDSortProductListTop10")
+	public String NDSortProductListTop10(Model model) throws Exception{
+		List<NDSortProductDto> NDSortProductListTop10 = sortProductDaoService.NDSortProductListTop10();
+		model.addAttribute("NDSortProductList", NDSortProductListTop10);
+		return "productList";
+	}
 	
 	
 	
