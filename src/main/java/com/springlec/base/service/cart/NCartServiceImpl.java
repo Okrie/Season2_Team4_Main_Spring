@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springlec.base.dao.cart.NCartDao;
 import com.springlec.base.model.cart.NCartDto;
@@ -18,17 +19,17 @@ public class NCartServiceImpl implements NCartService {
 	
 
 		@Override
-		public List<NCartDto> NcartListDao() throws Exception {
+		public List<NCartDto> NcartListDao(String userid) throws Exception {
 			// TODO Auto-generated method stub
-			return nCartDao.NcartListDao();
+			return nCartDao.NcartListDao(userid);
 		}
 
 
-/*
+
 		@Override
 		public void cartDeleteDao(int seq) throws Exception {
 			// TODO Auto-generated method stub
 			nCartDao.cartDeleteDao(seq);
 		}
-		*/
+		
 }

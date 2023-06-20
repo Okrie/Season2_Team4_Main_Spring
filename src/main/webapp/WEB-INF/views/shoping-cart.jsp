@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-lg-12">
                 
-                    <form id="deleteForm" action="cartdelete.do" method="post">
+                    <form id="deleteForm" action="cartdelete" method="post">
                         <div class="shoping__cart__table">
                             <table>
                                 <thead>
@@ -51,7 +51,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        <c:forEach var="dto" items="${shoping-cart}">
+                                        <c:forEach var="dto" items="${cart}">
                                             <input type="hidden" name="userid" value="${dto.userid}">
                                             <input type="hidden" name="seq" value="${dto.seq}">
                                             <input type="hidden" name="pcode" value="${dto.pcode}">
@@ -63,10 +63,10 @@
                                                 <td><input type="hidden" name="photo"><img src="${dto.photo}" alt="Product"></td>
                                                 <td><input type="hidden" name="name" value="${dto.name}">${dto.name}</td>
                                                 <td>${dto.count}</td>
-                                                <td><input type="hidden" name="price" value="${dto.price}">${dto.price}₩</td>
-                                                <td><input type="hidden" name="totalPrice" value="${dto.count * dto.price}"><span class="itemTotalPrice">${dto.count * dto.price}₩</span></td>
-                                                <td class="shoping__cart__item__close">
-                                                    <span class="icon_close" onclick="deleteItem(${dto.seq})"></span>
+                                                <td><input type="hidden" name="price" value="${dto.price}">₩${dto.price}</td>
+                                                <td><input type="hidden" name="totalPrice" value="${dto.count * dto.price}"><span class="itemTotalPrice">₩${dto.count * dto.price}</span></td>
+                                                <td class="shoping__cart__item__close"> 
+                                                    <span class="icon_close" onclick="cartdelete(${dto.seq})"></span>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -85,9 +85,9 @@
                     <div class="shoping__checkout">
                         <h5>총 상품가격</h5>
                         <ul>
-                            <li>합계 <span id="totalPriceDisplay">0₩</span></li>
+                            <li>합계 <span id="totalPriceDisplay">₩0</span></li>
                         </ul>    
-                        <a href="#" class="primary-btn" onclick="submitForm('orders.do'); return false;">결제페이지로</a>
+                        <a href="#" class="primary-btn" onclick="submitForm('orders'); return false;">결제페이지로</a>
                     </div>
                 </div>
             </div>
@@ -107,21 +107,21 @@
 
     	    var row = checkbox.parentNode.parentNode;
     	    var totalCell = row.querySelector('.itemTotalPrice');
-    	    totalCell.textContent = itemTotalPrice.toLocaleString('en-US', { useGrouping: false }) + '₩';
+    	    totalCell.textContent =  '₩' + itemTotalPrice.toLocaleString('en-US',{ useGrouping: false });
 
     	    totalPrice += itemTotalPrice;
     	  });
 
     	  var totalPriceDisplay = document.getElementById('totalPriceDisplay');
-    	  totalPriceDisplay.innerHTML = totalPrice.toLocaleString('en-US', { useGrouping: false }) + '₩';
+    	  totalPriceDisplay.innerHTML =  '₩' + totalPrice.toLocaleString('en-US',{ useGrouping: false });
     	}
 
 
 
-    function deleteItem(seq) {
+    function cartdelete(seq) {
         if (confirm("해당 상품을 장바구니에서 삭제하시겠습니까?")) {
             var deleteForm = document.getElementById('deleteForm');
-            deleteForm.action = 'cartdelete.do?seq=' + seq;
+            deleteForm.action = 'cartdelete?seq=' + seq;
             deleteForm.submit();
         }
     }
