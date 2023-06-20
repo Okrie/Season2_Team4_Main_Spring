@@ -1,6 +1,3 @@
-/**
- * 
- */
 $(document).ready(function() {
 	$("#confirmInsert").on("click", function(e) {
 		e.preventDefault();
@@ -79,4 +76,34 @@ $(document).ready(function() {
 			}
 		});
 	}
+
+	$("#confirmDelete").on("click", function() {
+		var pcode = $(this).data("pcode");
+		var invalidate = $(this).data("invalidate");
+		Swal.fire({
+			title: '삭제 및 복구 확인',
+			text: '누르시면, 되돌릴 수 없습니다.',
+			icon: 'warning',
+			showCancelButton: true,
+			showCloseButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: '승인',
+			cancelButtonText: '취소'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				Swal.fire({
+					title: '승인',
+					text: '삭제 및 복구 처리되었습니다.',
+					icon: 'success',
+					confirmButtonText: '확인',
+					confirmButtonColor: '#3085d6',
+					allowOutsideClick: false,
+					allowEscapeKey: false
+				}).then(() => {
+					window.location.href = "adminUpdateProduct?invalidate=" + invalidate + "&pcode=" + pcode;
+				});
+			}
+		});
+	});
 });

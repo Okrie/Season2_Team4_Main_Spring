@@ -25,5 +25,7 @@ public interface OrdersDao {
 	
 	public ArrayList<OrdersDto> searchWeekorders() throws Exception;
 	
+	public ArrayList<OrdersDto> searchEmail(int ordercode) throws Exception;
+	
 	
 }

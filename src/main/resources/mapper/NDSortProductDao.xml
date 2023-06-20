@@ -12,12 +12,60 @@
 	</select>
 	
 	<!--Sort productListCal ==>칼로리낮은순  -->
-
+	<select id="NDSortProductListCal" resultType="com.springlec.base.model.main.NDSortProductDto">
+		SELECT p.pcode, p.name, m.price, p.photo, p.calories 
+		FROM product p, manage m 
+		WHERE p.pcode = m.pcode AND m.invalidate = '1' 
+		ORDER BY calories ASC;
+	</select>
 
 	<!--Sort productListHighPrice ==>높은 가격순 -->
-
+	<select id="NDSortProductListHighPrice" resultType="com.springlec.base.model.main.NDSortProductDto">
+		SELECT p.pcode, p.name, m.price, p.photo, p.calories
+		FROM product p, manage m
+		WHERE p.pcode = m.pcode AND m.invalidate ='1'
+		ORDER BY price DESC;
+	</select>
 
 	<!--Sort productListLowPrice ==>낮은 가격순  -->
+	<select id="NDSortProductListLowPrice" resultType="com.springlec.base.model.main.NDSortProductDto">
+		SELECT p.pcode, p.name, m.price, p.photo, p.calories
+		FROM product p, manage m
+		WHERE p.pcode = m.pcode AND m.invalidate ='1'
+		ORDER BY price ASC;
+	</select>
+	
+	<!--Sort productList400under==>다이어트를 고민하고 있다면?  -->
+	<select id="NDSortProductListDiet" resultType="com.springlec.base.model.main.NDSortProductDto">
+		 <![CDATA[  
+		SELECT p.pcode, p.name, m.price, p.photo, p.calories
+		FROM product p, manage m
+		WHERE p.pcode = m.pcode AND m.invalidate ='1' AND p.calories<=400
+		ORDER BY calories ASC;
+		]]>
+	</select>
+	
+	<!--Sort productListPrice=7000  -->
+	<select id="NDSortProductList7000" resultType="com.springlec.base.model.main.NDSortProductDto">
+		<![CDATA[
+		SELECT p.pcode, p.name, m.price, p.photo, p.calories
+		FROM product p, manage m
+		WHERE p.pcode = m.pcode AND m.invalidate ='1' AND m.price<=7000
+		order by price asc;
+		]]>
+	</select>
+	
+	<!--Sort ordersTop10 ==>많이구매한 순으로 출력 -->
+	<select id="NDSortProductListTop10" resultType="com.springlec.base.model.main.NDSortProductDto">
+		SELECT p.pcode, p.name, m.price, p.photo, p.calories
+		FROM orders o
+		JOIN product p ON p.pcode = o.pcode
+		JOIN manage m ON p.pcode = m.pcode
+		WHERE m.invalidate = '1'
+		GROUP BY o.pcode, p.name, m.price, p.photo, p.calories
+		ORDER BY SUM(o.count) DESC
+		LIMIT 10;
+	</select>
 	
 	
 </mapper>

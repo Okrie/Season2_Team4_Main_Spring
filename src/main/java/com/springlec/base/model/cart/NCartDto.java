@@ -7,21 +7,21 @@ public class NCartDto {
 	String pcode;
 	String name;
 	String photo;
-	int prince;
+	int price;
 	String count;
 	
 	public NCartDto() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public NCartDto(String userid, int seq, String pcode, String name, String photo, int prince, String count) {
+	public NCartDto(String userid, int seq, String pcode, String name, String photo, int price, String count) {
 		super();
 		this.userid = userid;
 		this.seq = seq;
 		this.pcode = pcode;
 		this.name = name;
 		this.photo = photo;
-		this.prince = prince;
+		this.price = price;
 		this.count = count;
 	}
 
@@ -65,12 +65,12 @@ public class NCartDto {
 		this.name = name;
 	}
 
-	public int getPrince() {
-		return prince;
+	public int getPrice() {
+		return price;
 	}
 
-	public void setPrince(int prince) {
-		this.prince = prince;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 	public String getCount() {

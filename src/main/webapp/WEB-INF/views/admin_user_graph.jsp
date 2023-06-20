@@ -34,22 +34,11 @@
 <!-- sweetalret2 https://wooncloud.com/12 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!--get attribute from java  -->
-<%
-ArrayList<ArrayList<String>> dataSetGender = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetGender");
-ArrayList<ArrayList<String>> dataSetAge = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetAge");
-ArrayList<ArrayList<String>> dataSetInsert = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetInsert");
-%>
 <script type="text/javascript">
 	$(document).ready(function() {
-		var dataSetGender =
-<%=dataSetGender %>
-	;
-		var dataSetAge =
-<%=dataSetAge %>
-	;
-		var dataSetInsert =
-<%=dataSetInsert %>
-	;
+		var dataSetGender = <%=(ArrayList<ArrayList<String>>) request.getAttribute("dataSetGender") %>;
+		var dataSetAge =<%=(ArrayList<ArrayList<String>>) request.getAttribute("dataSetAge") %>	;
+		var dataSetInsert =<%=(ArrayList<ArrayList<String>>) request.getAttribute("dataSetInsert") %>;
 		dataConnect(dataSetGender, dataSetAge, dataSetInsert);
 	});
 </script>

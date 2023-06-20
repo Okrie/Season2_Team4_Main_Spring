@@ -35,16 +35,9 @@
 <script src="admin/js/product_table.js"></script>
 
 <!--get attribute from java  -->
-<%
-ArrayList<ArrayList<String>> dataSetProduct = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetProduct");
-%>
-
 <script type="text/javascript">
 	$(document).ready(function() {
-		var dataSetProduct =
-<%=dataSetProduct%>
-	;
-
+		var dataSetProduct =<%=(ArrayList<ArrayList<String>>) request.getAttribute("dataSetProduct")%>;
 		dataConnect(dataSetProduct);
 	});
 </script>

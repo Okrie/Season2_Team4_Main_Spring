@@ -30,19 +30,10 @@
 <script src="admin/js/order_graph.js"></script>
 
 <!--get attribute from java  -->
-<%
-ArrayList<ArrayList<String>> dataSetProduct = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetProduct");
-ArrayList<ArrayList<String>> dataSetOrders = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetOrders");
-%>
-
 <script type="text/javascript">
 	$(document).ready(function() {
-		var dataSetup =
-<%=dataSetProduct%>
-	;
-		var dataSetbelow =
-<%=dataSetOrders%>
-	;
+		var dataSetup = <%=(ArrayList<ArrayList<String>>) request.getAttribute("dataSetProduct")%>;
+		var dataSetbelow =<%=(ArrayList<ArrayList<String>>) request.getAttribute("dataSetOrders")%>	;
 		dataConnect(dataSetup, dataSetbelow);
 	});
 </script>

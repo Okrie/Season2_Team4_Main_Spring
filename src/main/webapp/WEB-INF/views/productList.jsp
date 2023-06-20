@@ -74,14 +74,13 @@
 								<div class="hero__categories_all">
 									<i class="fa fa-bars"></i> <span>정렬목록</span>
 								</div>
-								<ul style="display: flex; list-style-type: none; padding: 1;">
-									<li style="margin-right: 150px;"><a href="NDSortProductListAll">●모든 제품</a></li>
-									<li style="margin-right: 150px;"><a href="productListCal">●칼로리 적은순</a></li>
-									<li style="margin-right: 150px;"><a href="productListHighPrice">●가격 높은순</a></li>
-									<li style="margin-right: 150px;"><a href="productListLowPrice">●가격 낮은순</a></li>
-								</ul>
-
-
+								
+									<ul style="display: flex; list-style-type: none; padding: 1;">
+										<li style="margin-right: 150px;"><a href="NDSortProductListAll">●모든 제품</a></li>
+										<li style="margin-right: 150px;"><a href="NDSortProductListCal">●칼로리 적은순</a></li>
+										<li style="margin-right: 150px;"><a href="NDSortProductListHighPrice">●가격 높은순</a></li>
+										<li style="margin-right: 150px;"><a href="NDSortProductListLowPrice">●가격 낮은순</a></li>
+									</ul>
 								<input type="text" name="name" placeholder="What do yo u need?">
 								<button type="submit" class="site-btn">SEARCH</button>
 							</form>
@@ -110,14 +109,14 @@
 							<h5>
 								
 							</h5>
-							<h5><a href="#">추천상품</a></h5>
+							<h5><a href="NDSortProductListTop10">인기상품</a></h5>
 						</div>
 					</div>
 					<div class="col-lg-3">
 						<div class="categories__item set-bg"
 							data-setbg="http://okrie.kro.kr:25567/images/all.png">
 							<h5>
-								<a href="#">모든상품</a>
+								<a href="NDSortProductListAll">모든상품</a>
 							</h5>
 						</div>
 					</div>
@@ -125,7 +124,7 @@
 						<div class="categories__item set-bg"
 							data-setbg="http://okrie.kro.kr:25567/images/diet.png">
 							<h5>
-								<a href="#">다이어트를 고민하고 있다면?</a>
+								<a href="NDSortProductListDiet">다이어트를 고민하고 있다면?</a>
 							</h5>
 						</div>
 					</div>
@@ -133,7 +132,7 @@
 						<div class="categories__item set-bg"
 							data-setbg="http://okrie.kro.kr:25567/images/lowprice.png">
 							<h5>
-								<a href="#">가장 저렴한 한끼</a>
+								<a href="NDSortProductList7000">가장 저렴한 한끼</a>
 							</h5>
 						</div>
 					</div>
@@ -147,6 +146,8 @@
 		</div>
 	</section>
 	<!-- Categories Section End -->
+	
+
 
 	<%@ include file="productViewProductList.jsp"%>
 

@@ -34,14 +34,9 @@
 	src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="admin/js/orders_table.js"></script>
 <!--get attribute from java  -->
-<%
-ArrayList<ArrayList<String>> dataSetOrders = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetOrders");
-%>
 <script type="text/javascript">
 	$(document).ready(function() {
-		var dataSetOrders =
-<%=dataSetOrders%>
-	;
+		var dataSetOrders =<%=(ArrayList<ArrayList<String>>) request.getAttribute("dataSetOrders")%>;
 
 		dataConnect(dataSetOrders);
 	});

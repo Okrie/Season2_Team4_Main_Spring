@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.springlec.base.model.main.NDProductListDto;
 import com.springlec.base.model.main.NDSortProductDto;
 import com.springlec.base.service.main.NDHeaderCountDaoService;
@@ -34,6 +33,7 @@ public class NDMainController {
 	
 	@Autowired
 	NDSortProductDaoService sortProductDaoService;
+	
 	
 	//제품 전부 출력
 	@RequestMapping("/NDTakeAll")
@@ -99,16 +99,65 @@ public class NDMainController {
 	public String productList() throws Exception {
 		return "productList";
 	}
-		
+
+			
 	
 	
 	//정렬목록 중 모든제품 출력
 	@RequestMapping("/NDSortProductListAll")
-	public String NDSortProductListAll(HttpServletRequest request, Model model) throws Exception{
+	public String NDSortProductListAll(Model model) throws Exception{
 		List<NDSortProductDto> NDSortProductListAll = sortProductDaoService.NDSortProductListAll();
-		session = request.getSession();
-		
-		session.setAttribute("NDSortProductListAll", NDSortProductListAll);
-		return "redirect:productList";
+		model.addAttribute("NDSortProductList", NDSortProductListAll);
+		return "productList";
 	}
+	//정렬목록 중 칼로리별 적은순 제품 출력
+	@RequestMapping("/NDSortProductListCal")
+	public String NDSortProductListCal(Model model) throws Exception{
+		List<NDSortProductDto> NDSortProductListCal = sortProductDaoService.NDSortProductListCal();
+		model.addAttribute("NDSortProductList", NDSortProductListCal);
+		return "productList";
+	}
+	//정렬목록 중 가격높은순 제품 출력
+	@RequestMapping("/NDSortProductListHighPrice")
+	public String NDSortProductListHighPrice(Model model) throws Exception{
+		List<NDSortProductDto> NDSortProductListHighPrice = sortProductDaoService.NDSortProductListHighPrice();
+		model.addAttribute("NDSortProductList", NDSortProductListHighPrice);
+		return "productList";
+	}
+	//정렬목록 중 가격낮은순 제품 출력
+	@RequestMapping("/NDSortProductListLowPrice")
+	public String NDSortProductListLowPrice(Model model) throws Exception{
+		List<NDSortProductDto> NDSortProductListLowPrice = sortProductDaoService.NDSortProductListLowPrice();
+		model.addAttribute("NDSortProductList", NDSortProductListLowPrice);
+		return "productList";
+	}
+	
+	
+	
+	//정렬목록 중 400kcal이하 제품만 출력
+	@RequestMapping("/NDSortProductListDiet")
+	public String NDSortProductListDiet(Model model) throws Exception{
+		List<NDSortProductDto> NDSortProductListDiet = sortProductDaoService.NDSortProductListDiet();
+		model.addAttribute("NDSortProductList", NDSortProductListDiet);
+		return "productList";
+	}
+	
+	//정렬목록중 7000이하인 제품만 출력
+	@RequestMapping("/NDSortProductList7000")
+	public String NDSortProductList7000(Model model) throws Exception{
+		List<NDSortProductDto> NDSortProductList7000 = sortProductDaoService.NDSortProductList7000();
+		model.addAttribute("NDSortProductList", NDSortProductList7000);
+		return "productList";
+	}
+
+	//정렬목록중 많이 팔린 기준 top10만 출력
+	@RequestMapping("/NDSortProductListTop10")
+	public String NDSortProductListTop10(Model model) throws Exception{
+		List<NDSortProductDto> NDSortProductListTop10 = sortProductDaoService.NDSortProductListTop10();
+		model.addAttribute("NDSortProductList", NDSortProductListTop10);
+		return "productList";
+	}
+	
+	
+	
 }

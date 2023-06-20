@@ -38,17 +38,11 @@
 <script src="admin/js/board_table.js"></script>
 
 <!--get attribute from java  -->
-<%
-ArrayList<ArrayList<String>> dataSetBoard = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetBoard");
-ArrayList<ArrayList<String>> dataSetReview = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetReview");
-ArrayList<ArrayList<String>> dataSetNotice = (ArrayList<ArrayList<String>>) request.getAttribute("dataSetNotice");
-%>
-
 <script type="text/javascript">
 	$(document).ready(function() {
-		var dataSetBoard = <%=dataSetBoard%>;
-		var dataSetReview =	<%=dataSetReview%>;
-		var dataSetNotice =	<%=dataSetNotice%>;
+		var dataSetBoard = <%=(ArrayList<ArrayList<String>>) request.getAttribute("dataSetBoard")%>;
+		var dataSetReview =	<%=(ArrayList<ArrayList<String>>) request.getAttribute("dataSetReview")%>;
+		var dataSetNotice =	<%=(ArrayList<ArrayList<String>>) request.getAttribute("dataSetNotice")%>;
 		var sessionId = '<%=session.getAttribute("ID")%>';
 
 		dataConnect(dataSetBoard, dataSetReview, dataSetNotice, sessionId);

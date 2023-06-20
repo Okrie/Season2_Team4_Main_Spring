@@ -25,7 +25,6 @@
 
 <!-- Core plugin JavaScript-->
 <script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
 <body id="page-top">
 	<%@ include file="admin_toolbar.jsp"%>
 	<!-- Begin Page Content -->
@@ -181,12 +180,13 @@
 						<div class="form-group row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-4">
-								<a id="confirmRefund" class="btn btn-google btn-user btn-block">
-									환불 확인</a>
+								<a id="confirmRefund" data-ordercode="${dtoOrders[0].ordercode}"
+									class="btn btn-google btn-user btn-block"> 환불 확인</a>
 							</div>
 							<div class="col-sm-2"></div>
 							<div class="col-sm-4">
 								<a id="confirmDelivery"
+									data-ordercode="${dtoOrders[0].ordercode}"
 									class="btn btn-facebook btn-user btn-block"> 배송 확인</a>
 							</div>
 							<div class="col-sm-1"></div>
@@ -203,54 +203,8 @@
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i></a>
 	<!-- modal  -->
-	<script>
-        $("#confirmRefund").click(function () {
-            Swal.fire({
-                title: '환불 확인',
-                text: '누르시면, 되돌릴 수 없습니다.',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: '승인',
-                cancelButtonText: '취소'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                    	'환불 처리 완료!',
-                        '환불 처리되었습니다.',
-                        'success'
-                    ).then(() => {
-                      window.location.href= "adminUpdateOrdersRefund?ordercode=${dtoOrders[0].ordercode}";
-                    });
-                }
-            })
-        });
-
-        $("#confirmDelivery").click(function () {
-            Swal.fire({
-                title: '배송 확인',
-                text: '누르시면, 되돌릴 수 없습니다.',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: '승인',
-                cancelButtonText: '취소'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                    		'배송 처리 완료!',
-                     '배송이 완료처리되었습니다.',
-                    'success'
-                    ).then(() => {
-                    window.location.href="adminUpdateOrdersDelivery?ordercode=${dtoOrders[0].ordercode}";
-                    });
-               }
-            })
-        });
-</script>
-<!-- Custom scripts for all pages-->
-<script src="admin/js/sb-admin-2.js"></script>
+	<script src="admin/js/order_update_modal.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="admin/js/sb-admin-2.js"></script>
 </body>
 </html>

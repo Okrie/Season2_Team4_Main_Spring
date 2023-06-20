@@ -7,11 +7,14 @@ public class NDSortProductDto {
 	String photo; //product
 	String calories; //product
 	
+	
+	
 	//constructor
 	public NDSortProductDto() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	//NDSortProductAll
 	public NDSortProductDto(String pcode, String name, int price, String photo, String calories) {
 		super();
 		this.pcode = pcode;
