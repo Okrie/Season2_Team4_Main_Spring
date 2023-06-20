@@ -35,6 +35,7 @@ public class NDMainController {
 	@Autowired
 	NDSortProductDaoService sortProductDaoService;
 	
+	
 	//제품 전부 출력
 	@RequestMapping("/NDTakeAll")
 	public String NDTakeAll(HttpServletRequest request, Model model) throws Exception{
@@ -99,16 +100,22 @@ public class NDMainController {
 	public String productList() throws Exception {
 		return "productList";
 	}
-		
+
+			
 	
 	
 	//정렬목록 중 모든제품 출력
 	@RequestMapping("/NDSortProductListAll")
-	public String NDSortProductListAll(HttpServletRequest request, Model model) throws Exception{
+	public String NDSortProductListAll(Model model) throws Exception{
 		List<NDSortProductDto> NDSortProductListAll = sortProductDaoService.NDSortProductListAll();
-		session = request.getSession();
-		
-		session.setAttribute("NDSortProductListAll", NDSortProductListAll);
-		return "redirect:productList";
+		model.addAttribute("NDSortProductList", NDSortProductListAll);
+		return "productList";
+	}
+	//정렬목록 중 칼로리별 적은순 제품 출력
+	@RequestMapping("/NDSortProductListCal")
+	public String NDSortProductListCal(Model model) throws Exception{
+		List<NDSortProductDto> NDSortProductListCal = sortProductDaoService.NDSortProductListCal();
+		model.addAttribute("NDSortProductList", NDSortProductListCal);
+		return "productList";
 	}
 }
