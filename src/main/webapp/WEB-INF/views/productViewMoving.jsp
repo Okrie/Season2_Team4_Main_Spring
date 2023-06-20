@@ -82,8 +82,8 @@
 					<div class="featured__item">
 						<div class="featured__item__pic set-bg" data-setbg="${dto.photo}">
 							<ul class="featured__item__pic__hover">
-								<li><a href="heart.do"><i class="fa fa-heart"></i></a></li>
-								<li><a href="cart.do"><i class="fa fa-shopping-cart"></i></a></li>
+								<li><a href="#" onclick="wishInsertFn(${dto.pcode})"><i class="fa fa-heart"></i></a></li>
+								<li><a href="#" onclick="cartInsertFn(${dto.pcode})"><i class="fa fa-shopping-cart"></i></a></li>
 							</ul>
 						</div>
 						<div class="featured__item__text">

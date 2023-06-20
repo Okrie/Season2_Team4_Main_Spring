@@ -87,7 +87,6 @@
 							<ul class="featured__item__pic__hover">
 								<li><a href="#" onclick="wishInsertFn(${dto.pcode})"><i class="fa fa-heart"></i></a></li>
 								<li><a href="#" onclick="cartInsertFn(${dto.pcode})"><i class="fa fa-shopping-cart"></i></a></li>
-								<!--cart랑 wishlist랑 받아줄 이름이 뭔지 윤재한테 물어보기  -->
 							</ul>
 						</div>
 						<div class="featured__item__text">
