@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springlec.base.dao.bulletinBoard.NDNoticeDao">
+	
+	
+	<!--Notice  -->
+	<select id="NDNoticeBoardDao" resultType="com.springlec.base.model.bulletinBoard.NDNoticeBoardDto">
+		SELECT n.adminid, nw.title, nw.context, n.insertdate, nw.updatedate
+		FROM nwrite nw, notice n
+		WHERE nw.adminid = n.adminid and invalidate=1 and nw.seq=n.seq order by n.insertdate desc;
+	</select>
+
+</mapper>
