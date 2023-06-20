@@ -110,18 +110,18 @@ function checkOrder(event) {
 										<h4>가격 : ${list.price} </h4>
 										</p>
 										<p>칼로리 : ${list.calories} </p>
-
 										<div class="quantity">
+										<form action="orders" method="get">
 											수량 : 
 											<div class="pro-qty">
-												<input type="text" id="qty" name="qty" value="1">
+												<input type="text" id="qty" name="count" value="1">
 											</div>
-											<script>
-												var qty = document.getElementById("qty").value;
-											</script>
-											<a href="orders?pcode=10&count=2" class="primary-btn">Buy Now</a> 
-											<a href="#" class="primary-btn" onclick="cartInsertFn(${qty})">Add Cart</a>
-										</div></td>
+											<input type="hidden" name="pcode" value="${list.pcode}">
+											<input type="submit" class="primary-btn" style="border: 0px" value="Buy Now">
+											<a href="#" class="primary-btn" onclick="cartInsertFn(${list.pcode})">Add Cart</a>
+										</form>
+										</div>
+										</td>
 								</tr>
 							</table>
 							<br />

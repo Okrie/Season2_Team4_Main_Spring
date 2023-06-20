@@ -62,7 +62,7 @@
                                                 </td>
                                                 <td><input type="hidden" name="photo"><img src="${dto.photo}" alt="Product"></td>
                                                 <td><input type="hidden" name="name" value="${dto.name}">${dto.name}</td>
-                                                <td>${dto.count}</td>
+                                                <td><input type="hidden" name="count" value="${dto.count}">${dto.count}</td>
                                                 <td><input type="hidden" name="price" value="${dto.price}">₩${dto.price}</td>
                                                 <td><input type="hidden" name="totalPrice" value="${dto.count * dto.price}"><span class="itemTotalPrice">₩${dto.count * dto.price}</span></td>
                                                 <td class="shoping__cart__item__close"> 

@@ -20,13 +20,11 @@
 		</select>
 		
 		
-		
 		<insert id="insertOrdersDao">
 		
-		 Insert into orders (userid, pcode, count, address, orderdate) values(#{userid},#{pcode},#{count},#{address},now())
+    	INSERT INTO orders (userid, pcode, count, address, orderdate) VALUES (#{userid}, #{pcode}, #{count}, #{address}, now())
 		
 		</insert>
-		
 		
 		
 		<select id="cartOrdersDao" resultType="com.springlec.base.model.orders.NOrdersDto">
