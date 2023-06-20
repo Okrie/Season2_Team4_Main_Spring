@@ -51,7 +51,6 @@ public class NUserKaKaoServiceImpl implements NUserKaKaoService {
 
 			// 결과 코드가 200이라면 성공
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
 
 			// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -61,7 +60,6 @@ public class NUserKaKaoServiceImpl implements NUserKaKaoService {
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
 
 			// gson 객체 생성
 			Gson gson = new Gson();
@@ -71,9 +69,6 @@ public class NUserKaKaoServiceImpl implements NUserKaKaoService {
 
 			access_Token = jsonMap.get("access_token").toString();
 			refresh_Token = jsonMap.get("refresh_token").toString();
-
-			System.out.println("access_token : " + access_Token);
-			System.out.println("refresh_token : " + refresh_Token);
 
 			br.close();
 			bw.close();
@@ -116,8 +111,6 @@ public class NUserKaKaoServiceImpl implements NUserKaKaoService {
 				
 				// JSON String -> Map
 				Map<String, Object> jsonMap = gson.fromJson(result, new TypeToken<HashMap<String, Object>>(){}.getType());
-
-				System.out.println(jsonMap.get("properties"));
 
 				Map<String, Object> kakao_account = (Map<String, Object>) jsonMap.get("kakao_account");
 

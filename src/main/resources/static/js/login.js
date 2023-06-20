@@ -159,8 +159,6 @@ function checkUser(getResult, getId){
 	}
 }
 
-
-
 function setStatusVar(varStat){
 	
 	if(varStat === "allergyCheck"){
@@ -221,114 +219,6 @@ function addressbtn(){
 			document.querySelector("input[id=address_detail]").focus();
 		}
 	}).open();
-}
-
-function kakao_loginbtn(){
-	window.location.href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=ef894ee905a0643b7844daf7341d7569&redirect_uri=http://localhost:8080/Season2_Team4_Main/oauth/kakao/"
-}
-
-/*function kakao_login(){
-	const kakao_url = "https://kauth.kakao.com/oauth/token"
-	const client_id = "ef894ee905a0643b7844daf7341d7569"
-	const redirect_uri = "http://localhost:8080/Season2_Team4_Main/oauth/kakao"
-	const code = ""
-	
-	$.ajax({
-		url: kakao_url,
-		type: 'POST',
-		dataType: 'json',
-		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
-		},
-		data: {
-			grant_type: 'authorization_code',
-			client_id: client_id,
-			redirect_uri: redirect_uri,
-			code: code
-		},
-		success: function(data){
-			console.log(data)
-		},
-		error : function(e){
-			console.log(e)
-		}
-	});
-}*/
-
-/*function kakao_logout(ACCESS_TOKEN){
-	const kakao_url = "https://kapi.kakao.com/v1/user/logout"
-	
-	$.ajax({
-		url: kakao_url,
-		type: 'POST',
-		dataType: 'json',
-		headers: {
-			Authorization: 'Bearer ${ACCESS_TOKEN}'
-		},
-		success: function(data){
-			console.log(data)
-		},
-		error : function(e){
-			console.log(e)
-		}
-	});
-}*/
-
-
-/*	property_keys
-kakao_account.profile	카카오계정의 프로필 소유 여부, 실시간 닉네임과 프로필 사진 URL
-kakao_account.name	카카오계정의 이름 소유 여부, 이름 값
-kakao_account.email	카카오계정의 이메일 소유 여부, 이메일 값, 이메일 인증 여부, 이메일 유효 여부
-kakao_account.age_range	카카오계정의 연령대 소유 여부, 연령대 값
-kakao_account.birthday	카카오계정의 생일 소유 여부, 생일 값
-kakao_account.gender	카카오계정의 성별 소유 여부, 성별 값
-*/
-
-function kakao_userinfo(INPUT_TOKEN){
-	const kakao_url = "https://kapi.kakao.com/v2/user/me"
-	const ACCESS_TOKEN = INPUT_TOKEN
-
-	$.ajax({
-		url: kakao_url,
-		type: 'POST',
-		dataType: 'json',
-		headers: {
-			'Authorization': 'Bearer ' + ACCESS_TOKEN,
-			'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'
-		},
-		success: function(data){
-			/*console.log(data)
-			console.log(data.kakao_account.email)*/
-			checkid(data.kakao_account.email)
-		},
-		error : function(e){
-			console.log(e)
-			window.location.href = "registerPage.do"
-		}
-	});
-}
-
-function checkid(id){
-	$.ajax({
-	    type: "POST",
-	    url: "kakaoCheck", // URL
-	    data: { id : id },
-	    success: function(result) {
-			//console.log('js result = ' + result)
-			if (result === 1) {
-				//console.log(result)
-				
-				// 이 부분에 로그인완료로 보내고 세션에 로그인 ID 올려야 함
-				window.location.href = "kakaoLoginS?userid=" + id
-				//setIdpw()
-			} else{
-				window.location.href = "registerPage?userid=" + id
-			}
-		},
-		error: function(xhr, status, error) {
-		    console.log("에러 발생: " + error); // 오류 메시지 출력
-		}
-	});
 }
 
 function chkpw(userid){
@@ -404,7 +294,6 @@ function formatBirthdate(input) {
 
 function cartInsertFn(pcode){
 	//var pcode = document.getElementById("pcode").value();
-	console.log(pcode);
 	$.ajax({
 	    type: "POST",
 	    url: "NDCartInsert", // URL
@@ -416,9 +305,33 @@ function cartInsertFn(pcode){
 				window.location.reload();
 			} else if(Number(result) == Number(2)){
 				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
-				window.location.href = "login.do";
+				window.location.href = "login";
 			} else{
 				alert("장바구니에 추가하지 못했습니다.");
+			}
+		},
+		error: function(xhr, status, error) {
+		    console.log("에러 발생: " + error); // 오류 메시지 출력
+		}
+	});
+}
+
+function wishInsertFn(pcode){
+	//var pcode = document.getElementById("pcode").value();
+	$.ajax({
+	    type: "POST",
+	    url: "wishlist", // URL
+	    data: { pcode : pcode },
+	    success: function(result) {
+			console.log(result)
+			if (Number(result) == Number(0)) {
+				alert("위시리스트에 추가하였습니다.");
+				window.location.reload();
+			} else if(Number(result) == Number(2)){
+				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+				window.location.href = "login";
+			} else{
+				alert("위시리스트에 추가하지 못했습니다.");
 			}
 		},
 		error: function(xhr, status, error) {
