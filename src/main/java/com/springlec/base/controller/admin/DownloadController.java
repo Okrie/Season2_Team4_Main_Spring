@@ -17,6 +17,8 @@ import com.springlec.base.service.admin.UserGraphService;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 @RestController
@@ -45,13 +47,10 @@ public class DownloadController {
 		//	주간	가입자 추이
 		ArrayList<ArrayList<String>> dataSetInsert = userGraphService.searchInsertdate();
 		
-		// 파일 이름 인코딩
-	    String fileName = "관리자의 참고자료";
-	    byte[] fileNameBytes = fileName.getBytes(StandardCharsets.UTF_8);
-	    fileName = new String(fileNameBytes, StandardCharsets.ISO_8859_1);
+		
 
 		// CSV 파일 생성
-		File csvFile = File.createTempFile("Data", fileName+".csv");
+		File csvFile = File.createTempFile("Data", fileName(".csv"));
 		FileWriter writer = new FileWriter(csvFile);
 		CSVWriter csvWriter = new CSVWriter(writer);
 		
@@ -84,7 +83,7 @@ public class DownloadController {
 		byte[] fileContent = getFileContent(csvFile);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.parseMediaType("text/csv"));
-		headers.setContentDispositionFormData("attachment", fileName+".csv");
+		headers.setContentDispositionFormData("attachment", fileName(".csv"));
 		headers.setContentLength(fileContent.length);
 
 		return new ResponseEntity<>(fileContent, headers, HttpStatus.OK);
@@ -160,7 +159,7 @@ public class DownloadController {
 	    byte[] fileContent = outputStream.toByteArray();
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
-	    headers.setContentDispositionFormData("attachment", fileName+".xlsx");
+	    headers.setContentDispositionFormData("attachment", fileName(".xlsx"));
 	    headers.setContentLength(fileContent.length);
 
 		return new ResponseEntity<>(fileContent, headers, HttpStatus.OK);
@@ -171,5 +170,15 @@ public class DownloadController {
 		byte[] fileContent = inputStream.readAllBytes();
 		inputStream.close();
 		return fileContent;
+	}
+	
+	private String fileName(String file) throws Exception {
+		LocalDate nowday = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+		String now = nowday.format(formatter);
+	    String fileName = "관리자의 참고자료_"+now;
+	    byte[] fileNameBytes = fileName.getBytes(StandardCharsets.UTF_8);
+	    fileName = new String(fileNameBytes, StandardCharsets.ISO_8859_1);
+		return fileName+file;
 	}
 }
