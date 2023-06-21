@@ -3,7 +3,7 @@
 
 <mapper namespace="com.springlec.base.dao.user.NUserBucketDao">
 	<insert id="userCartIn">
-		INSERT INTO cart (userid, pcode, count) VALUES(#{userid}, #{pcode}, 1)
+		INSERT INTO cart (userid, pcode, count) VALUES(#{userid}, #{pcode}, #{count})
 	</insert>
 	<insert id="userWishlistIn">
 		INSERT INTO wishlist (userid, pcode, insertdate) VALUES(#{userid}, #{pcode}, now())

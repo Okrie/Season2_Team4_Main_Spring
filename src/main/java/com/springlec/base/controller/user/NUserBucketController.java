@@ -26,6 +26,7 @@ public class NUserBucketController {
 		HttpSession session = request.getSession();
 		int result;
 		String userid = "";
+		int count;
 		
 		try {
 			userid = (String) session.getAttribute("ID");
@@ -35,7 +36,14 @@ public class NUserBucketController {
 		}
 		
 		try {
-			service.userCartIn(request.getParameter("pcode"), userid);
+			count = Integer.parseInt(request.getParameter("count"));
+		} catch (Exception e) {
+			// TODO: handle exception
+			count = 1;
+		}
+		
+		try {
+			service.userCartIn(request.getParameter("pcode"), userid, count);
 			result = 0;
 		} catch (Exception e) {
 			// TODO: handle exception

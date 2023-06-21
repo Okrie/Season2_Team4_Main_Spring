@@ -292,7 +292,12 @@ function formatBirthdate(input) {
   input.value = formattedValue;
 }
 
-function cartInsertFn(pcode, count){
+function cartInsertFn(pcode){
+	if(document.getElementById("qty") === null || document.getElementById("qty") === undefined){
+		var count = 1;
+	}else{
+		var count = document.getElementById("qty").value;
+	}
 	//var pcode = document.getElementById("pcode").value();
 	$.ajax({
 	    type: "POST",
@@ -343,7 +348,6 @@ function wishInsertFn(pcode){
 
 function wishdeleteFn(pcode){
 	//var pcode = document.getElementById("pcode").value();
-	console.log(pcode)
 	$.ajax({
 	    type: "POST",
 	    url: "wishlistdelete", // URL
