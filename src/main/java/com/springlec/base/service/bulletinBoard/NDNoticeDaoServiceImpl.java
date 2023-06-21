@@ -15,9 +15,9 @@ public class NDNoticeDaoServiceImpl implements NDNoticeDaoService {
 	NDNoticeDao dao;
 
 	@Override
-	public List<NDNoticeBoardDto> NDNoticeBoardDao(String pcode) throws Exception {
+	public List<NDNoticeBoardDto> NDNoticeBoardDao() throws Exception {
 		// TODO Auto-generated method stub
-		return dao.NDNoticeBoardDao(pcode);
+		return dao.NDNoticeBoardDao();
 	}
 
 }

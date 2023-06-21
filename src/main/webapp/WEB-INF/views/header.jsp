@@ -84,7 +84,7 @@
                                     <li><a href="productList">일반상품구매</a></li>
                                 </ul>
                             </li>
-                            <li><a href="shopnotice">고객센터</a></li>
+                            <li><a href="shop-notice">고객센터</a></li>
                         </ul>
                     </nav>
                 </div>

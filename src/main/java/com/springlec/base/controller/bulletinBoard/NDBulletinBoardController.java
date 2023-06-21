@@ -25,10 +25,10 @@ public class NDBulletinBoardController {
 	
 	
 	//NDNoticeBoard관련
-	@RequestMapping("/NDNotice")
-	public String NDNoticeBoardDao(HttpServletRequest request,@RequestParam("pcode") String pcode, Model model) throws Exception{
-		List<NDNoticeBoardDto> NDNoticeBoardDao = noticeDaoService.NDNoticeBoardDao(pcode);
+	@RequestMapping("/shop-notice")
+	public String NDNoticeBoardDao(HttpServletRequest request, Model model) throws Exception{
+		List<NDNoticeBoardDto> NDNoticeBoardDao = noticeDaoService.NDNoticeBoardDao();
 		model.addAttribute("NDNotice", NDNoticeBoardDao);
-		return "shop-notice";
+		return "shopnotice";
 	}
 }

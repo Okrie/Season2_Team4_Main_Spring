@@ -6,6 +6,6 @@ import com.springlec.base.model.bulletinBoard.NDNoticeBoardDto;
 
 public interface NDNoticeDaoService {
 	
-	public List<NDNoticeBoardDto> NDNoticeBoardDao(String pcode) throws Exception;
+	public List<NDNoticeBoardDto> NDNoticeBoardDao() throws Exception;
 	
 }

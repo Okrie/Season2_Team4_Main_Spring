@@ -136,7 +136,7 @@
 										<td>
 											
 												
-												<a href = "shop-noticeView.jsp?ID=${dto.id}&count=${dto.noticeCount}&title=${dto.title}&context=${dto.context}&insertdate=${insertdate}&updatedate=${updatedate}">
+												<a href = "shopnoticeView.jsp?ID=${dto.id}&count=${dto.noticeCount}&title=${dto.title}&context=${dto.context}&insertdate=${insertdate}&updatedate=${updatedate}">
 													${dto.title}
 												</a>
 												
@@ -175,8 +175,8 @@
 									</c:if>
 								</c:if>
 							</div>
-							 <script src="js/jquery-3.7.0.min.js"></script>
-							<script>
+				
+							<!-- <script>
 								
 						        // 페이지 관련 변수 초기화
 						        var currentPage = ${page};
@@ -264,9 +264,9 @@
 // 						                }
 // 						            });
 // 						        }
-						    </script>
+						    </script> -->
 						    
-							
+										 
 						   
 					</div>
 				
@@ -289,7 +289,7 @@
 	<!-- Js Plugins -->
 	
 	
-
+<script src="js/jquery-3.7.0.min.js"></script>
 </body>
 
 </html>
