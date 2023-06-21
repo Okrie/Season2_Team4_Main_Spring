@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springlec.base.dao.user.NUserReviewDao">
+	<select id="reviewList" resultType="com.springlec.base.model.user.NUserReviewDto">
+		SELECT rw.seq, r.parent, r.insertdate, rw.userid, rw.ordercode, rw.likes, rw.image, rw.context, r.layer
+		FROM review r, rwrite rw
+		WHERE r.seq = rw.seq AND invalidate = 1 AND r.pcode = #{pcode} ORDER BY rw.seq ASC, r.layer ASC;
+	</select>
+	<select id="reviewAdminList" resultType="com.springlec.base.model.user.NUserReviewDto">
+		SELECT rr.seq, r.parent, r.insertdate, rr.adminid, rr.context, r.layer
+		FROM review r, rreply rr
+		WHERE r.seq = rr.seq AND invalidate = 1 AND r.pcode = #{pcode} ORDER BY rr.seq ASC, r.layer ASC;
+	</select>
+</mapper>

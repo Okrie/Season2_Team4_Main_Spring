@@ -292,12 +292,13 @@ function formatBirthdate(input) {
   input.value = formattedValue;
 }
 
-function cartInsertFn(pcode){
+function cartInsertFn(pcode, count){
 	//var pcode = document.getElementById("pcode").value();
 	$.ajax({
 	    type: "POST",
 	    url: "NDCartInsert", // URL
-	    data: { pcode : pcode },
+	    data: { pcode : pcode,
+	    		count : count },
 	    success: function(result) {
 			console.log(result)
 			if (Number(result) == Number(0)) {

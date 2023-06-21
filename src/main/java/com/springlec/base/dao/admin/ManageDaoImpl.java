@@ -41,7 +41,7 @@ public class ManageDaoImpl implements ManageDao {
 	}
 
 	@Override
-	public int insertProductManage(String adminid, int stock, int price) {
+	public int insertProductManage(String pcode, String adminid, int stock, int price) {
 		return sqlSession.insert(namespace + ".insertProductManage");
 	}
 
