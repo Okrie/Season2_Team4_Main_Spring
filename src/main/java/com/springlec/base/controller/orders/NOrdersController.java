@@ -42,21 +42,34 @@ public class NOrdersController {
 	
 	// 결제
 	@RequestMapping("/insertorders")
-	public String insertOrdersDao(HttpServletRequest request, Model model) throws Exception{
-		nOrdersService.insertOrdersDao(request.getParameter("userid"), request.getParameter("pcoude"), request.getParameter("count"), request.getParameter("address"));
-		return "ordersFinish";
+	public String insertOrdersDao(HttpServletRequest request, Model model) throws Exception {
+		session = request.getSession();
+	    String userid = (String) session.getAttribute("ID");
+	    String pcode = request.getParameter("pcode");
+	    String count = request.getParameter("count");
+	    String address = request.getParameter("address");
+
+
+	    nOrdersService.insertOrdersDao(userid, pcode, count, address);
+
+	    model.addAttribute("userid", userid);
+	    model.addAttribute("pcode", pcode);
+	    model.addAttribute("count", count);
+	    model.addAttribute("address", address);
+
+	    return "ordersFinish";
 	}
-	
-	
-	
-	// 결제후 정보 보기
+
 	@RequestMapping("/ordersFinish")
 	public String cartOrdersDao(HttpServletRequest request, Model model) throws Exception{
-		
 		List<NOrdersDto> cartOrdersDao = nOrdersService.cartOrdersDao(request.getParameter("pcode"));
-		model.addAttribute("ordersFinish",cartOrdersDao);
-		return "ordersFinish";
+		model.addAttribute("cartOrders",cartOrdersDao);
+		return "redirect:ordersFinish";
 	}
+
+
+
+	
 	
 	
 }

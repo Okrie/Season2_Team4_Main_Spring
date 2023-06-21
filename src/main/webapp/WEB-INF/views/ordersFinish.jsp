@@ -59,7 +59,7 @@
     <div class="row">
         <div class="col-lg-12">
         
-            <form id="checkoutForm" action="insertorders.do" method="post" onsubmit="submitForm()">
+            <form id="checkoutForm" action="ordersFinish" method="post" onsubmit="submitForm()">
                 <input type="hidden" name="userid" value="<%= login %>">
              
                       <div class="text-center">
@@ -85,7 +85,7 @@
                             <tr>
                                 <td><input type="hidden" name="photo"><img src="${dto.photo}" alt="Product"></td>
                                 <td><input type="hidden" name="name" value="${dto.name}">${dto.name}</td>
-             
+     					        <td><input type="hidden" name="pcode" value="${dto.pcode}"></td>
                                 <td><input type="hidden" name="count" value="${dto.count}">${dto.count}</td>
                                 <td>${dto.count * dto.price}&#8361;</td>
                             </tr>
@@ -100,7 +100,7 @@
   <div class="row">
   <div class="col-lg-12">
     <div class="shoping__cart__btns">
-      <a href="#" class="primary-btn cart-btn cart-btn-right" onclick="window.location.href='userorderinfo.do'">결제내역</a>
+      <a href="#" class="primary-btn cart-btn cart-btn-right" onclick="window.location.href='/'">메인페이지"</a>
     </div>
   </div>
 </div>
