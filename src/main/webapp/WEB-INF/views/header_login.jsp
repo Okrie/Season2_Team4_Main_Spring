@@ -40,7 +40,7 @@
 							<c:if test="${empty sessionScope.ID}">
 								<a href="login"><i class="fa fa-user"></i> Login</a>
 							</c:if>
-                         		<h2><a href="/main">Home</a></h2>
+                         		<h2><a href="/">Home</a></h2>
 							</div>
 						</div>
 					</div>
