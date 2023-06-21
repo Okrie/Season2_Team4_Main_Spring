@@ -1,5 +1,9 @@
 package com.springlec.base.service.admin;
 
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,10 +41,6 @@ public class ProductInsertServiceImpl implements ProductInsertService {
 		if(soup.equals("")) {
 			soup = null;
 		}
-		System.out.println( "1"+pcode+ "1"+ name+ "1"+ category+"1"+  rice+"1"+  cook1+"1"+  cook2+"1"+
-			 cook3+"1"+  soup+"1"+  photo+"1"+ Integer.toString(calories)  +"1"+  adminid+"1"+  Integer.toString(stock)+"1"+  Integer.toString(price));
-		
-		
 		
 		if (pcode.equals("입력을 누르시면 자동 완성됩니다.")) {
 			pcode = productDao.getPcodeNew().getPcode();
@@ -52,6 +52,12 @@ public class ProductInsertServiceImpl implements ProductInsertService {
 			manageDao.updateProductManage(pcode, adminid, stock, price);
 			return 1;
 		}
+	}
+	
+	private String fileName(String file) throws Exception {
+	    byte[] fileNameBytes = file.getBytes(StandardCharsets.ISO_8859_1);
+	    file = new String(fileNameBytes, StandardCharsets.UTF_8);
+		return file;
 	}
 
 }
