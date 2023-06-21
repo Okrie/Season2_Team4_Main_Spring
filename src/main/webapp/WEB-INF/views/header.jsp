@@ -91,7 +91,7 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="wishlist"><i class="fa fa-heart"></i> 
+                            <li><a href="userwishlist"><i class="fa fa-heart"></i> 
                             <span>${sessionScope.heartCount}</span></a></li>
                             <li><a href="cart"><i class="fa fa-shopping-bag"></i> 
                             <span>${sessionScope.cartCount }</span></a></li>
