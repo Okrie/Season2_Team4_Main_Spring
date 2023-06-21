@@ -29,8 +29,20 @@
 </head>
 
 <%
-    String result = (String) request.getAttribute("list");
+	String result = (String)request.getAttribute("list");
 %>
+<script>
+function checkResult(event) {
+    var sendResult = '<%=result %>';
+    
+    if (sendResult === 'false'){
+    	alert("주문에 실패했습니다.");
+    	event.preventDefault(); 
+    }else {
+    	alert("주문이 완료되었습니다.");
+    }
+}
+</script>
 
 <body>
     <%@ include file="header.jsp" %>
@@ -58,12 +70,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-					 <% String login = (String) session.getAttribute("ID"); %>
+ 					<% String login = (String) session.getAttribute("ID"); %>
 
                     <form id="checkoutForm" action="insertorders" method="post">
 
                         <input type="hidden" name="userid" value="<%= login %>">
-                        <input type="hidden" name="pcode" value="${dto.pcode}">
                         <input type="hidden" name="count" value="${count}">
 
                         <div class="text-center">
@@ -78,8 +89,7 @@
                                             <div class="product-info">
                                                 <p>수령인 : ${user.name}</p>
                                                 <p>수령인 전화번호 : ${user.telno}</p>
-                                                <p>배송지 : <input type="text" name="address"
-                                                        value="${user.address}"></p>
+                                                <p>배송지 : <input type="text" name="address" value="${user.address}"></p>
                                                 <p>이메일 : ${user.email}</p>
                                             </div>
                                         </td>
@@ -120,14 +130,13 @@
 
                         <input type="hidden" name="pcodeList" value="[]">
                         <input type="hidden" name="countList" value="[]">
-                    </form>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
                         <a href="#" class="primary-btn cart-btn cart-btn-right"
-                            onclick="window.location.href='main.do'">메인페이지</a>
+                            onclick="window.location.href='/'">메인페이지</a>
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -136,46 +145,30 @@
                         <ul>
                             <li>총주문가격 : <fmt:formatNumber value="${totalPrice}" type="number" pattern="#,##0" />원</li>
                         </ul>
-                        <a href="#" class="primary-btn" onclick="submitForm();">결제하기</a>
-                    </div>
+                  <input type="submit" class="primary-btn" onclick="checkResult(event)" value="결제하기">
+                    </form>
+					 </div>
                 </div>
             </div>
         </div>
     </section>
 
     <script>
-        function submitForm() {
-            var form = document.getElementById('checkoutForm');
-            var userid = '<%= login %>';
-            var address = document.querySelector('input[name="address"]').value;
+    function submitForm() {
+        var form = document.getElementById('checkoutForm');
+        var userid = '<%= login %>';
+        var address = document.querySelector('input[name="address"]').value;
 
-            // 정보를 폼에 추가합니다.
-            form.elements['userid'].value = userid;
-            form.elements['address'].value = address;
+        
+		
+        
+        form.submit();
+    }
+    
+    
+   
+   
 
-            // pcode와 count 정보를 가져와서 배열로 저장합니다.
-            var pcodes = document.getElementsByName('pcode');
-            var counts = document.getElementsByName('count');
-            var pcodeList = [];
-            var countList = [];
-
-            for (var i = 0; i < pcodes.length; i++) {
-                pcodeList.push(pcodes[i].value);
-                countList.push(counts[i].value);
-            }
-
-            // userid와 address를 pcode와 count 개수에 맞게 복제합니다.
-            var useridList = Array(pcodes.length).fill(userid);
-            var addressList = Array(pcodes.length).fill(address);
-
-            // 배열을 폼에 추가합니다.
-            form.elements['userid'].value = useridList.join(',');
-            form.elements['address'].value = addressList.join(',');
-            form.elements['pcodeList'].value = pcodeList.join(',');
-            form.elements['countList'].value = countList.join(',');
-
-            form.submit();
-        }
     </script>
 
     <!-- Js Plugins -->

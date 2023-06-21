@@ -62,7 +62,7 @@
                                     <input type="hidden" name="refund" value="${dto.refunddate}">
                                     <input type="hidden" name="writeReview" value="">
                                     <tr class="order-row" data-delivery-date="${dto.deliverydate}" data-refund-date="${dto.refunddate}">
-                                        <td><a href="productInformSend.do?pcode=${dto.pcode}"><img src="${dto.photo}" alt="Product" width="50%"></a></td>
+                                        <td><a href="productInformSend?pcode=${dto.pcode}"><img src="${dto.photo}" alt="Product" width="50%"></a></td>
                                         <td>${dto.name}</td>
                                         <td>${dto.count}</td>
                                         <td>${dto.count * dto.price}&#8361;</td>

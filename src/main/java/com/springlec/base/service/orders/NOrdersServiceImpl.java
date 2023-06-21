@@ -29,13 +29,9 @@ public class NOrdersServiceImpl implements NOrdersService {
 	
 	
 	@Override
-	public void insertOrdersDao(String userid, String pcoude, String count, String address) throws Exception {
+	public void insertOrdersDao(String userid, String pcode, String count, String address) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(userid);
-		System.out.println(pcoude);
-		System.out.println(count);
-		System.out.println(address);
-		nOrdersDao.insertOrdersDao(userid, pcoude, count, address);
+		nOrdersDao.insertOrdersDao(userid, pcode, count, address);
 	}
 
 	@Override

@@ -7,7 +7,7 @@
 
 		<select id="productInfoDao" resultType="com.springlec.base.model.orders.NOrdersDto">
 		
-		SELECT p.name, p.photo, m.price FROM product p INNER JOIN manage m ON p.pcode = m.pcode WHERE p.pcode = #{pcode}
+		SELECT p.name, p.photo, m.price, p.pcode FROM product p INNER JOIN manage m ON p.pcode = m.pcode WHERE p.pcode = #{pcode}
 		
 		</select>
 		

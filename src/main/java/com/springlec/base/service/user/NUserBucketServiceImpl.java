@@ -15,9 +15,9 @@ public class NUserBucketServiceImpl implements NUserBucketService {
 	NUserBucketDao dao;
 	
 	@Override
-	public int userCartIn(String pcode, String userid) throws Exception {
+	public int userCartIn(String pcode, String userid, int count) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.userCartIn(pcode, userid);
+		return dao.userCartIn(pcode, userid, count);
 	}
 
 	@Override

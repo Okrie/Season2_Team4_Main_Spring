@@ -10,7 +10,7 @@ public interface NOrdersDao {
 	
 	public List<NOrdersDto> userInfoDao(String userid) throws Exception;
 	
-	public void insertOrdersDao(String userid, String pcoude, String count, String address) throws Exception;
+	public void insertOrdersDao(String userid, String pcode, String count, String address) throws Exception;
 	
 	
 	

@@ -12,7 +12,7 @@ public class NUserBucketDaoImpl implements NUserBucketDao {
 	public static String nameSpace = "com.springlec.base.dao.user";
 	
 	@Override
-	public int userCartIn(String pcode, String userid) throws Exception {
+	public int userCartIn(String pcode, String userid, int count) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.insert(nameSpace + ".userCartIn");
 	}
