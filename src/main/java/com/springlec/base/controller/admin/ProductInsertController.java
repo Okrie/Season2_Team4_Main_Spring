@@ -40,6 +40,7 @@ public class ProductInsertController {
 
 		if (!file.isEmpty()) {
 			String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+			fileName = fileName.replaceAll("\\s", "");
 			photo = "/img/" + fileName;
 			String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/img/"; // 저장할 경로 설정
 			File uploadPathDir = new File(uploadDir);
