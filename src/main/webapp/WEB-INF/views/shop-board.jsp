@@ -144,9 +144,11 @@ function checkOrder(event) {
 										<td id="${dto.layer}" style="width: ${5 + (dto.layer*1.1)}px;">
 										<c:forEach begin="${cnt.index}" end="${dto.layer*3}">&nbsp</c:forEach>
 										${dto.userid} ${dto.image} ${dto.context} 
-										<div align="right"> ${dto.insertdate} 
+										<div align="right"> ${dto.insertdate}
+										<c:if test="${not empty sessionScope.ID }">
 										<a href="#"><i class="fa fa-thumbs-up"></i></a> ${dto.likes} &nbsp&nbsp&nbsp
 										<a href="#" class="primary-btn" style="margin-right: 0px;">댓글 작성</a></div>
+										</c:if>
 										</td>
 									</tr>
 									</c:forEach>
