@@ -1,33 +1,35 @@
 package com.springlec.base.model.bulletinBoard;
 
 public class NDNoticeBoardDto {
-	String id;
-	String title;
-	String context;
-	String insertdate;
-	String updatedate;
-	int noticeCount;
+	String adminid;//admin
+	String title;//nwrite
+	String context;//nwrite
+	String insertdate;//notice
+	String updatedate;//nwrite
+	int seq;//noice
+	
 	
 	public NDNoticeBoardDto() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public NDNoticeBoardDto(String id, String title, String context, String insertdate, String updatedate, int noticeCount) {
+	public NDNoticeBoardDto(String adminid, String title, String context, String insertdate, String updatedate,
+			int seq) {
 		super();
-		this.id = id;
+		this.adminid = adminid;
 		this.title = title;
 		this.context = context;
 		this.insertdate = insertdate;
 		this.updatedate = updatedate;
-		this.noticeCount = noticeCount;
+		this.seq = seq;
 	}
 
-	public String getId() {
-		return id;
+	public String getAdminid() {
+		return adminid;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setAdminid(String adminid) {
+		this.adminid = adminid;
 	}
 
 	public String getTitle() {
@@ -62,15 +64,17 @@ public class NDNoticeBoardDto {
 		this.updatedate = updatedate;
 	}
 
-	public int getNoticeCount() {
-		return noticeCount;
+	public int getSeq() {
+		return seq;
 	}
 
-	public void setNoticeCount(int noticeCount) {
-		this.noticeCount = noticeCount;
+	public void setSeq(int seq) {
+		this.seq = seq;
 	}
 
 	
 	
-
 }
+	
+	
+	

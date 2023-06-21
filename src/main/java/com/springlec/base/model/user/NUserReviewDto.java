@@ -30,4 +30,7 @@ public class NUserReviewDto {
 	String invalidate;
 	
 	// admin review reply
+	
+	
+	
 }

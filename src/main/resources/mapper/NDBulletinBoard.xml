@@ -7,9 +7,17 @@
 	
 	<!--Notice  -->
 	<select id="NDNoticeBoardDao" resultType="com.springlec.base.model.bulletinBoard.NDNoticeBoardDto">
-		SELECT n.adminid, nw.title, nw.context, n.insertdate, nw.updatedate
-		FROM nwrite nw, notice n
-		WHERE nw.adminid = n.adminid and invalidate=1 and nw.seq=n.seq order by n.insertdate desc;
+		SELECT ROW_NUMBER() OVER (ORDER BY n.seq ASC), n.adminid, nw.title, nw.context, n.insertdate, nw.updatedate
+		FROM nwrite nw, notice n, admin a
+		WHERE nw.adminid = n.adminid AND n.adminid = a.adminid AND invalidate=1 AND nw.seq=n.seq 
+		ORDER BY n.insertdate DESC;	
+	</select>
+	
+	<!--Review  -->
+	<select id="NDReviewBoardDao" resultType="com.springlec.base.model.bulletinBoard.NDReviewBoardDto">
+		SELECT DISTINCT r.userid, rw.likes, rw.context, r.insertdate, rw.updatedate, rw.image, r.parent, r.layer 
+		FROM rwrite rw, review r
+		WHERE rw.userid = r.userid and rw.pcode = r.pcode and rw.seq = r.seq and r.pcode = #{pcode} and r.invalidate = 1;
 	</select>
 
 </mapper>

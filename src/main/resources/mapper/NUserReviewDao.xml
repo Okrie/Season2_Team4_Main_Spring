@@ -12,4 +12,21 @@
 		FROM review r, rreply rr
 		WHERE r.seq = rr.seq AND invalidate = 1 AND r.pcode = #{pcode} ORDER BY rr.seq ASC, r.layer ASC;
 	</select>
+	
+	
+	<!--유저 글쓰기 기능-->
+	<select id="reviewSeqQuery" resultType="com.springlec.base.model.admin.ReviewDto">
+		SELECT MAX(seq) AS seq FROM review
+	</select>
+	<insert id="NDReviewWriteDao"><!--rwitre테이블 작성  -->
+		INSERT INTO rwrite (seq, userid, ordercode, pcode, likes, context, image, updatedate)
+		VALUES (#{seq}, #{userid}, #{ordercode}, #{pcode}, '0', #{context}, null ,now());
+	</insert>
+	<insert id="NDWriteReviewUserDao"><!-- review테이블 작성 -->
+		INSERT INTO review (seq, parent, layer, userid,
+		pcode, adminid, insertdate, invalidate)
+		VALUES (#{seq}, 1, 1, #{ID}, #{pcode}, NULL, now(), 1);
+	</insert>
+	
+	
 </mapper>

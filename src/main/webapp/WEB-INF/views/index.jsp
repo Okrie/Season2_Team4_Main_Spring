@@ -76,15 +76,6 @@
 						<ul>
 							<li><a href="productList">한끼대용상품</a></li>
 							<li><a href="subscribe">구독상품</a></li>
-							<!-- <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li> -->
 						</ul>
 					</div>
 				</div>

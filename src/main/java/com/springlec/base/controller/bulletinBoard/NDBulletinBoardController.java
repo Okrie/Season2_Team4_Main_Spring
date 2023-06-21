@@ -28,6 +28,7 @@ public class NDBulletinBoardController {
 	@RequestMapping("/shop-notice")
 	public String NDNoticeBoardDao(HttpServletRequest request, Model model) throws Exception{
 		List<NDNoticeBoardDto> NDNoticeBoardDao = noticeDaoService.NDNoticeBoardDao();
+		model.addAttribute("SIZE", NDNoticeBoardDao.size());
 		model.addAttribute("NDNotice", NDNoticeBoardDao);
 		return "shopnotice";
 	}

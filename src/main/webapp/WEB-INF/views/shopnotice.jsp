@@ -82,8 +82,8 @@
 							<i class="fa fa-bars"></i> <span>제품목록</span>
 						</div>
 						<ul>
-							<li><a href="productList.do">한끼대용상품</a></li>
-							<li><a href="subscribe.do">구독상품</a></li>
+							<li><a href="productList">한끼대용상품</a></li>
+							<li><a href="subscribe">구독상품</a></li>
 						</ul>
 					</div>
 				</div>
@@ -91,31 +91,25 @@
 				<div class="col-lg-9">
 					<div class="hero__search">
 						<div class="hero__search__form">
-							<form action="searchActionProductList.do" method="get">
+							<form action="NDSearchQuery" method="get">
 								<!-- <div class="hero__search__categories">
 									All Categories <span class="arrow_carrot-down"></span>
 								</div> -->
 								<input type="text" name ="name" placeholder="What do yo u need?">
 								<button type="submit" class="site-btn">SEARCH</button>
+								<% String name = request.getParameter("name");	%>
 							</form>
 						</div>
-						<div class="hero__search__phone">
-							<!-- <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div> -->
-						</div>
+						
 					</div>
 							<table class="table table-striped" style="text-align:center;">
 						
 								<thead>
 									<tr>
 										<th scope="col">no</th>
-										<th scope="col">글쓴이</th>
+										<!-- <th scope="col">글쓴이</th> -->
 										<th scope="col">제목</th>
+										<th scope="col">내용</th>
 										<th class="jb-th-1" scope="col">등록날짜</th>
 										<th class="jb-th-1" scope="col">수정날짜</th>
 									</tr>
@@ -123,24 +117,24 @@
 								<tbody>
 										
 								<c:forEach items="${NDNotice}" var="dto" varStatus="status">
-									
-									<c:set var="count1" value="${count1 + 1}" />
-									<tr>
+<%-- 									<c:set var="count1" value="${count1 + 1}" />
+ --%>									<tr>
 										<td>
-											${dto.noticeCount}
+											${SIZE - status.index }
+											<input type="hidden" name = "" id = "seq" value="${SIZE - status.index }">
 										</td>
+										<%-- <td>
+											${dto.adminid}
+											<input type="hidden" name = "" id = "adminid" value="${dto.adminid}">
+										</td> --%>
 										<td>
-											${dto.id}
-											<input type="hidden" name = "" id = "id" value="${dto.id}">
-										</td>
-										<td>
-											
-												
-												<a href = "shopnoticeView.jsp?ID=${dto.id}&count=${dto.noticeCount}&title=${dto.title}&context=${dto.context}&insertdate=${insertdate}&updatedate=${updatedate}">
 													${dto.title}
-												</a>
-												
-											
+												<%-- <a href = "shopnoticeView.jsp?ID=${dto.adminid}&count=${dto.seq}&title=${dto.title}&context=${dto.context}&insertdate=${insertdate}&updatedate=${updatedate}">
+												</a> --%>
+										</td>
+										<td>
+											${dto.context}
+											<input type="hidden" name ="" id = "context" value="${dto.context}"> 
 										</td>
 										<td>
 											${dto.insertdate}
@@ -155,16 +149,16 @@
 								
 								</tbody>
 							</table> 
-							<div id="pagination">
+							<%-- <div id="pagination">
 						        <button id="prevButton" disabled>Previous</button>
 						        <c:forEach begin = "1" end = "${totalPages}" var="i">
 						        	<c:if test = "${param.page == i}"><input type="button" name = "pageButton" class = "btn-1" value="${i}" disabled="disabled"></c:if>
 						    		<c:if test = "${param.page != i}"><a href="notice.do?page=${i}"><input type="button" name = "pageButton" class = "btn-2" value="${i}"></a></c:if>
 						    	</c:forEach>
 						        <button id="nextButton">Next</button>
-						    </div>
+						    </div> --%>
 						    
-							<div align="right">
+							<%-- <div align="right">
 								<c:if test="${sessionScope.ID!=null}">
 									<c:if test="${sessionScope.login=='admin'}">
 										<form action="write_notice.do" method="post">
@@ -174,7 +168,7 @@
 										</form>
 									</c:if>
 								</c:if>
-							</div>
+							</div> --%>
 				
 							<!-- <script>
 								
