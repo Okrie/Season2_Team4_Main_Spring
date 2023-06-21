@@ -13,7 +13,8 @@
 		FROM
 		orders
 		JOIN
-		product ON orders.pcode = product.pcode
+		product ON orders.pcode =
+		product.pcode
 		JOIN
 		manage ON product.pcode = manage.pcode
 	</select>
@@ -26,7 +27,8 @@
 		FROM
 		orders
 		JOIN
-		product ON orders.pcode = product.pcode
+		product ON orders.pcode =
+		product.pcode
 		JOIN
 		manage ON product.pcode = manage.pcode
 		WHERE
@@ -54,17 +56,10 @@
 
 	<!-- 데이터 입력하기 : admin_insertproduct.do -->
 	<insert id="insertProductManage">
-		INSERT INTO
-		manage (adminid, pcode, stock, price, updatedate, invalidate)
-		SELECT
-		#{adminid},
-		IFNULL(MAX(CAST(pcode AS UNSIGNED)), 0) + 1,
-		#{stock},
-		#{price},
-		now(),
-		1
-		FROM
-		manage
+		INSERT INTO manage (pcode, adminid, stock, price,
+		updatedate, invalidate)
+		VALUES (#{pcode}, #{adminid}, #{stock}, #{price}, NOW(), 1);
+
 	</insert>
 
 	<!-- 데이터 수정하기 : admin_updateproduct.do -->

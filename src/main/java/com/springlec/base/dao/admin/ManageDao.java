@@ -18,7 +18,7 @@ public interface ManageDao {
     public ArrayList<ManageDto> findProductManage(String pcode);
 
     // 데이터 입력하기 : admin_insertproduct.do
-    public int insertProductManage(String adminid, int stock, int price);
+    public int insertProductManage(String pcode, String adminid, int stock, int price);
 
     // 데이터 수정하기 : admin_updateproduct.do
     public int updateProductManage(String pcode, String adminid,  int stock, int price);

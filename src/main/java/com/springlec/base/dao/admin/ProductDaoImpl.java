@@ -38,7 +38,7 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public int insertProduct(String name, String category, String rice, String cook1, String cook2, String cook3,
+	public int insertProduct(String pcode, String name, String category, String rice, String cook1, String cook2, String cook3,
 			String soup, String photo, int calories) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlsession.insert(namespace + ".insertProduct");
@@ -55,6 +55,12 @@ public class ProductDaoImpl implements ProductDao {
 	public ProductDto getPname(String pcode) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlsession.selectOne(namespace + ".getPname", pcode);
+	}
+
+	@Override
+	public ProductDto getPcodeNew() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlsession.selectOne(namespace + ".getPcodeNew");
 	}
 
 }

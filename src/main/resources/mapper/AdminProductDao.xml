@@ -4,7 +4,7 @@
 
 <mapper namespace="com.springlec.base.dao.admin.ProductDao">
 
-	<!--그래프 주문관련 정보 불러오기 : adminGraphOrders  -->
+	<!--그래프 주문관련 정보 불러오기 : adminGraphOrders -->
 	<select id="searchOrdersProduct"
 		resultType="com.springlec.base.model.admin.ProductDto">
 		SELECT p.name, SUM(o.count) AS totalorders
@@ -13,9 +13,9 @@
 		WHERE o.refunddate IS NULL
 		GROUP BY
 		p.name
-		ORDER BY totalorders DESC		
+		ORDER BY totalorders DESC
 	</select>
-	
+
 	<!--테이블 상품 관련 정보 불러오기 : adminSearchProduct -->
 	<select id="searchProduct"
 		resultType="com.springlec.base.model.admin.ProductDto">
@@ -32,35 +32,40 @@
 		WHERE pcode = #{pcode}
 	</select>
 
-	<!--데이터 입력 하기 : adminInsertProduct  -->
+	<!--데이터 입력 하기 : adminInsertProduct -->
 	<insert id="insertProduct">
-		INSERT INTO product (pcode,
-		name, category, rice, cook1,
-		cook2, cook3, soup, photo,
-		insertdate, calories)"
-		SELECT IFNULL(MAX(CAST(pcode AS UNSIGNED)), 0) + 1,
-		#{name}, #{category}, #{rice}, #{cook1},
-		#{cook2}, #{cook3}, #{soup}, #{photo},
-		NOW(),#{calories}
-		FROM product
+		INSERT INTO product (pcode, name, category, rice,
+		cook1, cook2, cook3, soup, photo, insertdate, calories)
+		VALUES (#{pcode}, #{name}, #{category}, #{rice}, #{cook1}, #{cook2},
+		#{cook3}, #{soup}, #{photo}, NOW(), #{calories});
+
 	</insert>
 
-	<!--데이터 입력 하기 : adminUpdateProduct  -->
+	<!--데이터 입력 하기 : adminUpdateProduct -->
 	<update id="updateProduct">
-		UPDATE product SET name = #{name}, category = #{category}, rice = #{rice},
-		cook1 = #{cook1}, cook2 = #{cook2}, cook3 = #{cook3}, 
-		soup = #{soup}, photo = #{photo}, calories = #{calories} 
+		UPDATE product SET name = #{name}, category =
+		#{category}, rice = #{rice},
+		cook1 = #{cook1}, cook2 = #{cook2}, cook3
+		= #{cook3},
+		soup = #{soup}, photo = #{photo}, calories = #{calories}
 		WHERE pcode = #{pcode}
 	</update>
-	
-	<!--  pcode로 name 알아내기 -->
+
+	<!-- pcode로 name 알아내기 -->
 	<select id="getPname"
 		resultType="com.springlec.base.model.admin.ProductDto">
-		SELECT name 
-		FROM product 
+		SELECT name
+		FROM product
 		WHERE pcode = #{pcode}
 	</select>
 
+	<select id="getPcodeNew"
+		resultType="com.springlec.base.model.admin.ProductDto">
+		SELECT
+		IFNULL(MAX(CAST(pcode AS UNSIGNED)), 0) + 1 as pcode
+		FROM
+		product
+	</select>
 
 
 </mapper>
