@@ -11,7 +11,7 @@
 		                    <li><a href="mypage"><b>상세정보</b></a></li>
 		                    <li><a href="cart">장바구니</a></li>
 		                    <li><a href="userorderinfo">구매내역</a></li>
-		                    <li><a href="usersubscribe">구독일정</a></li>
+		                    <li><a href="userwishlist">위시리스트</a></li>
 		                </ul>
 		            </div>
 		        </div>

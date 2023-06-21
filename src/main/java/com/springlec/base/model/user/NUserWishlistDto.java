@@ -15,4 +15,11 @@ public class NUserWishlistDto {
 	String userid;
 	String pcode;
 	Timestamp insertdate;
+	
+	// product
+	String name;
+	String photo;
+	
+	// manage
+	int price;
 }

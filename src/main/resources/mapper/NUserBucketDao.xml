@@ -8,4 +8,10 @@
 	<insert id="userWishlistIn">
 		INSERT INTO wishlist (userid, pcode, insertdate) VALUES(#{userid}, #{pcode}, now())
 	</insert>
+	<delete id="userWishlistDelete">
+		DELETE FROM wishlist WHERE pcode = #{pcode} AND userid = #{userid}
+	</delete>
+	<select id="userWishList" resultType="com.springlec.base.model.user.NUserWishlistDto">
+		SELECT p.pcode, p.name, m.price, p.photo FROM wishlist w, product p, manage m WHERE p.pcode = w.pcode AND m.pcode = p.pcode AND userid = #{userid}
+	</select>
 </mapper>

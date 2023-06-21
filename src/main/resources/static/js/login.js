@@ -340,3 +340,28 @@ function wishInsertFn(pcode){
 		}
 	});
 }
+
+function wishdeleteFn(pcode){
+	//var pcode = document.getElementById("pcode").value();
+	console.log(pcode)
+	$.ajax({
+	    type: "POST",
+	    url: "wishlistdelete", // URL
+	    data: { pcode : pcode },
+	    success: function(result) {
+			console.log(result)
+			if (Number(result) == Number(0)) {
+				alert("위시리스트에서 삭제하였습니다.");
+				window.location.reload();
+			} else if(Number(result) == Number(2)){
+				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+				window.location.href = "login";
+			} else{
+				alert("위시리스트에서 삭제하지 못했습니다.");
+			}
+		},
+		error: function(xhr, status, error) {
+		    console.log("에러 발생: " + error); // 오류 메시지 출력
+		}
+	});
+}
