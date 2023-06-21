@@ -32,6 +32,8 @@
 <!-- DataTables library -->
 <script
 	src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<!-- img_preview  openFileUploader, handleFileSelect-->
+<script src="admin/js/img_preview.js"></script>
 </head>
 
 <body id="page-top">
@@ -180,8 +182,8 @@
 								<input style="text-align: left" type="text" name="photoname"
 									class="form-control form-control-user" id="photo"
 									placeholder="${ dataSetProduct[0].photo != null ? dataSetProduct[0].photo : '사진경로를 입력해주세요.'}"
-									readonly="readonly" onclick="openFileUploader()"> <input
-									type="file" id="fileUploader" style="display: none;"
+									readonly="readonly" onclick="openFileUploader()"> 
+									<input	type="file" id="fileUploader" style="display: none;"
 									name="photo" onchange="handleFileSelect(event)">
 							</div>
 						</div>
@@ -284,9 +286,9 @@
 						<div class="form-group row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-4">
-								<a id="confirmDelete" class="btn btn-google btn-user btn-block" 
-								data-invalidate="${dataSetProduct[0].invalidate}" data-pcode="${dataSetProduct[0].pcode}" 
-								>삭제 및 복구</a>
+								<a id="confirmDelete" class="btn btn-google btn-user btn-block"
+									data-invalidate="${dataSetProduct[0].invalidate}"
+									data-pcode="${dataSetProduct[0].pcode}">삭제 및 복구</a>
 							</div>
 							<div class="col-sm-2"></div>
 							<div class="col-sm-4">
@@ -304,8 +306,7 @@
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i></a>
-	<!-- img_preview  openFileUploader, handleFileSelect-->
-	<script src="admin/js/img_preview.js"></script>
+
 	<!-- REGEX&modal -->
 	<script src="admin/js/product_regex.js"></script>
 	<!-- Custom scripts for all pages-->
